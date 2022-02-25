@@ -11,7 +11,9 @@ namespace AspNetWeb_MVC.Controllers
         // GET: Hello
         public ActionResult Index()
         {
-            return Content("Hello World ！");
+            return View();
+            //return Content("Hello World ！");
+
         }
     }
 }
