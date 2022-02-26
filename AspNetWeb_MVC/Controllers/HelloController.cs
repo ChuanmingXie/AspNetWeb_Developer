@@ -9,9 +9,21 @@ namespace AspNetWeb_MVC.Controllers
     public class HelloController : Controller
     {
         // GET: Hello
-        public string Index()
+        //public string Index()
+        //{
+        //    return "这是我的<b>默认</b>动作方法...";
+        //}
+
+        public ActionResult Index()
         {
-            return "这是我的<b>默认</b>动作方法...";
+            return View();
+        }
+
+        public ActionResult Welcome(string name,int numTimes = 1)
+        {
+            ViewBag.Message = "Hello " + name;
+            ViewBag.NumTimes = numTimes;
+            return View();
         }
 
         //
