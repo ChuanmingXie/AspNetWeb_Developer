@@ -18,6 +18,10 @@ namespace AspNetWeb_MVC.Models
 
     public class MovieDBContext : DbContext
     {
+        public MovieDBContext():base("name=dbConnection")
+        {
+
+        }
         public DbSet<Movie> Movies { get; set; }
     }
 }
