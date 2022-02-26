@@ -20,7 +20,7 @@ namespace AspNetWeb_MVC.Controllers
             var GenreList = new List<string>();
             var GenreQuery = from d in db.Movies orderby d.Genre select d.Genre;
             GenreList.AddRange(GenreQuery.Distinct());
-            ViewBag.moviesGenre = new SelectList(GenreList);
+            ViewBag.movieGenre = new SelectList(GenreList);
 
             var movies=from m in db.Movies select m;
             if (!string.IsNullOrEmpty(searchString))
@@ -60,7 +60,7 @@ namespace AspNetWeb_MVC.Controllers
         // 详细信息，请参阅 https://go.microsoft.com/fwlink/?LinkId=317598。
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,Title,ReleaseDate,Genre,Price")] Movie movie)
+        public ActionResult Create([Bind(Include = "Id,Title,ReleaseDate,Genre,Price,Rating")] Movie movie)
         {
             if (ModelState.IsValid)
             {
@@ -92,7 +92,7 @@ namespace AspNetWeb_MVC.Controllers
         // 详细信息，请参阅 https://go.microsoft.com/fwlink/?LinkId=317598。
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,Title,ReleaseDate,Genre,Price")] Movie movie)
+        public ActionResult Edit([Bind(Include = "Id,Title,ReleaseDate,Genre,Price,Rating")] Movie movie)
         {
             if (ModelState.IsValid)
             {
