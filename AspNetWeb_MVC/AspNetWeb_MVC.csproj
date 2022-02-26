@@ -140,6 +140,10 @@
     <Compile Include="Migrations\202202261601058_Initial.Designer.cs">
       <DependentUpon>202202261601058_Initial.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202202261613215_DataAnnotations.cs" />
+    <Compile Include="Migrations\202202261613215_DataAnnotations.Designer.cs">
+      <DependentUpon>202202261613215_DataAnnotations.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Movie.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -211,6 +215,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202202261601058_Initial.resx">
       <DependentUpon>202202261601058_Initial.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202202261613215_DataAnnotations.resx">
+      <DependentUpon>202202261613215_DataAnnotations.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
