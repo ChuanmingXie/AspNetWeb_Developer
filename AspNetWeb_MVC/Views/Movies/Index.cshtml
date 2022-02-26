@@ -9,6 +9,12 @@
 
 <p>
     @Html.ActionLink("Create New", "Create")
+    @using (Html.BeginForm("Index","Movies",FormMethod.Get)) {
+        <p>
+            流派:@Html.DropDownList("movieGenre", "全部");
+            影片名称:@Html.TextBox("SearchString") <input type="submit" value="Filter"/>
+        </p>
+    }
 </p>
 <table class="table">
     <tr>
