@@ -9,11 +9,27 @@ namespace AspNetWeb_MVC.Controllers
     public class HelloController : Controller
     {
         // GET: Hello
-        public ActionResult Index()
+        public string Index()
         {
-            return View();
-            //return Content("Hello World ！");
+            return "这是我的<b>默认</b>动作方法...";
+        }
 
+        //
+        //Get :/HelloWord/Welcome/
+        public string WelcomeUrlStr()
+        {
+            return "这是Welcome()动作方法...";
+        }
+
+        public string WelcomeUrlParam(string name,int numTimes = 1)
+        {
+            /*HttpUtility.HtmlEncode 方法用于保护应用程序免受js的恶意输入*/
+            return HttpUtility.HtmlEncode("Hello " + name + ", NumTimes is :" + numTimes);
+        }
+
+        public string WelcomeUrlID(string name,int ID = 1)
+        {
+            return HttpUtility.HtmlEncode("Hello " + name + ", ID:" + ID);
         }
     }
 }
