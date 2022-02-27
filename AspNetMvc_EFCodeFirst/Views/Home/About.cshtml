@@ -1,7 +1,23 @@
-﻿@{
-    ViewBag.Title = "About";
+﻿@model IEnumerable<AspNetMvc_EFCodeFirst.ViewModels.EnrollmentDateGroup>
+@{
+    ViewBag.Title = "学生入学时间统计";
 }
-<h2>@ViewBag.Title.</h2>
-<h3>@ViewBag.Message</h3>
+<h2>学生入学时间统计</h2>
 
-<p>Use this area to provide additional information.</p>
+<table>
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.EnrollmentDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.StudentCount)
+        </th>
+    </tr>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>@Html.DisplayFor(modelItem => item.EnrollmentDate)</td>
+            <td>@item.StudentCount</td>
+        </tr>
+    }
+</table>

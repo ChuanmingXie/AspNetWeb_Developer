@@ -22,7 +22,11 @@ namespace AspNetMvc_EFCodeFirst.Models
     public class Student
     {
         public int ID { get; set; }
+
+        [Display(Name ="姓氏")]
         public string LastName { get; set; }
+
+        [Display(Name ="名字")]
         public string FirstMidName { get; set; }
 
         [Display(Name ="入学时间")]
