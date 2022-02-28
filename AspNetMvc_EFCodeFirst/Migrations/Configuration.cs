@@ -150,6 +150,7 @@ namespace AspNetMvc_EFCodeFirst.Migrations
             AddOrUpdateInstructor(context, "Trigonometry", "Harui");
             AddOrUpdateInstructor(context, "Composition", "Abercrombie");
             AddOrUpdateInstructor(context, "Literature", "Abercrombie");
+            context.SaveChanges();
 
             var enrollments = new List<Enrollment>
             {
@@ -223,7 +224,7 @@ namespace AspNetMvc_EFCodeFirst.Migrations
         private void AddOrUpdateInstructor(SchoolContext context, string courseTitle, string instructorName)
         {
             var course = context.Courses.SingleOrDefault(c => c.Title == courseTitle);
-            var instrcutor = context.Instructors.SingleOrDefault(i => i.LastName == instructorName);
+            var instrcutor = course.Instructors.SingleOrDefault(i => i.LastName == instructorName);
             if (instrcutor == null)
             {
                 course.Instructors.Add(context.Instructors.Single(i => i.LastName == instructorName));

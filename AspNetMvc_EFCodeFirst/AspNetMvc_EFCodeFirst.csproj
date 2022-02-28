@@ -150,10 +150,6 @@
     <Compile Include="Migrations\202202270837352_InitialCreate.Designer.cs">
       <DependentUpon>202202270837352_InitialCreate.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\202202281207458_InitialCreate1.cs" />
-    <Compile Include="Migrations\202202281207458_InitialCreate1.Designer.cs">
-      <DependentUpon>202202281207458_InitialCreate1.cs</DependentUpon>
-    </Compile>
     <Compile Include="Migrations\202202281422180_MaxLengthOnNames.cs" />
     <Compile Include="Migrations\202202281422180_MaxLengthOnNames.Designer.cs">
       <DependentUpon>202202281422180_MaxLengthOnNames.cs</DependentUpon>
@@ -250,9 +246,6 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\202202270837352_InitialCreate.resx">
       <DependentUpon>202202270837352_InitialCreate.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202202281207458_InitialCreate1.resx">
-      <DependentUpon>202202281207458_InitialCreate1.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202202281422180_MaxLengthOnNames.resx">
       <DependentUpon>202202281422180_MaxLengthOnNames.cs</DependentUpon>
