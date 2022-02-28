@@ -26,11 +26,22 @@ namespace AspNetMvc_EFCodeFirst.DAL
         public DbSet<Student> Students { get; set; }
         public DbSet<Enrollment> Enrollments { get; set; }
         public DbSet<Course> Courses { get; set; }
+        public DbSet<Department> Departments { get; set; }
+        public DbSet<Instructor> Instructors { get; set; }
+        public DbSet<OfficeAssignment> OfficeAssignments { get; set; }
 
-        /* 指定非复数的表单名称 */
+        
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
+            /* 指定非复数的表单名称 */
             modelBuilder.Conventions.Remove<PluralizingTableNameConvention>();
+            /* 语句配置多对多联接表 */
+            modelBuilder.Entity<Course>()
+                .HasMany(c => c.Instructors).WithMany(i => i.Courses)
+                .Map(t => t.MapLeftKey("CourseID").MapRightKey("InstructorID").ToTable("CourseInstructor"));
+            /* 语句配置多对多联接表 -Fluent API */
+            //modelBuilder.Entity<Instructor>()
+                //.HasOptional(p => p.OfficeAssignment).WithRequired(p => p.Instructor);
         }
     }
 }

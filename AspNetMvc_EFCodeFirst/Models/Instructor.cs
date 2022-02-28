@@ -1,10 +1,10 @@
 ﻿/*****************************************************************************
 *项目名称:AspNetMvc_EFCodeFirst.Models
 *项目描述:
-*类 名 称:Student
+*类 名 称:Instructor
 *类 描 述:
 *创 建 人:Chuanmingxie
-*创建时间:2022/2/27 8:43:46
+*创建时间:2022/2/28 22:31:26
 *修 改 人:
 *修改时间:
 *作用描述:<FUNCTION>
@@ -18,33 +18,29 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace AspNetMvc_EFCodeFirst.Models
 {
-    public class Student
+    public class Instructor
     {
         public int ID { get; set; }
 
-        [Required]
-        [StringLength(50,MinimumLength = 2)]
-        [Display(Name ="姓氏")]
+        [Display(Name ="姓氏"),StringLength(50,MinimumLength =2)]
         public string LastName { get; set; }
 
-        [Required]
-        [Display(Name ="名字")]
-        //[RegularExpression(@"^[A-Z]+[a-zA-Z'\s-]*$")]
-        [StringLength(50,ErrorMessage ="名字过长,不能超过50个字符.")]
         [Column("FirstName")]
+        [Display(Name ="名称"),StringLength(50,MinimumLength =2)]
         public string FirstMidName { get; set; }
 
-        [DataType(DataType.Date)]
-        [Display(Name ="入学时间")]
+        [DataType(DataType.Date),Display(Name ="入职时间")]
         [DisplayFormat(DataFormatString ="{0:yyyy-MM-dd}",ApplyFormatInEditMode =true)]
-        public DateTime EnrollmentDate { get; set; }
+        public DateTime HireDate { get; set; }
 
         [Display(Name ="姓名")]
         public string FullName
         {
-            get { return LastName + "," + FirstMidName; }
+            get { return LastName + "·" + FirstMidName; }
         }
 
-        public virtual ICollection<Enrollment> Enrollments { get; set; }
+        public virtual ICollection<Course> Courses { get; set; }
+
+        public virtual OfficeAssignment OfficeAssignment { get; set; }
     }
 }

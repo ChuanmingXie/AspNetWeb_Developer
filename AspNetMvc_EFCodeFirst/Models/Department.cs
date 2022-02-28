@@ -11,29 +11,32 @@
 *Copyright @ Chuanming 2022. All rights reserved
 ******************************************************************************/
 
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace AspNetMvc_EFCodeFirst.Models
 {
-    public class Course
+    public class Department
     {
-        [DatabaseGenerated(DatabaseGeneratedOption.None)]
-        [Display(Name ="Number")]
-        public int CourseID { get; set; }
-
-        [StringLength(50,MinimumLength =3)]
-        public string Title { get; set; }
-
-        [Range(0,5)]
-        public int Credits { get; set; }
-
         public int DepartmentID { get; set; }
 
-        public virtual Department Department { get; set; }
-        public virtual ICollection<Enrollment> Enrollments { get; set; }
+        [StringLength(50,MinimumLength =3)]
+        public string Name { get; set; }
 
-        public virtual ICollection<Instructor> Instructors { get; set; }
+        [DataType(DataType.Currency)]
+        [Column(TypeName ="money")]
+        public decimal Budget { get; set; }
+
+        [Display(Name="创建时间"),DataType(DataType.Date)]
+        [DisplayFormat(DataFormatString ="{0:yyyy-MM-dd}",ApplyFormatInEditMode =true)]
+        public DateTime StartDate { get; set; }
+
+        public int? InstructorID { get; set; }
+
+        public virtual Instructor Administrator { get; set; }
+        public virtual ICollection<Course> Courses { get; set; }
+
     }
 }
