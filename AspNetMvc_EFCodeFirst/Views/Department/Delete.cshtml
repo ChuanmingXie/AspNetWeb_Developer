@@ -7,6 +7,7 @@
 
 <h2>删除院系</h2>
 
+<p class="error">@ViewBag.ConcurrencyErrorMessage</p>
 <h3>您确定要删除该条记录吗?</h3>
 <div>
     <h4>院系</h4>
@@ -46,8 +47,11 @@
 
     </dl>
 
-    @using (Html.BeginForm()) {
+    @using (Html.BeginForm())
+    {
         @Html.AntiForgeryToken()
+        @Html.HiddenFor(model => model.DepartmentID)
+        @Html.HiddenFor(model => model.RowVersion)
 
         <div class="form-actions no-color">
             <input type="submit" value="删除" class="btn btn-default" /> |

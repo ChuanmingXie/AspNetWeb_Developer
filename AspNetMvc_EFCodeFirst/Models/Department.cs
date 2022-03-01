@@ -39,6 +39,9 @@ namespace AspNetMvc_EFCodeFirst.Models
         [Display(Name ="系主任工号")]
         public int? InstructorID { get; set; }
 
+        [Timestamp]
+        public byte[] RowVersion { get; set; }
+
         public virtual Instructor Administrator { get; set; }
 
         public virtual ICollection<Course> Courses { get; set; }
