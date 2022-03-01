@@ -15,6 +15,7 @@
         <th>姓名</th>
         <th>入职时间</th>
         <th>办公室</th>
+        <th>任教课程</th>
         <th>操作</th>
     </tr>
 
@@ -36,6 +37,14 @@
                 @if (item.OfficeAssignment != null)
                 {
                     @item.OfficeAssignment.Location
+                }
+            </td>
+            <td>
+                @{ 
+                    foreach (var course in item.Courses)
+                    {
+                        @course.CourseID @: @course.Title <br />
+                    }
                 }
             </td>
             <td>
