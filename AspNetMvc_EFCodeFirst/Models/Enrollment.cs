@@ -25,13 +25,21 @@ namespace AspNetMvc_EFCodeFirst.Models
     }
     public class Enrollment
     {
+        [Display(Name ="入学编号")]
         public int EnrollmentID { get; set; }
+
+        [Display(Name ="课程代码")]
         public int CourseID { get; set; }
+
+        [Display(Name ="学生证号")]
         public int StudentID { get; set; }
+
         [DisplayFormat(NullDisplayText ="暂无级别")]
+        [Display(Name ="测试等级")]
         public Grade? Grade { get; set; }
 
         public virtual Course Course { get; set; }
+
         public virtual Student Student { set; get; }
     }
 }

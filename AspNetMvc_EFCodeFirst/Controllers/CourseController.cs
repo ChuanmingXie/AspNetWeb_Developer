@@ -1,13 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data;
+﻿using AspNetMvc_EFCodeFirst.DAL;
+using AspNetMvc_EFCodeFirst.Models;
+using System;
 using System.Data.Entity;
 using System.Linq;
 using System.Net;
-using System.Web;
 using System.Web.Mvc;
-using AspNetMvc_EFCodeFirst.DAL;
-using AspNetMvc_EFCodeFirst.Models;
 
 namespace AspNetMvc_EFCodeFirst.Controllers
 {
@@ -40,8 +37,17 @@ namespace AspNetMvc_EFCodeFirst.Controllers
         // GET: Course/Create
         public ActionResult Create()
         {
+            //PopulateDepartmentsDropDownList();
             ViewBag.DepartmentID = new SelectList(db.Departments, "DepartmentID", "Name");
             return View();
+        }
+
+        private void PopulateDepartmentsDropDownList(object selectedDepartment=null)
+        {
+            var departmentsQuery = from d in db.Departments
+                                   orderby d.Name
+                                   select d;
+            ViewBag.DepartmentID = new SelectList(departmentsQuery, "DepartmentID", "Name", selectedDepartment);
         }
 
         // POST: Course/Create

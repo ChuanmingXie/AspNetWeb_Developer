@@ -36,7 +36,7 @@ namespace AspNetMvc_EFCodeFirst.Models
         [Display(Name ="姓名")]
         public string FullName
         {
-            get { return LastName + "·" + FirstMidName; }
+            get { return FirstMidName + "·" + LastName; }
         }
 
         public virtual ICollection<Course> Courses { get; set; }

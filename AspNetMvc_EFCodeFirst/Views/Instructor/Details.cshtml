@@ -1,14 +1,14 @@
 ﻿@model AspNetMvc_EFCodeFirst.Models.Instructor
 
 @{
-    ViewBag.Title = "Details";
+    ViewBag.Title = "教师详情";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Details</h2>
+<h2>教师详情</h2>
 
 <div>
-    <h4>Instructor</h4>
+    <h4>教师详情</h4>
     <hr />
     <dl class="dl-horizontal">
         <dt>
@@ -46,6 +46,6 @@
     </dl>
 </div>
 <p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.ID }) |
-    @Html.ActionLink("Back to List", "Index")
+    @Html.ActionLink("修改", "Edit", new { id = Model.ID }) |
+    @Html.ActionLink("返回列表", "Index")
 </p>

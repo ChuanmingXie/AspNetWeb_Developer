@@ -20,22 +20,27 @@ namespace AspNetMvc_EFCodeFirst.Models
 {
     public class Department
     {
+        [Display(Name="院系代码")]
         public int DepartmentID { get; set; }
 
         [StringLength(50,MinimumLength =3)]
+        [Display(Name="院系名称")]
         public string Name { get; set; }
 
         [DataType(DataType.Currency)]
         [Column(TypeName ="money")]
+        [Display(Name="课程费用")]
         public decimal Budget { get; set; }
 
         [Display(Name="创建时间"),DataType(DataType.Date)]
         [DisplayFormat(DataFormatString ="{0:yyyy-MM-dd}",ApplyFormatInEditMode =true)]
         public DateTime StartDate { get; set; }
 
+        [Display(Name ="任课老师")]
         public int? InstructorID { get; set; }
 
         public virtual Instructor Administrator { get; set; }
+
         public virtual ICollection<Course> Courses { get; set; }
 
     }

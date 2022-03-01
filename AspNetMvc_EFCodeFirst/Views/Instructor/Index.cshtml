@@ -1,22 +1,21 @@
 ﻿@model AspNetMvc_EFCodeFirst.ViewModels.InstructorIndexData
 
 @{
-    ViewBag.Title = "Instructors";
+    ViewBag.Title = "教师列表";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Instructors</h2>
+<h2>教师列表</h2>
 
 <p>
-    @Html.ActionLink("Create New", "Create")
+    @Html.ActionLink("创建", "Create")
 </p>
 <table class="table">
     <tr>
-        <th>Last Name</th>
-        <th>First Name</th>
-        <th>Hire Date</th>
-        <th>Office</th>
-        <th></th>
+        <th>姓名</th>
+        <th>入职时间</th>
+        <th>办公室</th>
+        <th>操作</th>
     </tr>
 
     @foreach (var item in Model.Instructors)
@@ -28,10 +27,7 @@
         }
         <tr class="@selectedRow">
             <td>
-                @Html.DisplayFor(modelItem => item.LastName)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.FirstMidName)
+                @Html.DisplayFor(modelItem => item.FullName)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.HireDate)
@@ -43,10 +39,10 @@
                 }
             </td>
             <td>
-                @Html.ActionLink("Select", "Index", new { id = item.ID }) |
-                @Html.ActionLink("Edit", "Edit", new { id = item.ID }) |
-                @Html.ActionLink("Details", "Details", new { id = item.ID }) |
-                @Html.ActionLink("Delete", "Delete", new { id = item.ID })
+                @Html.ActionLink("选中", "Index", new { id = item.ID }) |
+                @Html.ActionLink("编辑", "Edit", new { id = item.ID }) |
+                @Html.ActionLink("详情", "Details", new { id = item.ID }) |
+                @Html.ActionLink("删除", "Delete", new { id = item.ID })
             </td>
         </tr>
     }
@@ -54,13 +50,13 @@
 
 @if (Model.Courses != null)
 {
-    <h3>Courses Taught by Selected Instructor</h3>
+    <h3>任教课程</h3>
     <table class="table">
         <tr>
-            <th></th>
-            <th>Number</th>
-            <th>Title</th>
-            <th>Department</th>
+            <th>操作</th>
+            <th>课程代码</th>
+            <th>课程名称</th>
+            <th>所属院系</th>
         </tr>
 
         @foreach (var item in Model.Courses)
@@ -72,7 +68,7 @@
             }
             <tr class="@selectedRow">
                 <td>
-                    @Html.ActionLink("Select", "Index", new { courseID = item.CourseID })
+                    @Html.ActionLink("选中", "Index", new { courseID = item.CourseID })
                 </td>
                 <td>
                     @item.CourseID
@@ -92,12 +88,12 @@
 @if (Model.Enrollments != null)
 {
     <h3>
-        Students Enrolled in Selected Course
+        选课学生
     </h3>
     <table class="table">
         <tr>
-            <th>Name</th>
-            <th>Grade</th>
+            <th>姓名</th>
+            <th>学习等级</th>
         </tr>
         @foreach (var item in Model.Enrollments)
         {

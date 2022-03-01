@@ -3,19 +3,19 @@
 <link href="~/Content/PagedList.css" rel="stylesheet" type="text/css" />
 
 @{
-    ViewBag.Title = "Students";
+    ViewBag.Title = "学生列表";
 }
 
-<h2>Students</h2>
+<h2>学生列表</h2>
 
 <p>
-    @Html.ActionLink("新添项目", "Create")
+    @Html.ActionLink("创建", "Create")
 </p>
 @using (Html.BeginForm("Index", "Student", FormMethod.Get))
 {
     <p>
         姓名:@Html.TextBox("SearchString", ViewBag.CurrentFilter as string)
-        <input type="submit" value="Search" />
+        <input type="submit" value="查找" />
     </p>
 }
 <table class="table">
@@ -47,9 +47,9 @@
                 @Html.DisplayFor(modelItem => item.EnrollmentDate)
             </td>
             <td>
-                @Html.ActionLink("Edit", "Edit", new { id = item.ID }) |
-                @Html.ActionLink("Details", "Details", new { id = item.ID }) |
-                @Html.ActionLink("Delete", "Delete", new { id = item.ID })
+                @Html.ActionLink("编辑", "Edit", new { id = item.ID }) |
+                @Html.ActionLink("详情", "Details", new { id = item.ID }) |
+                @Html.ActionLink("删除", "Delete", new { id = item.ID })
             </td>
         </tr>
     }

@@ -20,18 +20,21 @@ namespace AspNetMvc_EFCodeFirst.Models
     public class Course
     {
         [DatabaseGenerated(DatabaseGeneratedOption.None)]
-        [Display(Name ="Number")]
+        [Display(Name ="课程代码")]
         public int CourseID { get; set; }
 
-        [StringLength(50,MinimumLength =3)]
+        [StringLength(50,MinimumLength =2)]
+        [Display(Name ="课程名称")]
         public string Title { get; set; }
 
-        [Range(0,5)]
+        [Range(0,5),Display(Name ="学分")]
         public int Credits { get; set; }
 
+        [Display(Name ="院系代码")]
         public int DepartmentID { get; set; }
 
         public virtual Department Department { get; set; }
+
         public virtual ICollection<Enrollment> Enrollments { get; set; }
 
         public virtual ICollection<Instructor> Instructors { get; set; }

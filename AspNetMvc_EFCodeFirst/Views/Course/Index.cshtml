@@ -8,7 +8,7 @@
 <h2>课程列表</h2>
 
 <p>
-    @Html.ActionLink("Create New", "Create")
+    @Html.ActionLink("创建", "Create")
 </p>
 <table class="table">
     <tr>
@@ -41,9 +41,9 @@
         @Html.DisplayFor(modelItem => item.Department.Name)
     </td>
     <td>
-        @Html.ActionLink("Edit", "Edit", new { id = item.CourseID }) |
-        @Html.ActionLink("Details", "Details", new { id = item.CourseID }) |
-        @Html.ActionLink("Delete", "Delete", new { id = item.CourseID })
+        @Html.ActionLink("编辑", "Edit", new { id = item.CourseID }) |
+        @Html.ActionLink("详情", "Details", new { id = item.CourseID }) |
+        @Html.ActionLink("删除", "Delete", new { id = item.CourseID })
     </td>
 </tr>
 }

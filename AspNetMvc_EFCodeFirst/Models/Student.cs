@@ -23,7 +23,7 @@ namespace AspNetMvc_EFCodeFirst.Models
         public int ID { get; set; }
 
         [Required]
-        [StringLength(50,MinimumLength = 2)]
+        [StringLength(50,MinimumLength = 1)]
         [Display(Name ="姓氏")]
         public string LastName { get; set; }
 
@@ -42,7 +42,7 @@ namespace AspNetMvc_EFCodeFirst.Models
         [Display(Name ="姓名")]
         public string FullName
         {
-            get { return LastName + "," + FirstMidName; }
+            get { return LastName + FirstMidName; }
         }
 
         public virtual ICollection<Enrollment> Enrollments { get; set; }
