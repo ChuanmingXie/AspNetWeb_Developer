@@ -29,14 +29,14 @@ namespace AspNetMvc_EFCodeFirst.Models
 
         [DataType(DataType.Currency)]
         [Column(TypeName ="money")]
-        [Display(Name="课程费用")]
+        [Display(Name="研发经费")]
         public decimal Budget { get; set; }
 
         [Display(Name="创建时间"),DataType(DataType.Date)]
         [DisplayFormat(DataFormatString ="{0:yyyy-MM-dd}",ApplyFormatInEditMode =true)]
         public DateTime StartDate { get; set; }
 
-        [Display(Name ="任课老师")]
+        [Display(Name ="系主任工号")]
         public int? InstructorID { get; set; }
 
         public virtual Instructor Administrator { get; set; }

@@ -1,0 +1,51 @@
+﻿@model AspNetMvc_EFCodeFirst.Models.Department
+
+@{
+    ViewBag.Title = "院系详情";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>院系详情</h2>
+
+<div>
+    <h4>院系</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            系主任
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Administrator.FullName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Budget)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Budget)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.StartDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.StartDate)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("修改", "Edit", new { id = Model.DepartmentID }) |
+    @Html.ActionLink("返回列表", "Index")
+</p>

@@ -40,8 +40,10 @@ namespace AspNetMvc_EFCodeFirst.DAL
                 .HasMany(c => c.Instructors).WithMany(i => i.Courses)
                 .Map(t => t.MapLeftKey("CourseID").MapRightKey("InstructorID").ToTable("CourseInstructor"));
             /* 语句配置多对多联接表 -Fluent API */
-            //modelBuilder.Entity<Instructor>()
-                //.HasOptional(p => p.OfficeAssignment).WithRequired(p => p.Instructor);
+            //modelBuilder.Entity<Instructor>().HasOptional(p => p.OfficeAssignment).WithRequired(p => p.Instructor);
+
+            /*指示实体框架在实体上 Department 使用存储过程执行插入、更新和删除操作*/
+            modelBuilder.Entity<Department>().MapToStoredProcedures();
         }
     }
 }
