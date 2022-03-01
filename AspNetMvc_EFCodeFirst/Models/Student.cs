@@ -14,36 +14,35 @@
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
 
 namespace AspNetMvc_EFCodeFirst.Models
 {
-    public class Student
+    public class Student:Person
     {
-        public int ID { get; set; }
+        //public int ID { get; set; }
 
-        [Required]
-        [StringLength(50,MinimumLength = 1)]
-        [Display(Name ="姓氏")]
-        public string LastName { get; set; }
+        //[Required]
+        //[StringLength(50,MinimumLength = 1)]
+        //[Display(Name ="姓氏")]
+        //public string LastName { get; set; }
 
-        [Required]
-        [Display(Name ="名字")]
-        //[RegularExpression(@"^[A-Z]+[a-zA-Z'\s-]*$")]
-        [StringLength(50,ErrorMessage ="名字过长,不能超过50个字符.")]
-        [Column("FirstName")]
-        public string FirstMidName { get; set; }
+        //[Required]
+        //[Display(Name ="名字")]
+        ////[RegularExpression(@"^[A-Z]+[a-zA-Z'\s-]*$")]
+        //[StringLength(50,ErrorMessage ="名字过长,不能超过50个字符.")]
+        //[Column("FirstName")]
+        //public string FirstMidName { get; set; }
 
         [DataType(DataType.Date)]
         [Display(Name ="入学时间")]
         [DisplayFormat(DataFormatString ="{0:yyyy-MM-dd}",ApplyFormatInEditMode =true)]
         public DateTime EnrollmentDate { get; set; }
 
-        [Display(Name ="姓名")]
-        public string FullName
-        {
-            get { return LastName + FirstMidName; }
-        }
+        //[Display(Name ="姓名")]
+        //public string FullName
+        //{
+        //    get { return LastName + FirstMidName; }
+        //}
 
         public virtual ICollection<Enrollment> Enrollments { get; set; }
     }

@@ -18,26 +18,26 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace AspNetMvc_EFCodeFirst.Models
 {
-    public class Instructor
+    public class Instructor:Person
     {
-        public int ID { get; set; }
+        //public int ID { get; set; }
 
-        [Display(Name ="姓氏"),StringLength(50,MinimumLength =2)]
-        public string LastName { get; set; }
+        //[Display(Name ="姓氏"),StringLength(50,MinimumLength =2)]
+        //public string LastName { get; set; }
 
-        [Column("FirstName")]
-        [Display(Name ="名称"),StringLength(50,MinimumLength =2)]
-        public string FirstMidName { get; set; }
+        //[Column("FirstName")]
+        //[Display(Name ="名称"),StringLength(50,MinimumLength =2)]
+        //public string FirstMidName { get; set; }
 
         [DataType(DataType.Date),Display(Name ="入职时间")]
         [DisplayFormat(DataFormatString ="{0:yyyy-MM-dd}",ApplyFormatInEditMode =true)]
         public DateTime HireDate { get; set; }
 
-        [Display(Name ="姓名")]
-        public string FullName
-        {
-            get { return FirstMidName + "·" + LastName; }
-        }
+        //[Display(Name ="姓名")]
+        //public string FullName
+        //{
+        //    get { return FirstMidName + "·" + LastName; }
+        //}
 
         public virtual ICollection<Course> Courses { get; set; }
 
