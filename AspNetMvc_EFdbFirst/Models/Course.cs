@@ -11,7 +11,8 @@ namespace AspNetMvc_EFdbFirst.Models
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+
     public partial class Course
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -21,7 +22,11 @@ namespace AspNetMvc_EFdbFirst.Models
         }
     
         public int CourseID { get; set; }
+
+        [Display(Name ="课程名称")]
         public string Title { get; set; }
+
+        [Display(Name = "学分")]
         public Nullable<int> Credits { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

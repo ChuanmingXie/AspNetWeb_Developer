@@ -141,6 +141,7 @@
     <Compile Include="Models\Enrollment.cs">
       <DependentUpon>ModelUniversity.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\Metadata.cs" />
     <Compile Include="Models\ModelUniversity.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -156,6 +157,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>ModelUniversity.edmx</DependentUpon>
     </Compile>
+    <Compile Include="Models\PartialClasses.cs" />
     <Compile Include="Models\Student.cs">
       <DependentUpon>ModelUniversity.tt</DependentUpon>
     </Compile>

@@ -14,21 +14,24 @@
     <tr>
         <th>@Html.DisplayNameFor(model => model.LastName)</th>
         <th>@Html.DisplayNameFor(model => model.FirstName)</th>
+        <th>@Html.DisplayNameFor(model => model.MiddleName)</th>
         <th>@Html.DisplayNameFor(model => model.EnrollmentDate)</th>
         <th>操作</th>
     </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>@Html.DisplayFor(modelItem => item.LastName)</td>
-        <td>@Html.DisplayFor(modelItem => item.FirstName)</td>
-        <td>@Html.DisplayFor(modelItem => item.EnrollmentDate)</td>
-        <td>
-            @Html.ActionLink("修改", "Edit", new { id=item.StudentID }) |
-            @Html.ActionLink("详细", "Details", new { id=item.StudentID }) |
-            @Html.ActionLink("删除", "Delete", new { id=item.StudentID })
-        </td>
-    </tr>
-}
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>@Html.DisplayFor(modelItem => item.LastName)</td>
+            <td>@Html.DisplayFor(modelItem => item.FirstName)</td>
+            <td>@Html.DisplayFor(modelItem => item.MiddleName)</td>
+            <td>@Html.DisplayFor(modelItem => item.EnrollmentDate)</td>
+            <td>
+                @Html.ActionLink("修改", "Edit", new { id = item.StudentID }) |
+                @Html.ActionLink("详细", "Details", new { id = item.StudentID }) |
+                @Html.ActionLink("删除", "Delete", new { id = item.StudentID })
+            </td>
+        </tr>
+    }
 
 </table>
