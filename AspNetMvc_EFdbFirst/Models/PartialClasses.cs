@@ -15,17 +15,15 @@ using System.ComponentModel.DataAnnotations;
 
 namespace AspNetMvc_EFdbFirst.Models
 {
-    public class PartialClasses
+    [MetadataType(typeof(StudentMetadata))]
+    public partial class Student
     {
-        [MetadataType(typeof(StudentMetadata))]
-        public partial class Student
-        {
+        [Display(Name = "姓名")]
+        public string FullName { get { return FirstName + "·" + MiddleName + "·" + LastName; } }
+    }
+    [MetadataType(typeof(EnrollmentMetadata))]
+    public partial class Enrollment
+    {
 
-        }
-        [MetadataType(typeof(EnrollmentMetadata))]
-        public partial class Enrollment
-        {
-
-        }
     }
 }

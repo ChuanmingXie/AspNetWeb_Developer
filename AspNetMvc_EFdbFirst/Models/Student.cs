@@ -11,8 +11,7 @@ namespace AspNetMvc_EFdbFirst.Models
 {
     using System;
     using System.Collections.Generic;
-    using System.ComponentModel.DataAnnotations;
-
+    
     public partial class Student
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -22,23 +21,10 @@ namespace AspNetMvc_EFdbFirst.Models
         }
     
         public int StudentID { get; set; }
-
-        [StringLength(50),Display(Name ="姓氏")]
         public string LastName { get; set; }
-
-        [StringLength(50), Display(Name = "名称")]
         public string FirstName { get; set; }
-
-        [Display(Name = "入学日期")]
-        [DataType(DataType.Date)]
-        [DisplayFormat(DataFormatString ="{0:yyyy-MM-dd}",ApplyFormatInEditMode =true)]
         public Nullable<System.DateTime> EnrollmentDate { get; set; }
-
-        [StringLength(50), Display(Name = "中间名")]
         public string MiddleName { get; set; }
-
-        [Display(Name ="姓名")]
-        public string FullName { get { return FirstName + "·" + MiddleName + "·" + LastName; } }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Enrollment> Enrollment { get; set; }

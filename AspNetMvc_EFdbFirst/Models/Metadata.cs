@@ -12,29 +12,41 @@
 ******************************************************************************/
 
 using System;
-using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Web;
 
 namespace AspNetMvc_EFdbFirst.Models
 {
     public class StudentMetadata
     {
-        [StringLength(50)]
-        [Display(Name = "姓氏")]
+        //[StringLength(50)]
+        //[Display(Name = "姓氏")]
+        //public string LastName;
+
+        //[StringLength(50)]
+        //[Display(Name = "名字")]
+        //public string FirstName;
+
+        //[StringLength(50)]
+        //[Display(Name = "中间名")]
+        //public string MiddleName;
+
+        //[Display(Name = "入学日期")]
+        //public Nullable<System.DateTime> EnrollmentDate;
+
+        [StringLength(50), Display(Name = "姓氏")]
         public string LastName;
 
-        [StringLength(50)]
-        [Display(Name = "名字")]
+        [StringLength(50), Display(Name = "名称")]
         public string FirstName;
 
-        [StringLength(50)]
-        [Display(Name = "中间名")]
+        [Display(Name = "入学日期")]
+        [DataType(DataType.Date)]
+        [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
+        public Nullable<System.DateTime> EnrollmentDate;
+
+        [StringLength(50), Display(Name = "中间名")]
         public string MiddleName;
 
-        [Display(Name = "入学日期")]
-        public Nullable<System.DateTime> EnrollmentDate;
     }
 
     public class EnrollmentMetadata
