@@ -13,6 +13,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AspNetMvc_WeChat", "AspNetM
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AspNetMvc_EFCodeFirst", "AspNetMvc_EFCodeFirst\AspNetMvc_EFCodeFirst.csproj", "{0ED50EB7-5F5D-4900-99A5-7BD1421E4892}"
 EndProject
+Project("{00D1A9C2-B5F0-4AF3-8072-F6C62B433612}") = "AspNetMvc_EFdbFirst_DB", "AspNetMvc_EFdbFirst_DB\AspNetMvc_EFdbFirst_DB.sqlproj", "{A11206B0-913C-4579-B85A-441098BDD038}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +41,12 @@ Global
 		{0ED50EB7-5F5D-4900-99A5-7BD1421E4892}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0ED50EB7-5F5D-4900-99A5-7BD1421E4892}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0ED50EB7-5F5D-4900-99A5-7BD1421E4892}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A11206B0-913C-4579-B85A-441098BDD038}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A11206B0-913C-4579-B85A-441098BDD038}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A11206B0-913C-4579-B85A-441098BDD038}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{A11206B0-913C-4579-B85A-441098BDD038}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A11206B0-913C-4579-B85A-441098BDD038}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A11206B0-913C-4579-B85A-441098BDD038}.Release|Any CPU.Deploy.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

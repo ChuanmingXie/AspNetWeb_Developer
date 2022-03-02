@@ -1,0 +1,7 @@
+﻿CREATE TABLE [dbo].[Course]
+(
+	[CourseID] INT IDENTITY NOT NULL,
+	[Title] NVARCHAR(50) NULL,
+	[Credits] INT NULL,
+	PRIMARY KEY CLUSTERED ([CourseID] ASC)
+)
