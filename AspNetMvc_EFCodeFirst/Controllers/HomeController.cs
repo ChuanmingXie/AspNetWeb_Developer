@@ -18,13 +18,19 @@ namespace AspNetMvc_EFCodeFirst.Controllers
 
         public ActionResult About()
         {
-            IQueryable<EnrollmentDateGroup> data = from student in db.Students
-                                                   group student by student.EnrollmentDate into dateGroup
-                                                   select new EnrollmentDateGroup()
-                                                   {
-                                                       EnrollmentDate = dateGroup.Key,
-                                                       StudentCount = dateGroup.Count()
-                                                   };
+            //注释掉原先的代码，使用原生的SQL语句测试查询
+            //IQueryable<EnrollmentDateGroup> data = from student in db.Students
+            //            group student by student.EnrollmentDate into dateGroup
+            //            select new EnrollmentDateGroup()
+            //            {
+            //                EnrollmentDate = dateGroup.Key,
+            //                StudentCount = dateGroup.Count()
+            //            };
+            string query = "SELECT EnrollmentDate,COUNT(*) AS StudentCount" +
+                " FROM Person" +
+                " WHERE Discriminator='Student'" +
+                " GROUP BY EnrollmentDate";
+            var data = db.Database.SqlQuery<EnrollmentDateGroup>(query);
             return View(data.ToList());
         }
 

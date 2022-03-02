@@ -1,0 +1,32 @@
+﻿@model AspNetMvc_EFCodeFirst.Models.Course
+@{
+    ViewBag.Title = "UpdateCourseCredits";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>学分批量修改</h2>
+@if (ViewBag.RowsAffected == null)
+{
+    using (Html.BeginForm())
+    {
+        <h5>请设置批量修改的课程学分: </h5>
+        <div class="row">
+            <div class="col-lg-4">
+                <div class="input-group">
+                    @Html.TextBox("multiplier", "", "", new { @class = "form-control" })
+                    <div class="input-group-btn">
+                        <input type="submit" value="批量更新" class="btn btn-warning" />
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
+}
+@if (ViewBag.RowsAffected != null)
+{
+    <p>更新行数为:@ViewBag.RowsAffected</p>
+}
+<div>
+    @Html.ActionLink("返回列表", "Index")
+</div>
+

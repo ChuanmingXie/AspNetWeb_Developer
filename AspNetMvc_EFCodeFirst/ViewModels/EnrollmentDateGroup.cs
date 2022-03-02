@@ -22,10 +22,10 @@ namespace AspNetMvc_EFCodeFirst.ViewModels
     public class EnrollmentDateGroup
     {
         [DataType(DataType.Date)]
-        [Display(Name ="上课时间")]
+        [Display(Name ="开学时间")]
         public DateTime? EnrollmentDate { get; set; }
         
-        [Display(Name ="选修人数")]
+        [Display(Name ="报道人数")]
         public int StudentCount { get; set; }
     }
 }

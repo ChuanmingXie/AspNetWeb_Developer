@@ -13,10 +13,21 @@
 </p>
 @using (Html.BeginForm("Index", "Student", FormMethod.Get))
 {
-    <p>
-        姓名:@Html.TextBox("SearchString", ViewBag.CurrentFilter as string)
-        <input type="submit" value="查找" />
-    </p>
+    <div class="row">
+        <div class="col-lg-4">
+            <div class="input-group">
+                <div class="input-group-btn">
+                    <h5>姓名:&nbsp;&nbsp;&nbsp;</h5>
+                </div>
+                <div class="input-group-btn" style="width:200px">
+                    @Html.TextBox("SearchString", ViewBag.CurrentFilter as string, "", new { @class = "form-control" })
+                </div>
+                <div class="input-group-btn">
+                    <input type="submit" value="查找" class="btn btn-default" />
+                </div>
+            </div>
+        </div>
+    </div>
 }
 <table class="table">
     <tr>
@@ -24,7 +35,7 @@
             @Html.ActionLink("姓氏", "Index", new { sortOrder = ViewBag.NameSortParm })
         </th>
         <th>
-           名字
+            名字
         </th>
         <th>
             @Html.ActionLink("入学日期", "Index", new { sortOrder = ViewBag.DateSortParm })
@@ -56,5 +67,5 @@
 
 </table>
 <br />
-Page @(Model.PageCount < Model.PageNumber?0:Model.PageNumber) of @Model.PageCount
-@Html.PagedListPager(Model,page=>Url.Action("Index",new { page, sortOrder = ViewBag.CurrentSort, currentFilter = ViewBag.CurrentFilter }))
+            Page @(Model.PageCount < Model.PageNumber?0:Model.PageNumber) of @Model.PageCount
+            @Html.PagedListPager(Model, page => Url.Action("Index", new { page, sortOrder = ViewBag.CurrentSort, currentFilter = ViewBag.CurrentFilter }))
