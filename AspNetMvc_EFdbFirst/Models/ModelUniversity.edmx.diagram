@@ -7,7 +7,7 @@
       <Diagram DiagramId="3709277bdb444e46a4ebfbaf686bdc51" Name="Diagram1">
         <EntityTypeShape EntityType="UniversityContext.Course" Width="1.5" PointX="0.75" PointY="1.125" IsExpanded="true" />
         <EntityTypeShape EntityType="UniversityContext.Enrollment" Width="1.5" PointX="3" PointY="0.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="UniversityContext.Student" Width="1.5" PointX="0.75" PointY="4" IsExpanded="true" />
+        <EntityTypeShape EntityType="UniversityContext.Student" Width="1.5" PointX="5.25" PointY="1" IsExpanded="true" />
         <AssociationConnector Association="UniversityContext.FK_dbo_Enrollment_dbo_Course_CourseID" ManuallyRouted="false" />
         <AssociationConnector Association="UniversityContext.FK_dbo_Enrollment_dbo_Student_StudentID" ManuallyRouted="false" />
       </Diagram>
