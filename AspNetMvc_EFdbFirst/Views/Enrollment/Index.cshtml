@@ -8,7 +8,7 @@
 <h2>Index</h2>
 
 <p>
-    @Html.ActionLink("Create New", "Create")
+    @Html.ActionLink("添加新项", "Create")
 </p>
 <table class="table">
     <tr>
@@ -36,9 +36,9 @@
             @Html.DisplayFor(modelItem => item.Student.LastName)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.EnrollmentID }) |
-            @Html.ActionLink("Details", "Details", new { id=item.EnrollmentID }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.EnrollmentID })
+            @Html.ActionLink("修改", "Edit", new { id=item.EnrollmentID }) |
+            @Html.ActionLink("详细", "Details", new { id=item.EnrollmentID }) |
+            @Html.ActionLink("删除", "Delete", new { id=item.EnrollmentID })
         </td>
     </tr>
 }

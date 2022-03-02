@@ -1,43 +1,43 @@
 ﻿@model AspNetMvc_EFdbFirst.Models.Student
 
 @{
-    ViewBag.Title = "Details";
+    ViewBag.Title = "学生详情";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Details</h2>
+<h2>学生详情</h2>
 
 <div>
-    <h4>Student</h4>
+    <h4>学生</h4>
     <hr />
     <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.LastName)
-        </dt>
+        <dt>@Html.DisplayNameFor(model => model.LastName)</dt>
+        <dd>@Html.DisplayFor(model => model.LastName)</dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.LastName)
-        </dd>
+        <dt>@Html.DisplayNameFor(model => model.FirstName)</dt>
+        <dd>@Html.DisplayFor(model => model.FirstName)</dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.FirstName)
-        </dt>
+        <dt>@Html.DisplayNameFor(model => model.MiddleName)</dt>
+        <dd>@Html.DisplayFor(model => model.MiddleName)</dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.FirstName)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.EnrollmentDate)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.EnrollmentDate)
-        </dd>
-
+        <dt>@Html.DisplayNameFor(model => model.EnrollmentDate)</dt>
+        <dd>@Html.DisplayFor(model => model.EnrollmentDate)</dd>
     </dl>
+    <table class="table">
+        <tr>
+            <th>课程名</th>
+            <th>分数</th>
+            <th>学分</th>
+        </tr>
+        @foreach (var item in Model.Enrollment)
+        {
+            <tr>@Html.DisplayFor(modelItem => item.Course.Title)</tr>
+            <tr>@Html.DisplayFor(modelItem => item.Grade)</tr>
+            <tr>@Html.DisplayFor(modelItem => item.Course.Credits)</tr>
+        }
+    </table>
 </div>
 <p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.StudentID }) |
-    @Html.ActionLink("Back to List", "Index")
+    @Html.ActionLink("修改", "Edit", new { id = Model.StudentID }) |
+    @Html.ActionLink("返回列表", "Index")
 </p>
