@@ -17,6 +17,8 @@ Project("{00D1A9C2-B5F0-4AF3-8072-F6C62B433612}") = "AspNetMvc_EFdbFirst_DB", "A
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AspNetMvc_EFdbFirst", "AspNetMvc_EFdbFirst\AspNetMvc_EFdbFirst.csproj", "{5160D5A5-1DF1-4ADE-83E2-898492A0583B}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AspNetMvc_OAuth", "AspNetMvc_OAuth\AspNetMvc_OAuth.csproj", "{C77C7B00-6ECE-4887-8259-AD79A703EACA}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -53,6 +55,10 @@ Global
 		{5160D5A5-1DF1-4ADE-83E2-898492A0583B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5160D5A5-1DF1-4ADE-83E2-898492A0583B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5160D5A5-1DF1-4ADE-83E2-898492A0583B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C77C7B00-6ECE-4887-8259-AD79A703EACA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C77C7B00-6ECE-4887-8259-AD79A703EACA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C77C7B00-6ECE-4887-8259-AD79A703EACA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C77C7B00-6ECE-4887-8259-AD79A703EACA}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
