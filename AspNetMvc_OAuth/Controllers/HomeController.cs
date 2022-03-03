@@ -6,6 +6,7 @@ using System.Web.Mvc;
 
 namespace AspNetMvc_OAuth.Controllers
 {
+    [RequireHttps]
     public class HomeController : Controller
     {
         public ActionResult Index()
