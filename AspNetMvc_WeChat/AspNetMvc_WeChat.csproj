@@ -126,6 +126,7 @@
     <Compile Include="Areas\Chapter01\Controllers\HomeController.cs" />
     <Compile Include="Areas\Chapter02\Chapter02AreaRegistration.cs" />
     <Compile Include="Areas\Chapter02\Controllers\HomeController.cs" />
+    <Compile Include="Controllers\EchoController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -396,6 +397,7 @@
     <Content Include="Views\Home\About.cshtml" />
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\Echo\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -416,6 +418,12 @@
     <None Include="packages.config" />
     <Content Include="Scripts\jquery-3.4.1.slim.min.map" />
     <Content Include="Scripts\jquery-3.4.1.min.map" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\AspNetMvc_WeChat_Base\AspNetMvc_WeChat_Base.csproj">
+      <Project>{691055ee-273a-48ff-9418-29d9b67900fc}</Project>
+      <Name>AspNetMvc_WeChat_Base</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
