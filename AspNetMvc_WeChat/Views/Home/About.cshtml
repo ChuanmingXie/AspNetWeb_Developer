@@ -55,16 +55,10 @@
             @*使用Model获取数据*@
             @Html.TextBox("StudentName", Model.StudentName, new { @class = "form-control" })
         </td>
-        <td>
-            @*传输一个强类型的表达式*@
-            @Html.TextBoxFor(m => m.StudentName, new { @class = "form-control" })
-        </td>
-        <td>
-            @Html.TextArea("TextAreal", "val", 5, 15, new { @class = "form-control" })
-        </td>
-        <td>
-            @Html.TextAreaFor(m => m.Description, new { @class = "form-control", rows = 5, columns = 15 })
-        </td>
+        @*传输一个强类型的表达式*@
+        <td>@Html.TextBoxFor(m => m.StudentName, new { @class = "form-control" })</td>
+        <td>@Html.TextArea("TextAreal", "val", 5, 15, new { @class = "form-control" })</td>
+        <td>@Html.TextAreaFor(m => m.Description, new { @class = "form-control", rows = 5, columns = 15 })</td>
     </tr>
     <tr>
         <th>3.1. @@Html.Password</th>
@@ -165,7 +159,7 @@
         <td>
             @using (Html.BeginForm("About", "Home", FormMethod.Post, new { @class = "form" }))
             {
-
+                //表单元素
             }
         </td>
         <td></td>
@@ -183,7 +177,3 @@
         <td></td>
     </tr>
 </table>
-
-
-
-

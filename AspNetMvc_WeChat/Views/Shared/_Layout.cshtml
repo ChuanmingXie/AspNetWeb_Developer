@@ -10,6 +10,9 @@
 </head>
 <body>
     <div class="navbar navbar-inverse navbar-fixed-top">
+        <div style="float:left;position:relative;margin:-1px 0px -1px 50px;">            
+            <img src="~/images/weixin.png" width="52" height="52" style="vertical-align:bottom;"/>
+        </div>
         <div class="container">
             <div class="navbar-header">
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
@@ -28,6 +31,14 @@
             </div>
         </div>
     </div>
+
+    @*<div class="header">
+        <img src="~/images/weixin.png" width="40" height="40" />
+        <a style="font-family:'Microsoft YaHei';font-size:large;text-decoration:none;color:#3b5600">
+            ASP.NET MVC - WeChat公众平台开发教程
+        </a>
+    </div>*@
+
     <div class="menu">
         @RenderSection("SubMenu", false)
     </div>

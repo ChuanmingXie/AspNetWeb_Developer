@@ -1,11 +1,37 @@
 ﻿@{
     ViewBag.Title = "Home";
 }
+<style type="text/css">
+    .jumbotron ul li a {
+        font-family: 微软雅黑;
+        font-size: small;
+        line-height: 3;
+        word-spacing: 3px;
+    }
+</style>
 
 <div class="jumbotron">
     <h1>WeChat 公众平台</h1>
     <h2>@*@ViewData["newTitle"]*@</h2>
     @*<h2>@ViewBag.Time</h2>*@
+</div>
+
+<div class="jumbotron">
+    <ul>
+        <li>@Html.ActionLink("Chapter 00: 区域areaDemo首页", "Index", "Home", new { area = "areaDemo" }, null)</li>
+        <li>@Html.ActionLink("Chapter 01: WeChat公众平台应用基础", "Index", "Home", new { area = "Chapter01" }, null)</li>
+        <li>@Html.ActionLink("Chapter 02: ASP.NET MVC开发基础", "Index", "Home", new { area = "Chapter02" }, null)</li>
+        <li>@Html.ActionLink("Chapter 03: 使用ASP.NET空间搭建微信公众平台", "Index", "Home", new { area = "Chapter03" }, null)</li>
+        <li>@Html.ActionLink("Chapter 04: 自定义菜单开发", "Index", "Home", new { area = "Chapter04" }, null)</li>
+        <li>@Html.ActionLink("Chapter 05: 消息接口", "Index", "Home", new { area = "Chapter05" }, null)</li>
+        <li>@Html.ActionLink("Chapter 06: 用户管理", "Index", "Home", new { area = "Chapter06" }, null)</li>
+        <li>@Html.ActionLink("Chapter 07: 客服管理", "Index", "Home", new { area = "Chapter07" }, null)</li>
+        <li>@Html.ActionLink("Chapter 08: 素材管理", "Index", "Home", new { area = "Chapter08" }, null)</li>
+        <li>@Html.ActionLink("Chapter 09: 统计分析", "Index", "Home", new { area = "Chapter09" }, null)</li>
+        <li>@Html.ActionLink("Chapter 10: 开发微信网页", "Index", "Home", new { area = "Chapter10" }, null)</li>
+        <li>@Html.ActionLink("Chapter 11: 微信卡券", "Index", "Home", new { area = "Chapter11" }, null)</li>
+        <li>@Html.ActionLink("Chapter 12: 微信支付", "Index", "Home", new { area = "Chapter12" }, null)</li>
+    </ul>
 </div>
 
 <div class="row">
@@ -24,3 +50,4 @@
         <p><a class="btn btn-default" href="https://github.com/ChuanmingXie/AspNetWeb_Developer/archive/refs/heads/master.zip">下载示例 &raquo;</a></p>
     </div>
 </div>
+

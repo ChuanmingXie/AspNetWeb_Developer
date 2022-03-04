@@ -55,5 +55,19 @@ namespace AspNetMvc_WeChat.Controllers
             people2.Age = people.Age;
             return View(people2);
         }
+
+        [HttpPost]
+        public ActionResult Test()
+        {
+            string id = Request.Form["PersonID"];
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult Test(FormCollection form)
+        {
+            string id = form["PersonID"];
+            return View();
+        }
     }
 }

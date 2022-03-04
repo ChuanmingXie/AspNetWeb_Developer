@@ -20,36 +20,32 @@ using System.Web;
 
 namespace AspNetMvc_WeChat.Models
 {
-    public enum Gender
-    {
-        Male,
-        Female
-    }
+    public enum Gender { Male, Female }
     [DisplayName("学生")]
     public class Student
     {
-        [Display(Name ="学生证号")]
+        [Display(Name = "学生证号")]
         public int StudentID { get; set; }
 
-        [Display(Name="姓名")]
+        [Display(Name = "姓名")]
         public string StudentName { get; set; }
 
         public Gender Gender { get; set; }
 
-        [Display(Name ="年龄")]
+        [Display(Name = "年龄")]
         public int Age { get; set; }
 
-        [Display(Name ="是否新生入学")]
+        [Display(Name = "是否新生入学")]
         public bool isNewlyEnrolled { get; set; }
 
-        [Display(Name ="密码")]
+        [Display(Name = "密码")]
         public string Password { get; set; }
 
-        [Display(Name ="生日")]
-        [DisplayFormat(DataFormatString ="{0:yyyy-MM-dd}")]
+        [Display(Name = "生日")]
+        [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}")]
         public DateTime Birthday { get; set; }
 
-        [Display(Name ="简介")]
+        [Display(Name = "简介")]
         [StringLength(200)]
         public string Description { get; set; }
     }
