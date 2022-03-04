@@ -1,7 +1,189 @@
-﻿@{
-    ViewBag.Title = "About";
+﻿@model AspNetMvc_WeChat.Models.Student
+@using AspNetMvc_WeChat.Models
+@{
+    ViewBag.Title = "关于项目";
 }
-<h2>@ViewBag.Title.</h2>
-<h3>@ViewBag.Message</h3>
+<h2>@ViewBag.Title</h2>
+<hr />
 
-<p>Use this area to provide additional information.</p>
+<h4>测试IHtmlString接口返回的数据</h4>
+@ViewBag.ElementStr     @*输出字符串*@
+<br> @ViewBag.Element        @*输出元素*@
+<br> @Html.Encode(ViewBag.ElementStr)       @*输出编码后的字符串*@
+<br> @Html.Encode(ViewBag.Element)          @*输出编码字符串*@
+<br> @Html.Raw(@ViewBag.ElementStr)         @*输出元素*@
+<br> @Html.Raw(ViewBag.Element)             @*输出元素*@
+<br> @MvcHtmlString.Create(@ViewBag.ElementStr)    @*输出元素*@
+
+<br />
+
+@helper ListItems(string[] items)
+{
+    <ol>
+        @foreach (var item in items)
+        {
+            <li>@item</li>
+        }
+    </ol>
+}
+
+<hr />
+<h3>测试@helper自定义生成html内容的方法</h3>
+<h4>开发语言</h4>
+@ListItems(new string[] { "C", "C++", "C#" })
+<h4>参考数目</h4>
+@ListItems(new string[] { "《C#入门经典》", "《C++入门经典》", "《C入门经典》" })
+
+<hr />
+<h3>这里展示一些@HtmlHelper派生类的测试数据</h3>
+
+<table class="table">
+    <tr>
+        <th>1.1. @@Html.TextBox </th>
+        <th>1.2. @@Html.TextBoxFor</th>
+        <th>2.1. @@Html.TextArea</th>
+        <th>2.2. @@Html.TextAreaFor</th>
+    </tr>
+    <tr>
+        <td>
+            @*传输一个null值,不显示数据*@
+            @Html.TextBox("Name", null, new { @class = "form-control" })
+            @*使用一个字符串,作为数值*@
+            @Html.TextBox("Name", "张扬", new { @class = "form-control" })
+            @*使用ViewBag显示数据*@
+            @Html.TextBox("Name", (string)ViewBag.Name, new { @class = "form-control" })
+            @*使用Model获取数据*@
+            @Html.TextBox("StudentName", Model.StudentName, new { @class = "form-control" })
+        </td>
+        <td>
+            @*传输一个强类型的表达式*@
+            @Html.TextBoxFor(m => m.StudentName, new { @class = "form-control" })
+        </td>
+        <td>
+            @Html.TextArea("TextAreal", "val", 5, 15, new { @class = "form-control" })
+        </td>
+        <td>
+            @Html.TextAreaFor(m => m.Description, new { @class = "form-control", rows = 5, columns = 15 })
+        </td>
+    </tr>
+    <tr>
+        <th>3.1. @@Html.Password</th>
+        <th>3.2. @@Html.PasswordFor</th>
+        <th>4.1. @@Html.Hidden</th>
+        <th>4.2. @@Html.HiddenFor</th>
+    </tr>
+    <tr>
+        <td>@Html.Password("OnlinePassword", "", new { @class = "form-control" })</td>
+        <td>@Html.PasswordFor(m => m.Password, new { @class = "form-control" })</td>
+        <td>@Html.Hidden("StudentId")</td>
+        <td>@Html.HiddenFor(m => m.StudentID)</td>
+    </tr>
+    <tr>
+        <th>5.1. @@Html.CheckBox</th>
+        <th>5.2. @@Html.CheckBoxFor</th>
+        <th>6.1. @@Html.RadioButton</th>
+        <th>6.2. @@Html.RadioButtonFor</th>
+    </tr>
+    <tr>
+        <td>@Html.CheckBox("isNewlyEnrolled", true)&nbsp;2022级新生</td>
+        <td>@Html.CheckBoxFor(m => m.isNewlyEnrolled)&nbsp;2022级新生</td>
+        <td>
+            @Html.RadioButton("Gender1", "男", true)&nbsp;男<br />
+            @Html.RadioButton("Gender1", "女", true)&nbsp;女
+        </td>
+        <td>
+            @Html.RadioButtonFor(m => m.Gender, "男")&nbsp;男<br />
+            @Html.RadioButtonFor(m => m.Gender, "女")&nbsp;女
+        </td>
+    </tr>
+    <tr>
+        <th>7.1. @@Html.DropDownList</th>
+        <th>7.2. @@Html.DropDownListFor</th>
+        <th>8. @@Html.ListBox</th>
+        <th></th>
+    </tr>
+    <tr>
+        <td>@Html.DropDownList("StudentName", new SelectList(Enum.GetValues(typeof(Gender))), "性别", new { @class = "form-control" })</td>
+        <td>@Html.DropDownListFor(m => m.Gender, new SelectList(Enum.GetValues(typeof(Gender))), "性别", new { @class = "form-control" })</td>
+        <td>@Html.ListBox("ListBox1", new MultiSelectList(new string[] { "象棋", "围棋", "跳起" }), new { @class = "form-control" })</td>
+        <td></td>
+    </tr>
+    <tr>
+        <th>9.1. @@Html.Display</th>
+        <th>9.2. @@Html.DisplayFor</th>
+        <th>10.1. @@Html.Label</th>
+        <th>10.2. @@Html.LabelFor</th>
+    </tr>
+    <tr>
+        <td>@Html.Display("StudentName", new { htmlAttributes = new { @class = "form-control" } })</td>
+        <td>@Html.DisplayFor(m => m.StudentName, new { htmlAttributes = new { @class = "form-control" } })</td>
+        <td>@Html.Label("StudentName", new { @class = "control-label" });</td>
+        <td>@Html.LabelFor(m => m.StudentName, new { @class = "control-label" })</td>
+    </tr>
+    <tr>
+        <th>11.1. @@Html.Editor</th>
+        <th>11.2. @@Html.EditorFor</th>
+        <th>13. @@Html.BeginForm()</th>
+        <th></th>
+    </tr>
+    <tr>
+        <td>
+            <dl class="dl-horizontal">
+                <dt>学生证号:</dt>
+                <dd>@Html.Editor("StudentID", new { htmlAttributes = new { @class = "form-control" } })</dd>
+                <dt>姓名:    </dt>
+                <dd>@Html.Editor("StudentName", new { htmlAttributes = new { @class = "form-control" } })</dd>
+                <dt>年龄:    </dt>
+                <dd>@Html.Editor("Age", new { htmlAttributes = new { @class = "form-control" } })</dd>
+                <dt>登陆密码:</dt>
+                <dd>@Html.Editor("Password", new { htmlAttributes = new { @class = "form-control" } })</dd>
+                <dt>是否为新生:</dt>
+                <dd>@Html.Editor("isNewlyEnrolled")</dd>
+                <dt>性别:    </dt>
+                <dd>@Html.Editor("Gender", new { htmlAttributes = new { @class = "form-control" } })</dd>
+                <dt>出生日期:    </dt>
+                <dd>@Html.Editor("Birthday", new { htmlAttributes = new { @class = "form-control" } })</dd>
+            </dl>
+        </td>
+        <td>
+            <div class="form-horizontal">
+                <div class="form-group">
+                    @Html.LabelFor(m=>m.StudentID,new { @class="control-label col-md-4"})
+                    <div class="col-md-8">@Html.EditorFor(m => m.StudentID, new { htmlAttributes = new { @class = "form-control" } })</div>
+                </div>
+                <div class="form-group">
+                    姓名:
+                    <div class="col-md-4">@Html.EditorFor(m => m.StudentName, new { htmlAttributes = new { @class = "form-control" } })</div>
+                </div>
+            </div>
+            年龄:    @Html.EditorFor(m => m.Age,new { htmlAttributes=new { @class="form-control"} })<br />
+            登录密码:@Html.EditorFor(m => m.Password,new { htmlAttributes=new { @class="form-control"} })<br />
+            是否新生:@Html.EditorFor(m => m.isNewlyEnrolled)<br />
+            性别:    @Html.EditorFor(m => m.Gender,new { htmlAttributes=new { @class="form-control"} })<br />
+            出生日期:@Html.EditorFor(m => m.Birthday,new { htmlAttributes=new { @class="form-control"} })
+        </td>
+        <td>
+            @using (Html.BeginForm("About", "Home", FormMethod.Post, new { @class = "form" }))
+            {
+
+            }
+        </td>
+        <td></td>
+    </tr>
+    <tr>
+        <th>12.1. @@Html.Action</th>
+        <th>12.2. @@Html.ActionLink</th>
+        <th>12.3. @@Url.Action</th>
+        <th></th>
+    </tr>
+    <tr>
+        <td></td>
+        <td>@Html.ActionLink("超链接", "About", new { id = "123" })</td>
+        <td>@Url.Action("About", "Home", new { id = "1243" })</td>
+        <td></td>
+    </tr>
+</table>
+
+
+
+

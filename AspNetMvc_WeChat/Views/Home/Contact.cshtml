@@ -1,8 +1,72 @@
-﻿@{
-    ViewBag.Title = "Contact";
+﻿@model AspNetMvc_WeChat.Models.People
+@{
+    ViewBag.Title = "联系我们";
 }
 <h2>@ViewBag.Title.</h2>
-<h3>@ViewBag.Message</h3>
+
+<div class="row">
+    <div class="col-lg-2"></div>
+    <div class="col-lg-8">
+        @using(Html.BeginForm("Contact", "Home", FormMethod.Post))
+        {
+            @Html.AntiForgeryToken()
+            <div class="form-horizontal">
+                <h4>信息编辑</h4>
+                <hr />
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                @Html.HiddenFor(model => model.PersonID)
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Name, new { @class = "control-label col-md-2" })
+                    <div class="col-md-6">
+                        @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
+                    </div>
+                    @*姓名:&nbsp;<input type="text" name="name" class="form-control" />*@
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Sex, new { @class = "control-label col-md-2" })
+                    <div class="col-md-6">
+                        @Html.EditorFor(model => model.Sex, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.Sex, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Age, new { @class = "control-label col-md-2" })
+                    <div class="col-md-6">
+                        @Html.EditorFor(model => model.Age, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.Age, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-md-offset-2 col-md-6">
+                        <input type="submit" value="更新" class="btn btn-default" />
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+    <div class="col-lg-2"></div>
+</div>
+
+<div class="row">
+    <div class="col-lg-2"></div>
+    <div class="col-lg-8">
+        <h4>显示数据</h4>
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>姓名:</dt>
+            <dd>@Model.Name</dd>
+
+            <dt>性别:</dt>
+            <dd>@Model.Sex</dd>
+
+            <dt>年龄:</dt>
+            <dd>@Model.Age</dd>
+        </dl>
+    </div>
+    <div class="col-lg-2"></div>
+</div>
 
 <address>
     One Microsoft Way<br />
