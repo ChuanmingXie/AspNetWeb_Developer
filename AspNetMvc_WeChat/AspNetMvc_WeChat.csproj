@@ -130,6 +130,8 @@
     <Compile Include="Areas\Chapter03\Controllers\HomeController.cs" />
     <Compile Include="Areas\Chapter04\Chapter04AreaRegistration.cs" />
     <Compile Include="Areas\Chapter04\Controllers\HomeController.cs" />
+    <Compile Include="Areas\Chapter05\Chapter05AreaRegistration.cs" />
+    <Compile Include="Areas\Chapter05\Controllers\HomeController.cs" />
     <Compile Include="Controllers\EchoController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Global.asax.cs">
@@ -394,8 +396,12 @@
     <Content Include="Areas\Chapter02\Views\Home\HelloMVC.cshtml" />
     <Content Include="Areas\Chapter04\Views\Home\MenuParam.cshtml" />
     <Content Include="Areas\Chapter04\Views\Home\MenuPersonalCreate.cshtml" />
-    <Content Include="Areas\Chapter04\Views\Home\DeletePersonalMenu.cshtml" />
-    <Content Include="Areas\Chapter04\Views\Home\MatchPersonalMenu.cshtml" />
+    <Content Include="Areas\Chapter04\Views\Home\MenuPersonalDelete.cshtml" />
+    <Content Include="Areas\Chapter04\Views\Home\MenuPersonalMatch.cshtml" />
+    <Content Include="Areas\Chapter05\Views\web.config" />
+    <Content Include="Areas\Chapter05\Views\_ViewStart.cshtml" />
+    <Content Include="Areas\Chapter05\Views\Shared\_Layout.cshtml" />
+    <Content Include="Areas\Chapter05\Views\Home\Index.cshtml" />
     <None Include="Properties\PublishProfiles\IISProfile.pubxml" />
     <None Include="Scripts\jquery-3.4.1-vsdoc.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
@@ -433,6 +439,7 @@
     <Folder Include="Areas\Chapter02\Data\" />
     <Folder Include="Areas\Chapter03\Data\" />
     <Folder Include="Areas\Chapter04\Data\" />
+    <Folder Include="Areas\Chapter05\Data\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />

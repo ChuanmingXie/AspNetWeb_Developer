@@ -48,13 +48,13 @@ namespace AspNetMvc_WeChat.Areas.Chapter04.Controllers
             return View(); 
         }
 
-        public ActionResult DeletePersonalMenu()
+        public ActionResult MenuPersonalDelete()
         {
             ViewBag.menuDeletePersonal = WeChatMenuService.DeletePersonalMenu("417142809");
             return View();
         }
 
-        public ActionResult MatchPersonalMenu()
+        public ActionResult MenuPersonalMatch()
         {
             ViewBag.menuMatchPersonal = WeChatMenuService.MatchPersonalMenu("obotH60QgZm7LBI6wGBpLaOWCnHk");
             return View();
