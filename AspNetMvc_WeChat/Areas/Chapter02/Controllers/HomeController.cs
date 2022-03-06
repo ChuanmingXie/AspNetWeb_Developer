@@ -12,6 +12,21 @@ namespace AspNetMvc_WeChat.Areas.Chapter02.Controllers
         // GET: Chapter02/Home
         public ActionResult Index()
         {
+            return View();
+        }
+
+        public ActionResult HelloMVC()
+        {
+            return Content("Hello ASP.NET MVC");
+        }
+
+        public ActionResult DesignViewByRazor()
+        {
+            return View();
+        }
+
+        public ActionResult DataTransferInCV()
+        {
             People people = new People()
             {
                 Name = "赵宏文",

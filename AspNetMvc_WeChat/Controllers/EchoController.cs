@@ -19,7 +19,7 @@ namespace AspNetMvc_WeChat.Controllers
             LogService.RecordLog("nonce:" + nonce);
 
             //对token，timestamp，nonce加密生成singnature
-            var signatureTemp = WeChatService.MakeSignature(timestamp, nonce);
+            var signatureTemp = WeChatTookenService.MakeSignature(timestamp, nonce);
             LogService.RecordLog("signatureTemp:" + signatureTemp);
 
             if (!string.IsNullOrEmpty(echoString)&&signature==signatureTemp)

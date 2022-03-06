@@ -126,6 +126,8 @@
     <Compile Include="Areas\Chapter01\Controllers\HomeController.cs" />
     <Compile Include="Areas\Chapter02\Chapter02AreaRegistration.cs" />
     <Compile Include="Areas\Chapter02\Controllers\HomeController.cs" />
+    <Compile Include="Areas\Chapter03\Chapter03AreaRegistration.cs" />
+    <Compile Include="Areas\Chapter03\Controllers\HomeController.cs" />
     <Compile Include="Controllers\EchoController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Global.asax.cs">
@@ -371,6 +373,14 @@
     <Content Include="Areas\Chapter02\Views\_ViewStart.cshtml" />
     <Content Include="Areas\Chapter02\Views\Shared\_Layout.cshtml" />
     <Content Include="Areas\Chapter02\Views\Home\Index.cshtml" />
+    <Content Include="Areas\Chapter03\Views\web.config" />
+    <Content Include="Areas\Chapter03\Views\_ViewStart.cshtml" />
+    <Content Include="Areas\Chapter03\Views\Shared\_Layout.cshtml" />
+    <Content Include="Areas\Chapter03\Views\Home\Index.cshtml" />
+    <Content Include="Areas\Chapter03\Views\Home\GetAccessToken.cshtml" />
+    <Content Include="Areas\Chapter02\Views\Home\DataTransferInCV.cshtml" />
+    <Content Include="Areas\Chapter02\Views\Home\DesignViewByRazor.cshtml" />
+    <Content Include="Areas\Chapter03\Views\Home\WeChatIPAddress.cshtml" />
     <None Include="Properties\PublishProfiles\IISProfile.pubxml" />
     <None Include="Scripts\jquery-3.4.1-vsdoc.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
@@ -398,13 +408,14 @@
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Echo\Index.cshtml" />
+    <Content Include="Scripts\wechat-menu.json" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Areas\areaDemo\Data\" />
     <Folder Include="Areas\Chapter01\Data\" />
     <Folder Include="Areas\Chapter02\Data\" />
-    <Folder Include="Views\Chapter01\" />
+    <Folder Include="Areas\Chapter03\Data\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
