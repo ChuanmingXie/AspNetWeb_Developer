@@ -1,15 +1,16 @@
-﻿@{
+﻿
+@{
     ViewBag.Title = "Chapter02";
 }
+<div class="jumbotron">
+    <h2>Chapter02: ASP.NET MVC开发基础</h2>
+</div>
+<div class="jumbotron">
 
-<h2>Chapter02: ASP.NET MVC开发基础</h2>
-
-<br />
-<br />
-
-<ul>
-    <li>@Html.ActionLink("【例2-1】", "HelloMvc", new { area = "Chapter02" }, null)</li>
-    <li>@Html.ActionLink("【例2-2】", "DesignViewByRazor", new { area = "Chapter02" }, null)</li>
-    <li>@Html.ActionLink("【例2-3】", "DataTransferInCV", new { area = "Chapter02" }, null)</li>
-</ul>
+    <ul>
+        <li>@Html.ActionLink("【例2-1】MVC简介", "HelloMVC", new { area = "Chapter02" }, null)</li>
+        <li>@Html.ActionLink("【例2-2】View视图设计", "DesignViewByRazor", new { area = "Chapter02" }, null)</li>
+        <li>@Html.ActionLink("【例2-3】控制器和视图之间传值", "DataTransferInCV", new { area = "Chapter02" }, null)</li>
+    </ul>
+</div>
 

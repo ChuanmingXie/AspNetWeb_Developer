@@ -17,7 +17,8 @@ namespace AspNetMvc_WeChat.Areas.Chapter02.Controllers
 
         public ActionResult HelloMVC()
         {
-            return Content("Hello ASP.NET MVC");
+            ViewBag.HelloMVC = "Hello ASP.NET MVC";
+            return View();
         }
 
         public ActionResult DesignViewByRazor()

@@ -23,13 +23,56 @@ namespace AspNetMvc_WeChat_Base.WeChat
 {
     public static class WeChatMenuService
     {
+        /// <summary>
+        /// 创建自定义菜单
+        /// </summary>
+        /// <param name="menuJson"></param>
+        /// <returns></returns>
         public static string Create(string menuJson)
         {
             string menuContent = File.ReadAllText(menuJson, Encoding.GetEncoding("GB2312"));
-            string url = "https://api.weixin.qq.com/cgi-bin/menu/create?" +
-                "access_token=" + WeChatTookenService.Access_token;
+            string url = "https://api.weixin.qq.com/cgi-bin/menu/create" +
+                "?access_token=" + WeChatTookenService.Access_token;
             string result = HttpService.Post(url, menuContent);
             return result;
         }
+
+        /// <summary>
+        /// 查询自定义菜单
+        /// </summary>
+        /// <returns></returns>
+        public static string Search()
+        {
+            string url = "https://api.weixin.qq.com/cgi-bin/menu/get" +
+                "?access_token=" + WeChatTookenService.Access_token;
+            string result = HttpService.Get(url);
+            return result;
+        }
+
+        /// <summary>
+        /// 删除自定义菜单
+        /// </summary>
+        /// <returns></returns>
+        public static string Delete()
+        {
+            string url = "https://api.weixin.qq.com/cgi-bin/menu/delete" +
+                "?access_token=" + WeChatTookenService.Access_token;
+            string result = HttpService.Get(url);
+            return result;
+        }
+
+        /// <summary>
+        /// 获取自定义菜单配置
+        /// </summary>
+        /// <returns></returns>
+        public static string Param()
+        {
+            string url = "https://api.weixin.qq.com/cgi-bin/get_current_selfmenu_info" +
+                "?access_token="+WeChatTookenService.Access_token;
+            string result = HttpService.Get(url);
+            return result;
+        }
+
+        
     }
 }

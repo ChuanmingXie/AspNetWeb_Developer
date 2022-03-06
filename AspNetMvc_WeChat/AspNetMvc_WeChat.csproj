@@ -264,6 +264,7 @@
     <Content Include="images\mendian4.jpg" />
     <Content Include="images\mendian5.jpg" />
     <Content Include="images\saoyisao.png" />
+    <Content Include="images\WeChatMenuCreate.png" />
     <Content Include="images\weixin.png" />
     <Content Include="images\weixi_text.png" />
     <Content Include="images\WePayLogo.png" />
@@ -388,6 +389,9 @@
     <Content Include="Areas\Chapter04\Views\Shared\_Layout.cshtml" />
     <Content Include="Areas\Chapter04\Views\Home\MenuCreate.cshtml" />
     <Content Include="Areas\Chapter04\Views\Home\Index.cshtml" />
+    <Content Include="Areas\Chapter04\Views\Home\MenuSearch.cshtml" />
+    <Content Include="Areas\Chapter04\Views\Home\MenuDelete.cshtml" />
+    <Content Include="Areas\Chapter02\Views\Home\HelloMVC.cshtml" />
     <None Include="Properties\PublishProfiles\IISProfile.pubxml" />
     <None Include="Scripts\jquery-3.4.1-vsdoc.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
