@@ -72,5 +72,47 @@ namespace AspNetMvc_WeChat_Base.WeChat
             string result = HttpService.Get(url);
             return result;
         }
+
+        /// <summary>
+        /// 创建个性化菜单
+        /// </summary>
+        /// <param name="menuFile"></param>
+        /// <returns></returns>
+        public static string CreatePersonalMenu(string menuFile)
+        {
+            string menuContent = File.ReadAllText(menuFile, Encoding.GetEncoding("GB2312"));
+            string url = "https://api.weixin.qq.com/cgi-bin/menu/addconditional" +
+                "?access_token="+WeChatTookenService.Access_token;
+            string result = HttpService.Post(url, menuContent);
+            return result;
+        }
+
+        /// <summary>
+        /// 删除个性化菜单
+        /// </summary>
+        /// <param name="menuId"></param>
+        /// <returns></returns>
+        public static string DeletePersonalMenu(string menuId)
+        {
+            string menuIdJson = "{\"menuid\":\"" + menuId + "\"}";
+            string url = "https://api.weixin.qq.com/cgi-bin/menu/delconditional" +
+                "?access_token="+WeChatTookenService.Access_token;
+            string result = HttpService.Post(url, menuIdJson);
+            return result;
+        }
+
+        /// <summary>
+        /// 匹配个性化菜单
+        /// </summary>
+        /// <param name="userId"></param>
+        /// <returns></returns>
+        public static string MatchPersonalMenu(string userId)
+        {
+            string userIdJson = "{\"user_id\":\"" + userId + "\"}";
+            string url = "https://api.weixin.qq.com/cgi-bin/menu/trymatch" +
+                "?access_token="+WeChatTookenService.Access_token;
+            string result = HttpService.Post(url, userIdJson);
+            return result;
+        }
     }
 }

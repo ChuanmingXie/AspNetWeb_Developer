@@ -393,6 +393,9 @@
     <Content Include="Areas\Chapter04\Views\Home\MenuDelete.cshtml" />
     <Content Include="Areas\Chapter02\Views\Home\HelloMVC.cshtml" />
     <Content Include="Areas\Chapter04\Views\Home\MenuParam.cshtml" />
+    <Content Include="Areas\Chapter04\Views\Home\MenuPersonalCreate.cshtml" />
+    <Content Include="Areas\Chapter04\Views\Home\DeletePersonalMenu.cshtml" />
+    <Content Include="Areas\Chapter04\Views\Home\MatchPersonalMenu.cshtml" />
     <None Include="Properties\PublishProfiles\IISProfile.pubxml" />
     <None Include="Scripts\jquery-3.4.1-vsdoc.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
@@ -421,6 +424,7 @@
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Echo\Index.cshtml" />
     <Content Include="Scripts\wechat-menu.json" />
+    <Content Include="Scripts\wechat-menu-personal.json" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
