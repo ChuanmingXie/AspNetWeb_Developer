@@ -72,7 +72,5 @@ namespace AspNetMvc_WeChat_Base.WeChat
             string result = HttpService.Get(url);
             return result;
         }
-
-        
     }
 }

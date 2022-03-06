@@ -392,6 +392,7 @@
     <Content Include="Areas\Chapter04\Views\Home\MenuSearch.cshtml" />
     <Content Include="Areas\Chapter04\Views\Home\MenuDelete.cshtml" />
     <Content Include="Areas\Chapter02\Views\Home\HelloMVC.cshtml" />
+    <Content Include="Areas\Chapter04\Views\Home\MenuParam.cshtml" />
     <None Include="Properties\PublishProfiles\IISProfile.pubxml" />
     <None Include="Scripts\jquery-3.4.1-vsdoc.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />

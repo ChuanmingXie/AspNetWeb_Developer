@@ -1,0 +1,38 @@
+﻿@model AspNetMvc_WeChat_Base.Model.WeChatMenuConfig
+@using AspNetMvc_WeChat_Base.Model
+@{
+    ViewBag.Title = "【例4-4】获取自定义菜单配置 - Chapter04";
+}
+<div class="jumbotron">
+    <h2>【例4-4】获取自定义菜单配置</h2>
+</div>
+
+<div class="jumbotron">
+    <p>菜单是否开启参数 is_menu_open:@Model.is_menu_open</p>
+    <p>菜单按钮数量统计 @Model.selfmenu_info.button.Count</p>
+    <ul>
+        @foreach (var item in @Model.selfmenu_info.button)
+        {
+            <li><p>type:&nbsp;@item.type</p></li>
+            <li><p>key: &nbsp;@item.key</p></li>
+            <li><p>name:&nbsp;@item.name</p></li>
+            <li><p>url: &nbsp;@item.url</p></li>
+            <li><p>value:&nbsp;@item.value</p></li>
+            WeChatMenuSubButtons menuSubButtons = item.sub_button;
+            <ul>
+                @if (menuSubButtons != null)
+                {
+                    foreach (var subItem in menuSubButtons.list)
+                    {
+                        <li><p>type:&nbsp;@subItem.type</p></li>
+                        <li><p>key: &nbsp;@subItem.key</p></li>
+                        <li><p>name:&nbsp;@subItem.name</p></li>
+                        <li><p>url: &nbsp;@subItem.url</p></li>
+                    }
+                }
+            </ul>
+        }
+    </ul>
+</div>
+
+

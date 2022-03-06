@@ -39,7 +39,8 @@ namespace AspNetMvc_WeChat.Areas.Chapter04.Controllers
 
         public ActionResult MenuParam()
         {
-            return View();
+            WeChatMenuConfig menuConfig = JSONHelper.JSONToObject<WeChatMenuConfig>(WeChatMenuService.Param());
+            return View(menuConfig);
         }
     }
 }

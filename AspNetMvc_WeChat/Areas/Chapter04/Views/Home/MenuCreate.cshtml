@@ -2,15 +2,17 @@
 @{
     ViewBag.Title = "【例4-1】创建自定义菜单 - Chapter04";
 }
+<div class="jumbotron">
+    <h2>【例4-1】创建自定义菜单</h2>
+</div>
 
-<h2>【例4-1】创建自定义菜单</h2>
-
-<br />
-<br />
-
-@ViewBag.menuCreate
-<br />
-<br />
-<p>请关注后查看底部菜单栏</p>
-<img src="~/images/WeChatMenuCreate.png" />
+<div class="jumbotron">
+    @ViewBag.menuCreate
+    <br />
+    <br />
+    <dl>
+        <dt><span>请关注后查看底部菜单栏</span></dt>
+        <dd><img src="~/images/WeChatMenuCreate.png" /></dd>
+    </dl>
+</div>
 
