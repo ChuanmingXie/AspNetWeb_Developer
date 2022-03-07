@@ -100,6 +100,7 @@ namespace AspNetMvc_WeChat_Base.Model
         /// </summary>
         public string Url { get; set; }
 
+
         /// <summary>
         /// 事件类型 取值：
         /// subscribe(扫描带参数二维码订阅)
@@ -108,7 +109,26 @@ namespace AspNetMvc_WeChat_Base.Model
         /// SCAN(已关注的状态下扫描带参数二维码)
         /// </summary>
         public string Event { get; set; }
-
+        /// <summary>
+        /// 扫描二维码的参数
+        /// </summary>
+        public string EventKey { get; set; }
+        /// <summary>
+        /// 二维码图片
+        /// </summary>
+        public string Ticket { get; set; }
+        /// <summary>
+        /// 自动更新地理位置，传递参数维度
+        /// </summary>
+        public string Latitude { get; set; }
+        /// <summary>
+        /// 自动更新地理位置，传递参数经度
+        /// </summary>
+        public string Longitude { get; set; }
+        /// <summary>
+        /// 地理位置精度
+        /// </summary>
+        public string Precision { get; set; }
 
         /// <summary>
         /// 用于解析接收到的XML文件为信息字符串
@@ -145,14 +165,13 @@ namespace AspNetMvc_WeChat_Base.Model
 
                 FromUserName = rootElement.SelectSingleNode("FromUserName").InnerText;
                 CreateTime = TimeCorrect(rootElement.SelectSingleNode("CreateTime").InnerText);
-                MsgId = rootElement.SelectSingleNode("MsgId").InnerText;
                 MsgType = rootElement.SelectSingleNode("MsgType").InnerText;
+                MsgId = WhenExict(rootElement, "MsgId") ? rootElement.SelectSingleNode("MsgId").InnerText : "";
                 switch (MsgType)
                 {
                     case "text": Content = rootElement.SelectSingleNode("Content").InnerText; break;
-                    case "image":
-                        PicUrl = rootElement.SelectSingleNode("PicUrl").InnerText;
-                        Media_id = rootElement.SelectSingleNode("MediaId").InnerText; break;
+                    case "image": PicUrl = rootElement.SelectSingleNode("PicUrl").InnerText; break;
+                    //Media_id = rootElement.SelectSingleNode("MediaId").InnerText;  图片的接口调试参数中没有媒体id
                     case "voice":
                         Format = rootElement.SelectSingleNode("Format").InnerText;
                         Media_id = rootElement.SelectSingleNode("MediaId").InnerText; break;
@@ -161,15 +180,22 @@ namespace AspNetMvc_WeChat_Base.Model
                         Media_id = rootElement.SelectSingleNode("MediaId").InnerText;
                         ThumdMediaId = rootElement.SelectSingleNode("ThumbMediaId").InnerText; break;
                     case "location":
-                        Location_X = rootElement.SelectSingleNode("Location_x").InnerText;
-                        Location_Y = rootElement.SelectSingleNode("Location_y").InnerText;
+                        Location_X = rootElement.SelectSingleNode("Location_X").InnerText;
+                        Location_Y = rootElement.SelectSingleNode("Location_Y").InnerText;
                         Scale = rootElement.SelectSingleNode("Scale").InnerText;
                         Label = rootElement.SelectSingleNode("Label").InnerText; break;
                     case "link":
                         Title = rootElement.SelectSingleNode("Title").InnerText;
                         Description = rootElement.SelectSingleNode("Description").InnerText;
                         Url = rootElement.SelectSingleNode("Url").InnerText; break;
-                    case "event": break;
+                    case "event":
+                        Event = rootElement.SelectSingleNode("Event").InnerText;
+                        EventKey = rootElement.SelectSingleNode("EventKey").InnerText;
+                        Ticket = WhenExict(rootElement, "Ticket") ? rootElement.SelectSingleNode("Ticket").InnerText:"";
+                        Latitude = WhenExict(rootElement, "Latitude") ? rootElement.SelectSingleNode("Latitude").InnerText:"";
+                        Longitude = WhenExict(rootElement, "Longitude") ? rootElement.SelectSingleNode("Longitude").InnerText:"";
+                        Precision = WhenExict(rootElement, "Precision") ? rootElement.SelectSingleNode("Precision").InnerText:"";
+                        break;
                 }
             }
             catch (Exception ex)
@@ -177,6 +203,15 @@ namespace AspNetMvc_WeChat_Base.Model
                 LogService.RecordLog("消息数据字段收集失败：" + ex.Message);
             }
         }
+
+        /// <summary>
+        /// 判断元素是否存在
+        /// </summary>
+        /// <param name="rootElement"></param>
+        /// <param name="v"></param>
+        /// <returns></returns>
+        private bool WhenExict(XmlElement rootElement, string v)
+            => rootElement.SelectSingleNode(v) != null;
 
         /// <summary>
         /// 创建时间数据的时间校准
