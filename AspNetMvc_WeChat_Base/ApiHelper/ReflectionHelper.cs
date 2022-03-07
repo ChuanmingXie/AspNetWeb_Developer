@@ -103,12 +103,12 @@ namespace AspNetMvc_WeChat_Base.APIHelper
                 foreach (var proInfo in propertyInfos)
                 {
                     //属性不为空且示泛型类型
-                    if (proInfo != null&& proInfo.PropertyType.IsGenericType)
+                    if (proInfo != null && proInfo.PropertyType.IsGenericType)
                     {
                         string modelName = proInfo.PropertyType.GetGenericArguments()[0].Name;
                         stringBuilder.Append("  " + proInfo.Name + "\n");
                         object subObj = proInfo.GetValue(t, null);
-                        if (subObj!=null)
+                        if (subObj != null)
                         {
                             //因为是反射返回的数据，无法直接转换为List使用，
                             //针对这种数据，反射机制对这种属性值提供了
@@ -122,10 +122,10 @@ namespace AspNetMvc_WeChat_Base.APIHelper
                                 stringBuilder.Append(" " + "  },\n");
                             }
                         }
-                        else
-                        {
-                            stringBuilder.Append(" " + "  " + proInfo.Name + ":" + proInfo.GetValue(t, null).ToString() + "\n");
-                        }
+                    }
+                    else
+                    {
+                        stringBuilder.Append(" " + "  " + proInfo.Name + ":" + proInfo.GetValue(t, null).ToString() + "\n");
                     }
                 }
             }

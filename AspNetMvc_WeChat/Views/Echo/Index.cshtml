@@ -1,7 +1,19 @@
-﻿
+﻿@model AspNetMvc_WeChat_Base.WeChat.WeChatBeginAPI
 @{
-    ViewBag.Title = "参数验证";
+    ViewBag.Title = "Cahpter00:参数验证";
 }
 
-<h2>接收平台发送的验证参数</h2>
+<div class="jumbotron">
+    <h2>验证微信平台发送的参数</h2>
+</div>
+<div class="jumbotron">
+    <dl class="dl-horizontal">
+        <dt>返回状态</dt>
+        <dd>@ViewBag.CheckFromWeChat</dd>
+        <dt>Signature</dt>
+        <dd>@Model.Signature</dd>
+        <dt>SignatureEncryption</dt>
+        <dd>@Model.SignatureTemp</dd>
+    </dl>
+</div>
 

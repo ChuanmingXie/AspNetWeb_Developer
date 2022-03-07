@@ -1,4 +1,4 @@
-﻿
+﻿@model AspNetMvc_WeChat_Base.WeChat.WeChatBeginAPI
 @{
     ViewBag.Title = "Chapter05";
 }
@@ -6,6 +6,13 @@
     <h2>Chapter05: 消息接口</h2>
 </div>
 <div class="jumbotron">
-    @ViewBag.CheckFromWeChat
+    <dl class="dl-horizontal">
+        <dt>返回状态</dt>
+        <dd>@ViewBag.CheckFromWeChat</dd>
+        <dt>Signature</dt>
+        <dd>@Model.Signature</dd>
+        <dt>SignatureEncryption</dt>
+        <dd>@Model.SignatureTemp</dd>
+    </dl>
 </div>
 

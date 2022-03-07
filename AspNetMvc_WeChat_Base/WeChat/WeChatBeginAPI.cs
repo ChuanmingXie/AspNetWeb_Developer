@@ -24,10 +24,12 @@ namespace AspNetMvc_WeChat_Base.WeChat
 
         public string Signature { get; set; }
 
+        public string SignatureTemp { get; set; }
+
         public string Timestamp { get; set; }
 
         public string Nonce { get; set; }
 
-        public string Encrypt_Type { get; set; }
+        //public string Encrypt_Type { get; set; }
     }
 }

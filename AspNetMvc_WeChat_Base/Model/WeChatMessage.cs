@@ -100,6 +100,15 @@ namespace AspNetMvc_WeChat_Base.Model
         /// </summary>
         public string Url { get; set; }
 
+        /// <summary>
+        /// 事件类型 取值：
+        /// subscribe(扫描带参数二维码订阅)
+        /// unsubscribe(取消订阅)
+        /// CLICK(自定义菜单点击事件)
+        /// SCAN(已关注的状态下扫描带参数二维码)
+        /// </summary>
+        public string Event { get; set; }
+
 
         /// <summary>
         /// 用于解析接收到的XML文件为信息字符串
@@ -124,13 +133,17 @@ namespace AspNetMvc_WeChat_Base.Model
             }
         }
 
+        /// <summary>
+        /// 收集XML文件的数据节点
+        /// </summary>
+        /// <param name="rootElement"></param>
         private void CollectNodeElement(XmlElement rootElement)
         {
             try
             {
                 ToUserName = rootElement.SelectSingleNode("ToUserName").InnerText;
 
-                FromUserName = rootElement.SelectSingleNode("FormUserName").InnerText;
+                FromUserName = rootElement.SelectSingleNode("FromUserName").InnerText;
                 CreateTime = TimeCorrect(rootElement.SelectSingleNode("CreateTime").InnerText);
                 MsgId = rootElement.SelectSingleNode("MsgId").InnerText;
                 MsgType = rootElement.SelectSingleNode("MsgType").InnerText;
@@ -165,7 +178,11 @@ namespace AspNetMvc_WeChat_Base.Model
             }
         }
 
-
+        /// <summary>
+        /// 创建时间数据的时间校准
+        /// </summary>
+        /// <param name="innerText"></param>
+        /// <returns></returns>
         private string TimeCorrect(string innerText)
         {
             try
@@ -184,6 +201,6 @@ namespace AspNetMvc_WeChat_Base.Model
                 return string.Empty;
             }
         }
-    }
 
+    }
 }
