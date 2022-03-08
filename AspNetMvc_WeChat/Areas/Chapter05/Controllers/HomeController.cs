@@ -20,6 +20,7 @@ namespace AspNetMvc_WeChat.Areas.Chapter05.Controllers
                 WeChatMessage weChatData = new WeChatMessage();
                 weChatData.XMLToMessage(xmlMessage);
                 WeChatMessageService.ShowMessage(weChatData);
+                WeChatMessageService.ReplyMessage(weChatData);
                 Response.Write("");
                 Response.End();
             }
@@ -65,7 +66,7 @@ namespace AspNetMvc_WeChat.Areas.Chapter05.Controllers
                 {
                     stringBuilder.Append(Encoding.UTF8.GetString(buffer, 0, count));
                 }
-                LogService.RecordLog("接收POST数据：<br/>" + stringBuilder.ToString());
+                LogService.RecordLog("接收POST数据：" + stringBuilder.ToString());
                 stream.Flush();
                 stream.Close();
                 stream.Dispose();

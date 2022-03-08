@@ -273,6 +273,7 @@
     <Content Include="images\WePayLogo_checked.png" />
     <Content Include="images\zhifubao_logo.jpg" />
     <Content Include="images\zhifubao_logo_checked.jpg" />
+    <Content Include="Media\九州同.mp3" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Areas\areaDemo\Views\web.config" />
