@@ -1,5 +1,5 @@
 ﻿/*****************************************************************************
-*项目名称:AspNetMvc_WeChat_Base.APIHelper
+*项目名称:AspNetMvc_WeChat_Base.FuncHelper
 *项目描述:
 *类 名 称:PropertyValue
 *类 描 述:
@@ -16,7 +16,7 @@ using System.Collections;
 using System.Reflection;
 using System.Text;
 
-namespace AspNetMvc_WeChat_Base.APIHelper
+namespace AspNetMvc_WeChat_Base.FuncHelper
 {
     public static class ReflectionHelper
     {
@@ -94,6 +94,12 @@ namespace AspNetMvc_WeChat_Base.APIHelper
             return allInfoString;
         }
 
+        /// <summary>
+        /// 通过泛型反射模型类的全部属性值
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="t"></param>
+        /// <returns></returns>
         public static string GetModelByGeneric<T>(T t)
         {
             StringBuilder stringBuilder = new StringBuilder();

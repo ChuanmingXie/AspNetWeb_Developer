@@ -1,4 +1,4 @@
-﻿using AspNetMvc_WeChat_Base.APIHelper;
+﻿using AspNetMvc_WeChat_Base.FuncHelper;
 using AspNetMvc_WeChat_Base.Logging;
 using AspNetMvc_WeChat_Base.Model;
 using AspNetMvc_WeChat_Base.WeChat;

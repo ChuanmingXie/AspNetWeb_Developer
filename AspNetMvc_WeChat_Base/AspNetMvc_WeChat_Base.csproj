@@ -44,9 +44,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="APIHelper\HttpService.cs" />
-    <Compile Include="APIHelper\JSONHelper.cs" />
-    <Compile Include="APIHelper\ReflectionHelper.cs" />
+    <Compile Include="FuncHelper\Cryptography.cs" />
+    <Compile Include="FuncHelper\HttpService.cs" />
+    <Compile Include="FuncHelper\JSONHelper.cs" />
+    <Compile Include="FuncHelper\ReflectionHelper.cs" />
     <Compile Include="Logging\LogService.cs" />
     <Compile Include="Model\WeChatAccess.cs" />
     <Compile Include="Model\WeChatMenu.cs" />
@@ -54,12 +55,12 @@
     <Compile Include="Model\WeChatResult.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="WeChat\WeChatBeginAPI.cs" />
+    <Compile Include="WeChat\WeChatCryptography.cs" />
     <Compile Include="WeChat\WeChatMenuService.cs" />
     <Compile Include="WeChat\WeChatMessageService.cs" />
     <Compile Include="WeChat\WeChatTookenService.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Message\" />
     <Folder Include="OAuth\" />
     <Folder Include="WeChatPay\" />
   </ItemGroup>

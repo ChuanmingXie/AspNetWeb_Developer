@@ -1,10 +1,10 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <xml>
-  <ToUserName><![CDATA[toUser]]]>]></ToUserName>
-  <FromUserName><![CDATA[fromuser]]]>]></FromUserName>
+  <ToUserName><![CDATA[toUser]]></ToUserName>
+  <FromUserName><![CDATA[fromuser]]></FromUserName>
   <CreateTime>1351776360</CreateTime>
-  <MsgType><![CDATA[image]]]>]></MsgType>
-  <PicUrl><![CDATA[this is a url]]]>]></PicUrl>
+  <MsgType><![CDATA[image]]></MsgType>
+  <PicUrl><![CDATA[this is a url]]></PicUrl>
   <MediaId><![CDATA[media_id]]></MediaId>
   <MsgId>1234567890123456</MsgId>
 </xml>

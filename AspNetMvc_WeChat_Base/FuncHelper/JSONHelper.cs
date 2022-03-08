@@ -1,5 +1,5 @@
 ﻿/*****************************************************************************
-*项目名称:AspNetMvc_WeChat_Base.APIHelper
+*项目名称:AspNetMvc_WeChat_Base.FuncHelper
 *项目描述:
 *类 名 称:JSONHelper
 *类 描 述:
@@ -18,7 +18,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Web.Script.Serialization;
 
-namespace AspNetMvc_WeChat_Base.APIHelper
+namespace AspNetMvc_WeChat_Base.FuncHelper
 {
     public static class JSONHelper
     {

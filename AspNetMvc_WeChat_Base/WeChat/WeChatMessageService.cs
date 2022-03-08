@@ -126,7 +126,7 @@ namespace AspNetMvc_WeChat_Base.WeChat
             switch (weChatData.Content)
             {
                 case "文本":SendTextMessage(weChatData.FromUserName, "您好,新时代中国特色社会主义国家永远是人民群众的国家"); break;
-                case "图片":SendImageMessage(weChatData.FromUserName, "D1gMtCf2t2HK8-iPBHVGV77b120z9M6J6L0jn0K8Zaw"); break;
+                case "图片":SendImageMessage(weChatData.FromUserName, "Vl8EK2Lavr0p20sWiCpu1mEiGB00AwZK60Xzv9z3ByNAGv_xwClGmWDES2Q8Q6Sh"); break;
                 case "语音": SendVoiceMessage(weChatData.FromUserName, ""); break;
                 case "视频":SendVideoMessage(weChatData.FromUserName, "", "视频", "回复的视频"); break;
                 case "音乐":SendMusicMessage(weChatData.FromUserName, "九州同", "中国风音乐"

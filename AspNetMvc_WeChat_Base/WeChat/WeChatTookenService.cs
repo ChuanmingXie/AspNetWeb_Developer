@@ -11,7 +11,7 @@
 *https://developers.weixin.qq.com/doc/offiaccount/Basic_Information/Access_Overview.html
 *Copyright @ Chuanming 2022. All rights reserved
 ******************************************************************************/
-using AspNetMvc_WeChat_Base.APIHelper;
+using AspNetMvc_WeChat_Base.FuncHelper;
 using AspNetMvc_WeChat_Base.Model;
 using System;
 using System.Collections.Generic;

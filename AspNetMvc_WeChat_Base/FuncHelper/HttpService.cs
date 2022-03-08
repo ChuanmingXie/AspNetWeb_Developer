@@ -1,5 +1,5 @@
 ﻿/*****************************************************************************
-*项目名称:AspNetMvc_WeChat_Base.APIHelper
+*项目名称:AspNetMvc_WeChat_Base.FuncHelper
 *项目描述:
 *类 名 称:HttpService
 *类 描 述:
@@ -15,7 +15,7 @@ using System.IO;
 using System.Net;
 using System.Text;
 
-namespace AspNetMvc_WeChat_Base.APIHelper
+namespace AspNetMvc_WeChat_Base.FuncHelper
 {
     public static class HttpService
     {

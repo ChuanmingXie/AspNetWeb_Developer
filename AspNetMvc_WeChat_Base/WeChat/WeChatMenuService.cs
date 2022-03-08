@@ -11,7 +11,7 @@
 *https://developers.weixin.qq.com/doc/offiaccount/Custom_Menus/Creating_Custom-Defined_Menu.html
 *Copyright @ Chuanming 2022. All rights reserved
 ******************************************************************************/
-using AspNetMvc_WeChat_Base.APIHelper;
+using AspNetMvc_WeChat_Base.FuncHelper;
 using System;
 using System.Collections.Generic;
 using System.IO;
