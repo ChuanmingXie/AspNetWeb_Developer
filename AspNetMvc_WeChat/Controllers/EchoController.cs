@@ -18,15 +18,15 @@ namespace AspNetMvc_WeChat.Controllers
             WeChatBeginAPI beginAPI = new WeChatBeginAPI
             {
                 EchoStr = Request.QueryString["echoStr"],
-                Signature = Request.QueryString["signature"],
+                SignatureOrigin = Request.QueryString["signature"],
                 Timestamp = Request.QueryString["timestamp"],
                 Nonce = Request.QueryString["nonce"],
                 //Encrypt_Type = Request.QueryString["encrypt_type"]
             };
             //对token，timestamp，nonce加密生成singnature
-            beginAPI.SignatureTemp = WeChatTookenService.MakeSignature(beginAPI.Timestamp, beginAPI.Nonce);
+            beginAPI.SignatureConfirm = WeChatTookenService.MakeSignature(beginAPI.Timestamp, beginAPI.Nonce);
             LogService.RecordLog(ReflectionHelper.GetModelByGeneric(beginAPI));
-            if (!string.IsNullOrEmpty(beginAPI.EchoStr) && beginAPI.SignatureTemp == beginAPI.Signature)
+            if (!string.IsNullOrEmpty(beginAPI.EchoStr) && beginAPI.SignatureConfirm == beginAPI.SignatureOrigin)
             {
                 //注意是同Response.Write()和Response.End()否则配置出现错误
                 Response.Write(beginAPI.EchoStr);
@@ -58,11 +58,11 @@ namespace AspNetMvc_WeChat.Controllers
                 stream.Flush();
                 stream.Close();
                 stream.Dispose();
-                LogService.RecordLog("接收POST数据：<br/>" + stringBuilder.ToString());
+                LogService.RecordLog("接收POST数据:\n" + stringBuilder.ToString());
             }
             catch (Exception ex)
             {
-                LogService.RecordLog("接收POST数据错误:" + ex.Message);
+                LogService.RecordLog("接收POST数据错误:\n" + ex.Message);
             }
             return View();
         }

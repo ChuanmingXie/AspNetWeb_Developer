@@ -20,16 +20,41 @@ namespace AspNetMvc_WeChat_Base.WeChat
 {
     public class WeChatBeginAPI
     {
+        /// <summary>
+        /// 测试请求的参数
+        /// </summary>
         public string EchoStr { get; set; }
 
-        public string Signature { get; set; }
+        /// <summary>
+        /// 明文模式下的原始签名
+        /// </summary>
+        public string SignatureOrigin { get; set; }
 
-        public string SignatureTemp { get; set; }
+        /// <summary>
+        /// 明文模式下的签名验证(自行生成)
+        /// </summary>
+        public string SignatureConfirm { get; set; } = string.Empty;
 
+        /// <summary>
+        /// 事件戳
+        /// </summary>
         public string Timestamp { get; set; }
 
-        public string Nonce { get; set; }
+        /// <summary>
+        /// 安全模式下的加密类型AES
+        /// </summary>
+        public string Encrypt_Type { get; set; }
 
-        //public string Encrypt_Type { get; set; }
+        /// <summary>
+        /// 安全模式下的原始加密签名
+        /// </summary>
+        public string Msg_SignatureOrigin { get; set; }
+
+        /// <summary>
+        /// 安全模式下的加密签名验证(自行生成)
+        /// </summary>
+        public string Msg_SignatureConfirm { get; set; } = string.Empty;
+
+        public string Nonce { get; set; }
     }
 }

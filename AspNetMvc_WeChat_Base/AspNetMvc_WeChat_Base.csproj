@@ -55,7 +55,7 @@
     <Compile Include="Model\WeChatResult.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="WeChat\WeChatBeginAPI.cs" />
-    <Compile Include="WeChat\WeChatCryptography.cs" />
+    <Compile Include="WeChat\WeChatCryptService.cs" />
     <Compile Include="WeChat\WeChatMenuService.cs" />
     <Compile Include="WeChat\WeChatMessageService.cs" />
     <Compile Include="WeChat\WeChatTookenService.cs" />

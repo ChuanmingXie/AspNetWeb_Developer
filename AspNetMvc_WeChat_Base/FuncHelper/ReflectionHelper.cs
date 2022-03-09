@@ -39,7 +39,7 @@ namespace AspNetMvc_WeChat_Base.FuncHelper
             }
             catch (Exception ex)
             {
-                LogService.RecordLog("反射转换属性值错误:" + ex.Message);
+                LogService.RecordLog("反射转换属性值错误:\n" + ex.Message);
                 return string.Empty;
             }
         }
@@ -62,7 +62,7 @@ namespace AspNetMvc_WeChat_Base.FuncHelper
             }
             catch (Exception ex)
             {
-                LogService.RecordLog("反射设置属性值错误:" + ex.Message);
+                LogService.RecordLog("反射设置属性值错误:\n" + ex.Message);
                 return false;
             }
         }
@@ -89,7 +89,7 @@ namespace AspNetMvc_WeChat_Base.FuncHelper
             }
             catch (Exception ex)
             {
-                LogService.RecordLog("反射获取属性值错误:" + ex.Message);
+                LogService.RecordLog("反射获取属性值错误:\n" + ex.Message);
             }
             return allInfoString;
         }
@@ -131,13 +131,13 @@ namespace AspNetMvc_WeChat_Base.FuncHelper
                     }
                     else
                     {
-                        stringBuilder.Append(" " + "  " + proInfo.Name + ":" + proInfo.GetValue(t, null).ToString() + "\n");
+                        stringBuilder.Append(proInfo.Name + ":" + proInfo.GetValue(t, null).ToString() + "\n");
                     }
                 }
             }
             catch (Exception ex)
             {
-                LogService.RecordLog("反射获取属性值错误:" + ex.Message);
+                LogService.RecordLog("反射获取属性值错误:\n" + ex.Message);
             }
             return stringBuilder.ToString();
         }

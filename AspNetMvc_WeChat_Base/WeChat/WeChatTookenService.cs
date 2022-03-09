@@ -26,9 +26,14 @@ namespace AspNetMvc_WeChat_Base.WeChat
         /// <summary>
         /// 通过属性获取Token令牌
         /// </summary>
-        private static string Token
+        public static string Token
         {
             get { return GetAppConfig("token"); }
+        }
+
+        public static string EncodingAESKey
+        {
+            get { return GetAppConfig("encodingAESKey"); }
         }
 
         /// <summary>

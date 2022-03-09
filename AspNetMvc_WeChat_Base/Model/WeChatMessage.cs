@@ -30,6 +30,8 @@ namespace AspNetMvc_WeChat_Base.Model
         /// 消息发送方微信号
         /// </summary>
         public string FromUserName { get; set; }
+
+        public string Encrypt { get; set; }
         /// <summary>
         /// 创建时间
         /// </summary>
@@ -148,7 +150,7 @@ namespace AspNetMvc_WeChat_Base.Model
                 }
                 catch (Exception ex)
                 {
-                    LogService.RecordLog("接收XML文件并转换失败:" + ex.Message);
+                    LogService.RecordLog("接收XML文件并转换失败:\n" + ex.Message);
                 }
             }
         }
@@ -162,10 +164,10 @@ namespace AspNetMvc_WeChat_Base.Model
             try
             {
                 ToUserName = rootElement.SelectSingleNode("ToUserName").InnerText;
-
-                FromUserName = rootElement.SelectSingleNode("FromUserName").InnerText;
-                CreateTime = TimeCorrect(rootElement.SelectSingleNode("CreateTime").InnerText);
-                MsgType = rootElement.SelectSingleNode("MsgType").InnerText;
+                Encrypt = WhenExict(rootElement, "Encrypt") ? rootElement.SelectSingleNode("Encrypt").InnerText : "";
+                FromUserName = WhenExict(rootElement, "FromUserName") ? rootElement.SelectSingleNode("FromUserName").InnerText : "";
+                CreateTime = TimeCorrect(WhenExict(rootElement, "CreateTime") ? rootElement.SelectSingleNode("CreateTime").InnerText : "0");
+                MsgType = WhenExict(rootElement, "MsgType") ? rootElement.SelectSingleNode("MsgType").InnerText : "";
                 MsgId = WhenExict(rootElement, "MsgId") ? rootElement.SelectSingleNode("MsgId").InnerText : "";
                 switch (MsgType)
                 {
@@ -191,16 +193,16 @@ namespace AspNetMvc_WeChat_Base.Model
                     case "event":
                         Event = rootElement.SelectSingleNode("Event").InnerText;
                         EventKey = rootElement.SelectSingleNode("EventKey").InnerText;
-                        Ticket = WhenExict(rootElement, "Ticket") ? rootElement.SelectSingleNode("Ticket").InnerText:"";
-                        Latitude = WhenExict(rootElement, "Latitude") ? rootElement.SelectSingleNode("Latitude").InnerText:"";
-                        Longitude = WhenExict(rootElement, "Longitude") ? rootElement.SelectSingleNode("Longitude").InnerText:"";
-                        Precision = WhenExict(rootElement, "Precision") ? rootElement.SelectSingleNode("Precision").InnerText:"";
+                        Ticket = WhenExict(rootElement, "Ticket") ? rootElement.SelectSingleNode("Ticket").InnerText : "";
+                        Latitude = WhenExict(rootElement, "Latitude") ? rootElement.SelectSingleNode("Latitude").InnerText : "";
+                        Longitude = WhenExict(rootElement, "Longitude") ? rootElement.SelectSingleNode("Longitude").InnerText : "";
+                        Precision = WhenExict(rootElement, "Precision") ? rootElement.SelectSingleNode("Precision").InnerText : "";
                         break;
                 }
             }
             catch (Exception ex)
             {
-                LogService.RecordLog("消息数据字段收集失败：" + ex.Message);
+                LogService.RecordLog("消息数据字段收集失败:\n" + ex.Message);
             }
         }
 
@@ -232,7 +234,7 @@ namespace AspNetMvc_WeChat_Base.Model
             }
             catch (Exception ex)
             {
-                LogService.RecordLog("消息创建时间校正失败：" + ex.Message);
+                LogService.RecordLog("消息创建时间校正失败:\n" + ex.Message);
                 return string.Empty;
             }
         }

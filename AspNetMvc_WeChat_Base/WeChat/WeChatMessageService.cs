@@ -258,7 +258,7 @@ namespace AspNetMvc_WeChat_Base.WeChat
         /// <param name="xmlMsg"></param>
         private static void SendMessage(string xmlMsg)
         {
-            LogService.RecordLog("回复消息:" + xmlMsg);
+            LogService.RecordLog("回复消息:\n" + xmlMsg);
             HttpContext httpContext = HttpContext.Current;
             httpContext.Response.Write(xmlMsg);
         }
