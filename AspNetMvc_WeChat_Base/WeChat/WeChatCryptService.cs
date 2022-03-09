@@ -147,7 +147,7 @@ namespace AspNetMvc_WeChat_Base.WeChat
             return 0;
         }
 
-        public class DictionarySort : System.Collections.IComparer
+        public class DictionarySort : IComparer
         {
             public int Compare(object oLeft, object oRight)
             {

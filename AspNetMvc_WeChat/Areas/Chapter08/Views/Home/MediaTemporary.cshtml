@@ -1,0 +1,22 @@
+﻿
+@{
+    ViewBag.Title = "【例8-1】新增临时素材 - Chapter08";
+}
+<div class="jumbotron">
+    <h2>【例8-1】新增临时素材</h2>
+</div>
+<div class="jumbotron">
+    @if (@ViewBag.mediaTemporaryID != "")
+    {
+        @ViewBag.mediaTemporaryID
+    }
+    @using (Html.BeginForm("MediaTemporary", "Home", FormMethod.Post, new { enctype = "multipart/form-data" }))
+    {
+        <p>选择上传文件：</p><input name="file" type="file" id="file" />
+        <br />
+        <br />
+        <input type="submit" name="Upload" value="上传" />
+    }
+</div>
+
+

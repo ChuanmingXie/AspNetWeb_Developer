@@ -132,6 +132,8 @@
     <Compile Include="Areas\Chapter04\Controllers\HomeController.cs" />
     <Compile Include="Areas\Chapter05\Chapter05AreaRegistration.cs" />
     <Compile Include="Areas\Chapter05\Controllers\HomeController.cs" />
+    <Compile Include="Areas\Chapter08\Chapter08AreaRegistration.cs" />
+    <Compile Include="Areas\Chapter08\Controllers\HomeController.cs" />
     <Compile Include="Controllers\EchoController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Global.asax.cs">
@@ -403,6 +405,13 @@
     <Content Include="Areas\Chapter05\Views\_ViewStart.cshtml" />
     <Content Include="Areas\Chapter05\Views\Shared\_Layout.cshtml" />
     <Content Include="Areas\Chapter05\Views\Home\Index.cshtml" />
+    <Content Include="Areas\Chapter08\Views\web.config" />
+    <Content Include="Areas\Chapter08\Views\_ViewStart.cshtml" />
+    <Content Include="Areas\Chapter08\Views\Shared\_Layout.cshtml" />
+    <Content Include="Areas\Chapter08\Views\Home\Index.cshtml" />
+    <Content Include="Areas\Chapter08\Views\Home\MediaTemporary.cshtml" />
+    <Content Include="Areas\Chapter08\Views\Home\MediaPermanent.cshtml" />
+    <Content Include="Areas\Chapter08\Views\Home\MediaTemporaryGet.cshtml" />
     <None Include="Properties\PublishProfiles\IISProfile.pubxml" />
     <None Include="Scripts\jquery-3.4.1-vsdoc.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
@@ -447,6 +456,7 @@
     <Folder Include="Areas\Chapter03\Data\" />
     <Folder Include="Areas\Chapter04\Data\" />
     <Folder Include="Areas\Chapter05\Data\" />
+    <Folder Include="Areas\Chapter08\Data\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />

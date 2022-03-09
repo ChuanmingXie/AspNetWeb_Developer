@@ -31,7 +31,7 @@ namespace AspNetMvc_WeChat.Areas.Chapter04.Controllers
 
         public ActionResult MenuDelete()
         {
-            WeChatResult weChatResult = JSONHelper.JSONToObject<WeChatResult>(WeChatMenuService.Delete());
+            WeChatErrorResult weChatResult = JSONHelper.JSONToObject<WeChatErrorResult>(WeChatMenuService.Delete());
             ViewBag.menuDelete = weChatResult.errcode == "0" ? "操作成功" : "操作失败" + weChatResult.errmsg;
             return View();
         }

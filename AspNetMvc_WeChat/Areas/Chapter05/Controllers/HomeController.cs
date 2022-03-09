@@ -14,14 +14,14 @@ namespace AspNetMvc_WeChat.Areas.Chapter05.Controllers
         // GET: Chapter05/Home
         public ActionResult Index()
         {
-            LogService.RecordLog("微信平台数据参数:\n" + Request.Url);
+            LogService.RecordLog("微信平台数据参数:\n"+ Request.Url);
             WeChatBeginAPI beginAPI = new WeChatBeginAPI
             {
                 SignatureOrigin = Request.QueryString["signature"],
                 Timestamp = Request.QueryString["timestamp"],
                 Nonce = Request.QueryString["nonce"],
-                Encrypt_Type = (!string.IsNullOrEmpty(Request.QueryString["encrypt_type"])?Request.QueryString["encrypt_type"]:""),
-                Msg_SignatureOrigin = (!string.IsNullOrEmpty(Request.QueryString["msg_signature"]) ? Request.QueryString["msg_signature"]:""),
+                Encrypt_Type = (!string.IsNullOrEmpty(Request.QueryString["encrypt_type"]) ? Request.QueryString["encrypt_type"] : ""),
+                Msg_SignatureOrigin = (!string.IsNullOrEmpty(Request.QueryString["msg_signature"]) ? Request.QueryString["msg_signature"] : ""),
                 EchoStr = (!string.IsNullOrEmpty(Request.QueryString["echoStr"]) ? Request.QueryString["echoStr"] : ""),
             };
             //对token，timestamp，nonce加密生成singnature
@@ -69,7 +69,8 @@ namespace AspNetMvc_WeChat.Areas.Chapter05.Controllers
                 }
                 else
                 {
-                    Response.Write("Invalid request!");
+                    Response.Write("");
+                    //Response.Write("Invalid request!");
                     ViewBag.CheckFromWeChat = "Invalid request!";
                 }
                 return View(beginAPI);

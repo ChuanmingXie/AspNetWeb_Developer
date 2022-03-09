@@ -50,12 +50,14 @@
     <Compile Include="FuncHelper\ReflectionHelper.cs" />
     <Compile Include="Logging\LogService.cs" />
     <Compile Include="Model\WeChatAccess.cs" />
+    <Compile Include="Model\WeChatMediaUpResult.cs" />
     <Compile Include="Model\WeChatMenu.cs" />
     <Compile Include="Model\WeChatMessage.cs" />
-    <Compile Include="Model\WeChatResult.cs" />
+    <Compile Include="Model\WeChatErrorResult.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="WeChat\WeChatBeginAPI.cs" />
     <Compile Include="WeChat\WeChatCryptService.cs" />
+    <Compile Include="WeChat\WeChatMediaService.cs" />
     <Compile Include="WeChat\WeChatMenuService.cs" />
     <Compile Include="WeChat\WeChatMessageService.cs" />
     <Compile Include="WeChat\WeChatTookenService.cs" />

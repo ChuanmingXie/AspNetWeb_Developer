@@ -29,7 +29,7 @@ namespace AspNetMvc_WeChat_Base.Logging
                 Directory.CreateDirectory(logDirectory);
             }
             logFile = logDirectory + "//" + DateTime.Now.ToString("yyyyMMdd") + ".log";
-            File.AppendAllText(logFile, DateTime.Now.ToString("[yyyy-MM-dd HH:mm:ss]:") + text+"\n");
+            File.AppendAllText(logFile, DateTime.Now.ToString("[yyyy-MM-dd HH:mm:ss]:") + text + "\n\n");
         }
     }
 }
