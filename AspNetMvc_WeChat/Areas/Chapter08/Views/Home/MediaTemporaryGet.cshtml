@@ -6,14 +6,12 @@
     <h2>【例8-2】获取临时素材</h2>
 </div>
 <div class="jumbotron">
-    <div style="width:100%;border:1px solid red;height:100px;margin-top:100px">
-        @using (Html.BeginForm("MediaTemporaryGet", "Home", FormMethod.Post))
-        {
-            <p>输入media_id:</p>
-            <input name="Mediaid" type="text"/>
-            <input type="submit" value="获取"/>
-        }
-    </div>
+    @using (Html.BeginForm("MediaTemporaryGet", "Home", FormMethod.Post))
+    {
+        <p>输入media_id:</p>
+        <input name="Mediaid" type="text" />
+        <input type="submit" value="获取" />
+    }
 </div>
- 
+
 

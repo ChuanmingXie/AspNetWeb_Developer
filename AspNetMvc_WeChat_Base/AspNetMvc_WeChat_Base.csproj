@@ -50,6 +50,7 @@
     <Compile Include="FuncHelper\ReflectionHelper.cs" />
     <Compile Include="Logging\LogService.cs" />
     <Compile Include="Model\WeChatAccess.cs" />
+    <Compile Include="Model\WeChatMediaArticle.cs" />
     <Compile Include="Model\WeChatMediaUpResult.cs" />
     <Compile Include="Model\WeChatMenu.cs" />
     <Compile Include="Model\WeChatMessage.cs" />

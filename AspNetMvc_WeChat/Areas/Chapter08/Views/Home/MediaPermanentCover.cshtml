@@ -1,0 +1,29 @@
+﻿
+@{
+    ViewBag.Title = "【例8-3】新增永久素材封面 - Chapter08";
+}
+
+<div class="jumbotron">
+    <h2>【例8-3】新增永久素材封面</h2>
+</div>
+<div class="jumbotron">
+    @ViewBag.mediaThumbCoverID
+    @using (Html.BeginForm("MediaPermanentCover", "Home", FormMethod.Post, new { enctype = "multipart/from-data" }))
+    {
+        @Html.AntiForgeryToken()
+        <div class="form-horizontal">
+            <div class="form-group">
+                @Html.Label("选择永久封面素材:", new { @class = "control-label col-md-2" })
+                <div class="col-md-3">
+                    <input type="file" name="uploadFile" id="uploadFile"  class="form-control-file"  />
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-md-3 col-md-offset-2">
+                    <input type="submit" name="uploadSubmit" value="上传" class="btn btn-default" />
+                </div>
+            </div>
+        </div>
+    }
+</div>
+
