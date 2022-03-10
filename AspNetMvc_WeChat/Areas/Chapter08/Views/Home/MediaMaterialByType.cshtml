@@ -1,0 +1,55 @@
+﻿@model AspNetMvc_WeChat_Base.Model.WeChatMediaUpload
+@using AspNetMvc_WeChat_Base.Model
+@{
+    ViewBag.Title = "【例8-06】新增其他永久素材 - Chapter08";
+}
+
+<div class="jumbotron">
+    <h2>【例8-06】新增其他永久素材</h2>
+</div>
+<div class="jumbotron">
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+        <div class="form-horizontal">
+            <div class="form-group">
+                <label class="control-label col-md-2" for="materialType">素材类型</label>
+                <div class="col-md-10">
+                    @Html.DropDownListFor(model => model.materialType, Enum.GetNames(typeof(MaterialType)).Select(e => new SelectListItem { Text = e }), htmlAttributes: new { @class = "form-control" })
+                </div>
+            </div>
+            <div class="form-group">
+                @Html.Label("选择上传素材", new { @class = "control-label col-md-2" })
+                <div class="col-md-3">
+                    <input type="file" name="uploadFile" id="upLoadFile" class="form-control-file" />
+                </div>
+            </div>
+            @if (@ViewBag.typeVideo)
+            {
+                <div class="form-group">
+                    @Html.LabelFor(model => model.materialVideo.title, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.materialVideo.title, new { htmlAttributes = new { @class = "form-control" } })
+
+                    </div>
+                </div> <div class="form-group">
+                    @Html.LabelFor(model => model.materialVideo.introduction, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.materialVideo.introduction, new { htmlAttributes = new { @class = "form-control" } })
+
+                    </div>
+                </div>
+            }
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    <input type="submit" name="uploadSubmit" value="上传" class=" btn btn-primary" />
+                </div>
+            </div>
+        </div>
+    }
+</div>
+
+<div>
+    @Html.ActionLink("返回列表", "Index")
+</div>
+

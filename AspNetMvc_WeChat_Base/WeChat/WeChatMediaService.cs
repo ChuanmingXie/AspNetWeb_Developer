@@ -45,24 +45,26 @@ namespace AspNetMvc_WeChat_Base.WeChat
         /// </summary>
         /// <param name="upLoadFile"></param>
         /// <param name="path"></param>
-        public static void UPloadPath(HttpPostedFileBase upLoadFile,string path)
+        public static string UPloadPath(HttpPostedFileBase upLoadFile, string path)
         {
             int index = upLoadFile.FileName.LastIndexOf('.');
             var fileExt = upLoadFile.FileName.Substring(index, upLoadFile.FileName.Length - index);
             var newFile = DateTime.Now.ToString("yyyyMMddHHmmss") + fileExt;
             if (!Directory.Exists(path))
                 Directory.CreateDirectory(path);
-            upLoadFile.SaveAs(path + "\\" + newFile);    
+            string filePath = path + "\\" + newFile;
+            upLoadFile.SaveAs(filePath);
+            return filePath;
         }
 
         /// <summary>
         /// 创建自己获取文件后需要保存到服务器位置的全路径
         /// </summary>
-        public static string GetFilePath(string serverPath,string fileName)
+        public static string GetFilePath(string serverPath, string fileName)
         {
             if (!Directory.Exists(serverPath))
                 Directory.CreateDirectory(serverPath);
-            return  serverPath + "\\" + fileName;
+            return serverPath + "\\" + fileName;
         }
 
         /// <summary>
@@ -70,12 +72,12 @@ namespace AspNetMvc_WeChat_Base.WeChat
         /// </summary>
         /// <param name="type"></param>
         /// <returns></returns>
-        public static string AddTemporaryMedia(string type,string path)
+        public static string AddTemporaryMedia(string type, string file)
         {
             string url = "https://api.weixin.qq.com/cgi-bin/media/upload" +
                 "?access_token=" + WeChatTookenService.Access_token +
                 "&type=" + type;
-            string result = HttpService.HttpUPloadFile(url, path);
+            string result = HttpService.HttpUPloadFile(url, file);
             return result;
         }
 
@@ -83,44 +85,63 @@ namespace AspNetMvc_WeChat_Base.WeChat
         /// 获取临时素材
         /// </summary>
         /// <param name="media_id"></param>
-        /// <param name="path"></param>
-        public static void GetTemporaryMedia(string media_id, string path)
+        /// <param name="file"></param>
+        public static void GetTemporaryMedia(string media_id, string file)
         {
             string url = " https://api.weixin.qq.com/cgi-bin/media/get" +
                 "?access_token=" + WeChatTookenService.Access_token +
                 "&media_id=" + media_id;
-            HttpService.PostDownLoad(url, path);
+            HttpService.PostDownLoad(url, file);
         }
 
         /// <summary>
-        /// 新增永久性封面素材
+        /// 新增永久性图文素材-封面
         /// </summary>
         /// <param name="type"></param>
-        /// <param name="path"></param>
-        /// <returns></returns>
-        public static string AddMediaPermanentCover(string type, string path)
+        /// <param name="file"></param>
+        /// <returns>mediaid</returns>
+        public static string AddMediaPermanentCover(string type, string file)
         {
-            return AddTemporaryMedia(type, path);
+            return AddTemporaryMedia(type, file);
         }
 
         /// <summary>
-        /// 新增永久性素材
+        /// 新增永久图文素材
         /// </summary>
         /// <param name="content"></param>
-        /// <returns></returns>
+        /// <returns>mediaid</returns>
         public static string AddMediaPermanent(string content)
         {
             string url = "https://api.weixin.qq.com/cgi-bin/material/add_news" +
                 "?access_token=" + WeChatTookenService.Access_token;
-            string result= HttpService.Post(url, content);
+            string result = HttpService.Post(url, content);
             return result;
         }
 
-        public static string AddMediaNewImg(string path)
+        /// <summary>
+        /// 新增永久图文素材-图片
+        /// </summary>
+        /// <param name="file"></param>
+        /// <returns>上传图文消息内的图片,获取URL</returns>
+        public static string AddMediaNewImg(string file)
         {
             string url = "https://api.weixin.qq.com/cgi-bin/media/uploadimg" +
                 "?access_token=" + WeChatTookenService.Access_token;
-            string result = HttpService.HttpUPloadFile(url, path);
+            string result = HttpService.HttpUPloadFile(url, file);
+            return result;
+        }
+
+        /// <summary>
+        /// 新增其他类型永久素材
+        /// </summary>
+        /// <param name="file"></param>
+        /// <returns></returns>
+        public static string AddMediaMaterial(string type, string file)
+        {
+            string url = "https://api.weixin.qq.com/cgi-bin/material/add_material" +
+                "?access_token=" + WeChatTookenService.Access_token +
+                "&type=" + type;
+            string result = HttpService.HttpAddMaterial(url, file);
             return result;
         }
     }

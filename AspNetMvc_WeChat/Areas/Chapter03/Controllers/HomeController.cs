@@ -12,7 +12,7 @@ namespace AspNetMvc_WeChat.Areas.Chapter03.Controllers
             return View();
         }
 
-        public ActionResult GetAccessToken()
+        public ActionResult WeChatAccessToken()
         {
             ViewBag.token = "access_token:\r\n" + WeChatTookenService.Access_token;
             return View();

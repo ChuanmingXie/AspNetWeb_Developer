@@ -32,6 +32,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Web" />
@@ -50,8 +51,8 @@
     <Compile Include="FuncHelper\ReflectionHelper.cs" />
     <Compile Include="Logging\LogService.cs" />
     <Compile Include="Model\WeChatAccess.cs" />
-    <Compile Include="Model\WeChatMediaArticle.cs" />
-    <Compile Include="Model\WeChatMediaUpResult.cs" />
+    <Compile Include="Model\WeChatMediaInput.cs" />
+    <Compile Include="Model\WeChatMediaResult.cs" />
     <Compile Include="Model\WeChatMenu.cs" />
     <Compile Include="Model\WeChatMessage.cs" />
     <Compile Include="Model\WeChatErrorResult.cs" />

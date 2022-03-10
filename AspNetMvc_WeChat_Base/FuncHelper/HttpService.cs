@@ -13,6 +13,7 @@
 using System;
 using System.IO;
 using System.Net;
+using System.Net.Http;
 using System.Text;
 
 namespace AspNetMvc_WeChat_Base.FuncHelper
@@ -73,13 +74,14 @@ namespace AspNetMvc_WeChat_Base.FuncHelper
             return data;
         }
 
+
         /// <summary>
-        /// 将图片POST到服务器
+        /// 上传图文素材-将素材POST到服务器
         /// </summary>
         /// <param name="url">上传素材开发接口</param>
-        /// <param name="path">本地图片路径</param>
+        /// <param name="file">本地图片路径</param>
         /// <returns></returns>
-        public static string HttpUPloadFile(string url,string path)
+        public static string HttpUPloadFile(string url,string file)
         {
             try
             {
@@ -94,8 +96,8 @@ namespace AspNetMvc_WeChat_Base.FuncHelper
                 byte[] itemBoundaryBytes = Encoding.UTF8.GetBytes("\r\n--" + boundary + "\r\n");
                 byte[] endBoundaryBytes = Encoding.UTF8.GetBytes("\r\n--" + boundary + "--\r\n");
 
-                int pos = path.LastIndexOf('\\');
-                string fileName = path.Substring(pos + 1);
+                int pos = file.LastIndexOf('\\');
+                string fileName = file.Substring(pos + 1);
 
                 //请求数据的头部信息
                 StringBuilder strBuilderHeader = new StringBuilder(
@@ -103,7 +105,7 @@ namespace AspNetMvc_WeChat_Base.FuncHelper
                     ";filename=\"{0}\"\r\nContent-Type;application/octet-stream\r\n\r\n", fileName));
                 byte[] postHeaderBytes = Encoding.UTF8.GetBytes(strBuilderHeader.ToString());
 
-                FileStream fileStream = new FileStream(path, FileMode.Open, FileAccess.Read);
+                FileStream fileStream = new FileStream(file, FileMode.Open, FileAccess.Read);
                 byte[] array = new byte[fileStream.Length];
                 fileStream.Read(array, 0, array.Length);
                 fileStream.Close();
@@ -130,11 +132,11 @@ namespace AspNetMvc_WeChat_Base.FuncHelper
         }
 
         /// <summary>
-        /// 读取POST传值方式回传回来的值
+        /// 获取图片素材-读取POST传回来的值
         /// </summary>
         /// <param name="url"></param>
         /// <param name="path"></param>
-        public static void PostDownLoad(string url,string path)
+        public static void PostDownLoad(string url,string file)
         {
             Logging.LogService.RecordLog("传值的Url:\n" + url);
             HttpWebRequest webRequest=(HttpWebRequest)WebRequest.Create(new Uri(url));
@@ -156,8 +158,34 @@ namespace AspNetMvc_WeChat_Base.FuncHelper
                         memoryStream.Write(buffer, 0, read);
                     }
                 }
-                File.WriteAllBytes(path, result);
+                File.WriteAllBytes(file, result);
             }
+        }
+
+
+        /// <summary>
+        /// 新增其他永久素材-HttpClient方式传递数据
+        /// </summary>
+        /// <param name="url"></param>
+        /// <param name="path"></param>
+        public static string HttpAddMaterial(string url,string path)
+        {
+            var boundary = "";
+            //使用HttpClient对象实现其他类型素材的上传
+            HttpClient client = new HttpClient();
+            //设置请求包头部
+            client.DefaultRequestHeaders.Add("User-Agent", "KnowledageCenter");
+            client.DefaultRequestHeaders.Remove("Expect");
+            client.DefaultRequestHeaders.Remove("Connection");
+            client.DefaultRequestHeaders.ExpectContinue = false;
+            client.DefaultRequestHeaders.ConnectionClose = true;
+            //设置请求包主体
+
+            //转换图片素材的content_type
+
+            //上传文件
+
+            return string.Empty;
         }
     }
 }
