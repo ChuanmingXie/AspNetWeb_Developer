@@ -20,6 +20,9 @@ using System.Web;
 
 namespace AspNetMvc_WeChat_Base.Model
 {
+    /// <summary>
+    /// 获取素材时提供media_id参数
+    /// </summary>
     public class mediaIDParam
     {
         public string media_id { get; set; }
@@ -70,7 +73,7 @@ namespace AspNetMvc_WeChat_Base.Model
         
 
     /// <summary>
-    /// 上传文件对象定义
+    /// 上传文件对象参数定义
     /// </summary>
     public class WeChatMediaUpload
     {
@@ -93,4 +96,13 @@ namespace AspNetMvc_WeChat_Base.Model
         thumb
     }
 
+    /// <summary>
+    /// 获取永久素材参数(需转化为Json)
+    /// </summary>
+    public class WeChatMediaListInput
+    {
+        public string type { get; set; }
+        public int offset { get; set; }
+        public int count { get; set; }
+    }
 }

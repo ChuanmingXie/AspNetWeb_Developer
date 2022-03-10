@@ -145,11 +145,40 @@ namespace AspNetMvc_WeChat_Base.WeChat
             return result;
         }
         
+        /// <summary>
+        /// 获取永久素材
+        /// </summary>
+        /// <param name="media_id"></param>
+        /// <param name="file"></param>
         public static void GetMediaMaterial(string media_id,string file)
         {
             string url = "https://api.weixin.qq.com/cgi-bin/material/get_material" +
                 "?access_token=" + WeChatTookenService.Access_token;
             HttpService.HttpGetMaterial(url, media_id, file);
+        }
+
+        public static string DeleteMaterial(string media_id)
+        {
+            string url = "https://api.weixin.qq.com/cgi-bin/material/del_material" +
+                "?access_token=" + WeChatTookenService.Access_token;
+            string result = HttpService.Post(url, media_id);
+            return result;
+        }
+
+        public static string GetMaterialCount()
+        {
+            string url = "https://api.weixin.qq.com/cgi-bin/material/get_materialcount" +
+                "?access_token="+WeChatTookenService.Access_token;
+            string result = HttpService.Get(url);
+            return result;
+        }
+
+        public static string GetMaterialList(string param)
+        {
+            string url = "https://api.weixin.qq.com/cgi-bin/material/batchget_material" +
+                "?access_token="+WeChatTookenService.Access_token;
+            string result = HttpService.Post(url, param);
+            return result;
         }
     }
 }

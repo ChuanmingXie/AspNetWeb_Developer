@@ -58,7 +58,7 @@ namespace AspNetMvc_WeChat.Areas.Chapter08.Controllers
         /// <param name="form"></param>
         /// <returns></returns>
         [HttpPost]
-        [ValidateAntiForgeryToken]
+        //[ValidateAntiForgeryToken]
         public ActionResult MediaTemporaryGet(FormCollection form)
         {
             //创建自己获取文件后需要保存到服务器位置的全路径
@@ -196,7 +196,7 @@ namespace AspNetMvc_WeChat.Areas.Chapter08.Controllers
         /// </summary>
         /// <returns></returns>
         [HttpPost]
-        [ValidateAntiForgeryToken]
+        //[ValidateAntiForgeryToken]
         public ActionResult MediaMaterialGet(mediaIDParam param)
         {
             string savePath = Server.MapPath("~/Download/Permanent/");
@@ -219,22 +219,38 @@ namespace AspNetMvc_WeChat.Areas.Chapter08.Controllers
         }
 
 
-        /// <summary>
-        /// 9.删除永久素材
-        /// </summary>
-        /// <returns></returns>
         public ActionResult MediaMaterialDelete()
         {
             return View();
         }
 
+        /// <summary>
+        /// 9.删除永久素材
+        /// </summary>
+        /// <returns></returns>
+        [HttpPost]
+        public ActionResult MediaMaterialDelete(mediaIDParam param)
+        {
+            var mediaJson = JSONHelper.ObjectToJSON(param);
+            WeChatErrorResult result = JSONHelper.JSONToObject<WeChatErrorResult>(WeChatMediaService.DeleteMaterial(mediaJson));
+            ViewBag.deleteResult = result.errcode == "0" ? "删除操作成功" : "删除操作失败";
+            return View();
+        }
 
         /// <summary>
         /// 10.获取素材总数
         /// </summary>
         /// <returns></returns>
+        
         public ActionResult MediaMaterialCount()
         {
+            string resultJson = WeChatMediaService.GetMaterialCount();
+            WeChatMediaCount mediaCount = JSONHelper.JSONToObject<WeChatMediaCount>(resultJson);
+            ViewBag.MediaCount = "您的公众号共有:<br />" +
+                mediaCount.voice_count + "个语音消息<br/>" +
+                mediaCount.video_count + "个视频消息<br />" +
+                mediaCount.image_count + "个图片消息<br />" +
+                mediaCount.news_count + "个图文消息<br />";
             return View();
         }
 
@@ -245,6 +261,25 @@ namespace AspNetMvc_WeChat.Areas.Chapter08.Controllers
         /// <returns></returns>
         public ActionResult MediaMaterialList()
         {
+            WeChatMediaListInput mediaListInput = new WeChatMediaListInput()
+            {
+                count = 10,
+                offset = 0,
+                type = "image"
+            };
+            string paramJson = JSONHelper.ObjectToJSON(mediaListInput);
+            string resultJson = WeChatMediaService.GetMaterialList(paramJson);
+            WeChatMaterialList materialList = JSONHelper.JSONToObject<WeChatMaterialList>(resultJson);
+            ViewBag.listShow = "您的公众号共有: <b>" +
+                materialList.total_count + " </b>个图片素材.其中:<br /><b> " +
+                materialList.item_count + " </b>个素材具体信息被获取:<br /><br />";
+            for (int i = 0; i < materialList.item.Count; i++)
+            {
+                ViewBag.listShow += "素材Id：" + materialList.item[i].media_id + "<br />";
+                ViewBag.listShow += "素材名称：" + materialList.item[i].name + "<br />";
+                ViewBag.listShow += "素材最后更新：" + materialList.item[i].update_time + "<br />";
+                ViewBag.listShow += "url：" + materialList.item[i].url + "<br /><br />";
+            }
             return View();
         }
     }

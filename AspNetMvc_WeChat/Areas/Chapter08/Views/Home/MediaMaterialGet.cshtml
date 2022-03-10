@@ -6,20 +6,20 @@
     <h2>【例8-07】获取永久素材</h2>
 </div>
 <div class="jumbotron">
-    @using (Html.BeginForm("MediaTemporaryGet", "Home", FormMethod.Post))
+    @using (Html.BeginForm("MediaMaterialGet", "Home", FormMethod.Post))
     {
-        @Html.AntiForgeryToken()
+        @*@Html.AntiForgeryToken()*@
         <div class="row">
-            <div class="col-lg-4">
+            <div class="col-md-5">
                 <div class="input-group">
                     <div class="input-group-btn">
                         <h5>Media_Id:&nbsp;&nbsp;&nbsp;</h5>
                     </div>
-                    <div class="input-group-btn" style="width:400px">
+                    <div class="input-group-btn" style="width:260px">
                         @Html.TextBox("media_id", null, new { @class = "form-control" })
                     </div>
                     <div class="input-group-btn">
-                        <input type="submit" name="searchMedia" id="searchMedia" value="获取" class="btn btn-default" />
+                        <input type="submit" name="searchMedia" id="searchMedia" value="获取" class="btn btn-primary" />
                     </div>
                 </div>
             </div>
@@ -27,3 +27,6 @@
     }
 </div>
 
+<div>
+    @Html.ActionLink("返回列表", "Index")
+</div>

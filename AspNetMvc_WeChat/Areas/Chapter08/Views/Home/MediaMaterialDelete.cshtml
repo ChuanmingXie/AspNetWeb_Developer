@@ -1,25 +1,26 @@
 ﻿
 @{
-    ViewBag.Title = "【例8-02】获取临时素材 - Chapter08";
+    ViewBag.Title = "【例8-09】删除永久素材 - Chapter08";
 }
 <div class="jumbotron">
-    <h2>【例8-02】获取临时素材</h2>
+    <h2>【例8-09】删除永久素材</h2>
 </div>
+
 <div class="jumbotron">
-    @using (Html.BeginForm("MediaTemporaryGet", "Home", FormMethod.Post))
+    @ViewBag.deleteResult
+    @using (Html.BeginForm("MediaMaterialDelete", "Home", FormMethod.Post))
     {
-        @*@Html.AntiForgeryToken()*@
         <div class="row">
-            <div class="col-lg-5">
+            <div class="col-md-5">
                 <div class="input-group">
                     <div class="input-group-btn">
-                        <h5>Media_Id:&nbsp;&nbsp;&nbsp;</h5>
+                        <h5>Media_id:&nbsp;&nbsp;&nbsp;</h5>
                     </div>
                     <div class="input-group-btn" style="width:260px">
                         @Html.TextBox("media_id", null, new { @class = "form-control" })
                     </div>
                     <div class="input-group-btn">
-                        <input type="submit" name="searchMedia" id="searchMedia" value="获取" class="btn btn-default" />
+                        <input type="submit" name="deleteMaterial" id="deleteMaterial" value="删除" class="btn btn-primary" />
                     </div>
                 </div>
             </div>
@@ -28,5 +29,5 @@
 </div>
 
 <div>
-    @Html.ActionLink("返回列表", "index")
+    @Html.ActionLink("返回列表","Index")
 </div>

@@ -1,0 +1,15 @@
+﻿
+@{
+    ViewBag.Title = "MediaMaterialList";
+}
+<div class="jumbotron">
+    <h2>MediaMaterialList</h2>
+</div>
+
+<div class="jumbotron">
+    @MvcHtmlString.Create(@ViewBag.listShow)
+</div>
+
+<div>
+    @Html.ActionLink("返回列表","Index")
+</div>

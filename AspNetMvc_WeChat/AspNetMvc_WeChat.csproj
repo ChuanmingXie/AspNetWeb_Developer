@@ -403,6 +403,9 @@
     <Content Include="Areas\Chapter08\Views\Home\MediaPermanentNewImg.cshtml" />
     <Content Include="Areas\Chapter08\Views\Home\MediaMaterialByType.cshtml" />
     <Content Include="Areas\Chapter08\Views\Home\MediaMaterialGet.cshtml" />
+    <Content Include="Areas\Chapter08\Views\Home\MediaMaterialDelete.cshtml" />
+    <Content Include="Areas\Chapter08\Views\Home\MediaMaterialCount.cshtml" />
+    <Content Include="Areas\Chapter08\Views\Home\MediaMaterialList.cshtml" />
     <None Include="Properties\PublishProfiles\IISProfile.pubxml" />
     <None Include="Scripts\jquery-3.4.1-vsdoc.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />

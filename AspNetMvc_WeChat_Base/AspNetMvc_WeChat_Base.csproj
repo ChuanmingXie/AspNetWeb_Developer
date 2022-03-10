@@ -53,6 +53,7 @@
     <Compile Include="Logging\LogService.cs" />
     <Compile Include="Model\WeChatAccess.cs" />
     <Compile Include="Model\WeChatMediaInput.cs" />
+    <Compile Include="Model\WeChatMediaOutput.cs" />
     <Compile Include="Model\WeChatMediaResult.cs" />
     <Compile Include="Model\WeChatMenu.cs" />
     <Compile Include="Model\WeChatMessage.cs" />
