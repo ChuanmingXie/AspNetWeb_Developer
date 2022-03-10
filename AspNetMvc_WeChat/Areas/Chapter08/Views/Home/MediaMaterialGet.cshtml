@@ -1,9 +1,9 @@
 ﻿
 @{
-    ViewBag.Title = "【例8-2】获取临时素材 - Chapter08";
+    ViewBag.Title = "【例8-07】获取永久素材 - Chapter08";
 }
 <div class="jumbotron">
-    <h2>【例8-2】获取临时素材</h2>
+    <h2>【例8-07】获取永久素材</h2>
 </div>
 <div class="jumbotron">
     @using (Html.BeginForm("MediaTemporaryGet", "Home", FormMethod.Post))
@@ -19,7 +19,7 @@
                         @Html.TextBox("media_id", null, new { @class = "form-control" })
                     </div>
                     <div class="input-group-btn">
-                        <input type="submit" name="searchMedia" id="searchMedia" value="获取" class="btn btn-default"/>
+                        <input type="submit" name="searchMedia" id="searchMedia" value="获取" class="btn btn-default" />
                     </div>
                 </div>
             </div>
@@ -27,6 +27,3 @@
     }
 </div>
 
-<div>
-    @Html.ActionLink("返回列表", "index")
-</div>

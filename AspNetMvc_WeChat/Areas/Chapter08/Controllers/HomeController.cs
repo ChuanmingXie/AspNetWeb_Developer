@@ -37,8 +37,8 @@ namespace AspNetMvc_WeChat.Areas.Chapter08.Controllers
              */
             if (!string.IsNullOrEmpty(mediaUpload.uploadFile.FileName))
             {
-                string path = Server.MapPath("/Media");
-                 string filePath = WeChatMediaService.UPloadPath(mediaUpload.uploadFile, path);
+                string path = Server.MapPath("/Media/temporary");
+                string filePath = WeChatMediaService.UPloadPath(mediaUpload.uploadFile, path);
                 string mediaJson = WeChatMediaService.AddTemporaryMedia("image", filePath);
                 WeChatMediaUpResult mediaResult = JSONHelper.JSONToObject<WeChatMediaUpResult>(mediaJson);
                 ViewBag.mediaTemporaryID = "Media_id:" + mediaResult.Media_id;
@@ -58,15 +58,16 @@ namespace AspNetMvc_WeChat.Areas.Chapter08.Controllers
         /// <param name="form"></param>
         /// <returns></returns>
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public ActionResult MediaTemporaryGet(FormCollection form)
         {
             //创建自己获取文件后需要保存到服务器位置的全路径
-            string mediaid = form["Mediaid"];
-            string savePath = Server.MapPath("~/Download/");
+            string mediaid = form["media_id"];
+            string savePath = Server.MapPath("~/Download/temporary/");
             string fileName = DateTime.Now.ToString("yyyyMMddHHmmddfff") + ".jpg";
             string filepath = WeChatMediaService.GetFilePath(savePath, fileName);
             WeChatMediaService.GetTemporaryMedia(mediaid, filepath);
-            Response.Redirect("~/Download/" + fileName);
+            Response.Redirect("~/Download/temporary/" + fileName);
             return View();
         }
 
@@ -112,8 +113,8 @@ namespace AspNetMvc_WeChat.Areas.Chapter08.Controllers
              */
             if (!string.IsNullOrEmpty(mediaUpload.uploadFile.FileName))
             {
-                string path = Server.MapPath("/Media");
-                string filePath= WeChatMediaService.UPloadPath(Request.Files[0], path);
+                string path = Server.MapPath("/Media/Permanent");
+                string filePath = WeChatMediaService.UPloadPath(Request.Files[0], path);
                 string mediaJson = WeChatMediaService.AddMediaPermanentCover("thumb", filePath);
                 WeChatMediaUpResult mediaResult = JSONHelper.JSONToObject<WeChatMediaUpResult>(mediaJson);
                 ViewBag.mediaThumbCoverID = "Media_id:" + mediaResult.Media_id;
@@ -141,8 +142,8 @@ namespace AspNetMvc_WeChat.Areas.Chapter08.Controllers
              * mediaUpload.uploadFile.FileName 替代
              */
             if (!string.IsNullOrEmpty(mediaUpload.uploadFile.FileName))
-            { 
-                string path = Server.MapPath("~/Media");
+            {
+                string path = Server.MapPath("~/Media/Permanent");
                 /*
                  * mediaUpload.uploadFile 等价于 Request.Files[0] 均需要指定为 HttpPostedFileBase 对象
                  */
@@ -156,12 +157,12 @@ namespace AspNetMvc_WeChat.Areas.Chapter08.Controllers
 
         public ActionResult MediaMaterialByType()
         {
-            ViewBag.typeVideo = true;
+            ViewBag.typeVideo = false;
             return View();
         }
 
         /// <summary>
-        /// 新增其他永久素材
+        /// 6.新增其他永久素材
         /// </summary>
         /// <returns></returns>
         [HttpPost]
@@ -174,30 +175,42 @@ namespace AspNetMvc_WeChat.Areas.Chapter08.Controllers
             */
             if (!string.IsNullOrEmpty(mediaUpload.uploadFile.FileName))
             {
-                string path = Server.MapPath("~/Media");
-
+                string path = Server.MapPath("~/Media/Permanent");
                 string filePath = WeChatMediaService.UPloadPath(mediaUpload.uploadFile, path);
-                string mediaJson = WeChatMediaService.AddMediaMaterial("",filePath);
+                string mediaJson = WeChatMediaService.AddMediaMaterial(mediaUpload.materialType.ToString(), filePath);
                 WeChatAddMaterialResult uploadimgResult = JSONHelper.JSONToObject<WeChatAddMaterialResult>(mediaJson);
-                ViewBag.media_id = uploadimgResult.media_id;
-                ViewBag.url = uploadimgResult.url;
+                ViewBag.media_id = "media_id:" + uploadimgResult.media_id;
+                ViewBag.url = "url" + uploadimgResult.url;
             }
+            ViewBag.typeVideo = true;
             return View();
         }
 
 
-        /// <summary>
-        /// 获取永久素材
-        /// </summary>
-        /// <returns></returns>
         public ActionResult MediaMaterialGet()
         {
             return View();
         }
+        /// <summary>
+        /// 7.获取永久素材
+        /// </summary>
+        /// <returns></returns>
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult MediaMaterialGet(mediaIDParam param)
+        {
+            string savePath = Server.MapPath("~/Download/Permanent/");
+            string fileName = DateTime.Now.ToString("yyyyMMddHHmmss") + ".jpg";
+            string filePath = WeChatMediaService.GetFilePath(savePath, fileName);
+            string mediaJson = JSONHelper.ObjectToJSON(param);
+            WeChatMediaService.GetMediaMaterial(mediaJson, filePath);
+            Response.Redirect("~/Download/Permanent/" + fileName);
+            return View();
+        }
 
 
         /// <summary>
-        /// 修改永久素材
+        /// 8.修改永久素材
         /// </summary>
         /// <returns></returns>
         public ActionResult MediaMaterialUpdate()
@@ -207,7 +220,7 @@ namespace AspNetMvc_WeChat.Areas.Chapter08.Controllers
 
 
         /// <summary>
-        /// 删除永久素材
+        /// 9.删除永久素材
         /// </summary>
         /// <returns></returns>
         public ActionResult MediaMaterialDelete()
@@ -217,7 +230,7 @@ namespace AspNetMvc_WeChat.Areas.Chapter08.Controllers
 
 
         /// <summary>
-        /// 获取素材总数
+        /// 10.获取素材总数
         /// </summary>
         /// <returns></returns>
         public ActionResult MediaMaterialCount()
@@ -227,7 +240,7 @@ namespace AspNetMvc_WeChat.Areas.Chapter08.Controllers
 
 
         /// <summary>
-        /// 获取素材列表
+        /// 11.获取素材列表
         /// </summary>
         /// <returns></returns>
         public ActionResult MediaMaterialList()

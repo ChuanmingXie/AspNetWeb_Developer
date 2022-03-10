@@ -144,5 +144,12 @@ namespace AspNetMvc_WeChat_Base.WeChat
             string result = HttpService.HttpAddMaterial(url, file);
             return result;
         }
+        
+        public static void GetMediaMaterial(string media_id,string file)
+        {
+            string url = "https://api.weixin.qq.com/cgi-bin/material/get_material" +
+                "?access_token=" + WeChatTookenService.Access_token;
+            HttpService.HttpGetMaterial(url, media_id, file);
+        }
     }
 }

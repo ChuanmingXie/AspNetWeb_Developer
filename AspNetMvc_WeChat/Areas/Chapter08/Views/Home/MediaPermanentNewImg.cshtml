@@ -8,6 +8,7 @@
 </div>
 <div class="jumbotron">
     @ViewBag.uploadImgUrl
+    <br />
     @using (Html.BeginForm("MediaPermanentNewImg", "Home", FormMethod.Post, new { enctype = "multipart/form-data" }))
     {
         @Html.AntiForgeryToken()

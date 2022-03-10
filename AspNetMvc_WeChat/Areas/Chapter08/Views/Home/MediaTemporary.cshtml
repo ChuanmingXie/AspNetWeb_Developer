@@ -6,10 +6,8 @@
     <h2>【例8-1】新增临时素材</h2>
 </div>
 <div class="jumbotron">
-    @if (@ViewBag.mediaTemporaryID != "")
-    {
-        @ViewBag.mediaTemporaryID
-    }
+    @ViewBag.mediaTemporaryID
+    <br />
     @using (Html.BeginForm("MediaTemporary", "Home", FormMethod.Post, new { enctype = "multipart/form-data" }))
     {
         @Html.AntiForgeryToken()

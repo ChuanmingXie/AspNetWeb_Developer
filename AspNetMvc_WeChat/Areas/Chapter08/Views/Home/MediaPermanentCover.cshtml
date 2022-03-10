@@ -8,6 +8,7 @@
 </div>
 <div class="jumbotron">
     @ViewBag.mediaThumbCoverID
+    <br />
     @using (Html.BeginForm("MediaPermanentCover", "Home", FormMethod.Post, new { enctype = "multipart/from-data" }))
     {
         @Html.AntiForgeryToken()

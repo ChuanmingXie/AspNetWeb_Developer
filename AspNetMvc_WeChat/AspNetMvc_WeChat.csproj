@@ -402,6 +402,7 @@
     <Content Include="Areas\Chapter08\Views\Home\MediaPermanentCover.cshtml" />
     <Content Include="Areas\Chapter08\Views\Home\MediaPermanentNewImg.cshtml" />
     <Content Include="Areas\Chapter08\Views\Home\MediaMaterialByType.cshtml" />
+    <Content Include="Areas\Chapter08\Views\Home\MediaMaterialGet.cshtml" />
     <None Include="Properties\PublishProfiles\IISProfile.pubxml" />
     <None Include="Scripts\jquery-3.4.1-vsdoc.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
