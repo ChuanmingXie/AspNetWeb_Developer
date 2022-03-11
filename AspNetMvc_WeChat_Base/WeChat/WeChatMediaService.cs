@@ -24,22 +24,6 @@ namespace AspNetMvc_WeChat_Base.WeChat
 {
     public static class WeChatMediaService
     {
-        /*
-
-                <li>@Html.ActionLink("【例8-1】新增临时素材", "MediaTemporary", "Home", new { area = "Chapter08" }, null)</li>
-                <li>@Html.ActionLink("【例8-2】获取临时素材", "MediaTemporaryGet", "Home", new { area = "Chapter08" }, null)</li>
-                <li>@Html.ActionLink("【例8-3】新增永久素材封面", "MediaPermanentCover", "Home", new { area = "Chapter08" })</li>
-                <li>@Html.ActionLink("【例8-4】新增永久素材", "MediaPermanent", "Home", new { area = "Chapter08" }, null)</li>
-                <li>@Html.ActionLink("【例8-5】新增永久图文素材", "MediaPermanentNewImg", "Home", new { area = "Chapter08" }, null)</li>
-                <li>@Html.ActionLink("【例8-6】新增其他永久素材", "MediaMaterial", "Home", new { area = "Chapter08" }, null)</li>
-                <li>@Html.ActionLink("【例8-7】获取永久素材", "MediaMaterialGet", "Home", new { area = "Chapter08" }, null)</li>
-                <li>@Html.ActionLink("【例8-8】修改永久素材", "MediaPermanentUpdate", "Home", new { area = "Chapter08" }, null)</li>
-                <li>@Html.ActionLink("【例8-9】删除永久素材", "MediaMaterialDelete", "Home", new { area = "Chapter08" }, null)</li>
-                <li>@Html.ActionLink("【例8-10】获取素材总数", "MediaMaterialCount", "Home", new { area = "Chapter08" }, null)</li>
-                <li>@Html.ActionLink("【例8-11】获取素材列表", "MediaMaterialBatch", "Home", new { area = "Chapter08" }, null)</li>
-
-         */
-
         /// <summary>
         /// 创建自己上传文件后需要保存到服务器位置的全路径
         /// </summary>
@@ -112,7 +96,7 @@ namespace AspNetMvc_WeChat_Base.WeChat
         /// <returns>mediaid</returns>
         public static string AddMediaPermanent(string content)
         {
-            string url = "https://api.weixin.qq.com/cgi-bin/material/add_news" +
+            string url = " https://api.weixin.qq.com/cgi-bin/material/add_news" +
                 "?access_token=" + WeChatTookenService.Access_token;
             string result = HttpService.Post(url, content);
             return result;
@@ -144,13 +128,13 @@ namespace AspNetMvc_WeChat_Base.WeChat
             string result = HttpService.HttpAddMaterial(url, file);
             return result;
         }
-        
+
         /// <summary>
         /// 获取永久素材
         /// </summary>
         /// <param name="media_id"></param>
         /// <param name="file"></param>
-        public static void GetMediaMaterial(string media_id,string file)
+        public static void GetMediaMaterial(string media_id, string file)
         {
             string url = "https://api.weixin.qq.com/cgi-bin/material/get_material" +
                 "?access_token=" + WeChatTookenService.Access_token;
@@ -168,7 +152,7 @@ namespace AspNetMvc_WeChat_Base.WeChat
         public static string GetMaterialCount()
         {
             string url = "https://api.weixin.qq.com/cgi-bin/material/get_materialcount" +
-                "?access_token="+WeChatTookenService.Access_token;
+                "?access_token=" + WeChatTookenService.Access_token;
             string result = HttpService.Get(url);
             return result;
         }
@@ -176,7 +160,7 @@ namespace AspNetMvc_WeChat_Base.WeChat
         public static string GetMaterialList(string param)
         {
             string url = "https://api.weixin.qq.com/cgi-bin/material/batchget_material" +
-                "?access_token="+WeChatTookenService.Access_token;
+                "?access_token=" + WeChatTookenService.Access_token;
             string result = HttpService.Post(url, param);
             return result;
         }

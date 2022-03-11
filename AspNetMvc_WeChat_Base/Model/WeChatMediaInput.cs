@@ -36,7 +36,7 @@ namespace AspNetMvc_WeChat_Base.Model
         [Display(Name ="图文标题")]
         public string title { get; set; }
 
-        [Display(Name = "封面Id(需先上传封面)")]
+        [Display(Name = "封面thumb Id(需先上传封面)")]
         public string thumb_media_id { get; set; }
 
         [Display(Name = "作者")]
@@ -45,14 +45,18 @@ namespace AspNetMvc_WeChat_Base.Model
         [Display(Name = "数字签名")]
         public string digest { get; set; }
 
-        [Display(Name = "是否显示封面")]
-        public string show_cover_pic { get; set; }
+        //[Display(Name = "是否显示封面")]
+        //public int show_cover_pic { get; set; }
 
         [Display(Name = "内容")]
         public string content { get; set; }
 
         [Display(Name = "图文援引")]
         public string content_source_url { get; set; }
+
+        public int need_open_comment { get; set; } = 1;
+
+        public int only_fans_can_comment { get; set; } = 1;
 
     }
 

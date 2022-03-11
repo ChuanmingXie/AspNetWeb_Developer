@@ -1,0 +1,62 @@
+﻿@model AspNetMvc_WeChat_Base.Model.SendMessageParam
+@using AspNetMvc_WeChat_Base.Model
+@{
+    ViewBag.Title = "【例5-02】向指定群发消息OPENID -Chapter05";
+}
+@section scripts{
+    <script>
+        $(function () {
+            $("#msgtype").change(function () {
+                if ($(this).val == "text") {
+                    $("#textMsg").show();
+                    $("#mediaMsg").hide();
+                } else {
+                    $("#textMsg").hide();
+                    $("#mediaMsg").show();
+                }
+            })
+        })
+    </script>
+    }
+<div class="jumbotron">
+    <h2>【例5-02】向指定群发消息OPENID</h2>
+</div>
+<div class="jumbotron">
+    @ViewBag.msgResult
+    <br />
+    @using (Html.BeginForm("SendByOpenID", "Home", FormMethod.Post))
+    {
+<div class="form-horizontal">
+    <div class="form-group">
+        @Html.LabelFor(m => m.msgtype, new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.DropDownListFor(m => m.msgtype, new SelectList(Enum.GetValues(typeof(MessageType))), htmlAttributes: new { @class = "form-control" })
+        </div>
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.touser, new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.TextAreaFor(m => m.touser, new { @class = "form-control" })
+        </div>
+    </div>
+    <div class="form-group" id="textMsg">
+        @Html.LabelFor(m => m.content, new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.TextAreaFor(m => m.content, new { @class = "form-control" })
+        </div>
+    </div>
+    <div class="form-group" id="mediaMsg">
+        @Html.LabelFor(m => m.media_id, new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(m => m.media_id, new { @class = "form-control" })
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="col-md-10 col-md-offset-2">
+            <input type="submit" name="submitMsg" value="提交" class="btn btn-primary"/>
+        </div>
+    </div>
+</div>
+    }
+</div>
+

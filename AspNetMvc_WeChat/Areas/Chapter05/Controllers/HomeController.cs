@@ -3,6 +3,7 @@ using AspNetMvc_WeChat_Base.Logging;
 using AspNetMvc_WeChat_Base.Model;
 using AspNetMvc_WeChat_Base.WeChat;
 using System;
+using System.Collections.Generic;
 using System.IO;
 using System.Text;
 using System.Web.Mvc;
@@ -14,12 +15,12 @@ namespace AspNetMvc_WeChat.Areas.Chapter05.Controllers
         // GET: Chapter05/Home
         public ActionResult Index()
         {
-            LogService.RecordLog("微信平台数据参数:\n"+ Request.Url);
+            LogService.RecordLog("微信平台数据参数:\n" + Request.Url);
             WeChatBeginAPI beginAPI = new WeChatBeginAPI
             {
-                SignatureOrigin = Request.QueryString["signature"],
-                Timestamp = Request.QueryString["timestamp"],
-                Nonce = Request.QueryString["nonce"],
+                SignatureOrigin = !string.IsNullOrEmpty(Request.QueryString["signature"]) ? Request.QueryString["signature"] : "",
+                Timestamp = !string.IsNullOrEmpty(Request.QueryString["timestamp"])?Request.QueryString["timestamp"] :"",
+                Nonce = !string.IsNullOrEmpty(Request.QueryString["nonce"]) ? Request.QueryString["nonce"] : "",
                 Encrypt_Type = (!string.IsNullOrEmpty(Request.QueryString["encrypt_type"]) ? Request.QueryString["encrypt_type"] : ""),
                 Msg_SignatureOrigin = (!string.IsNullOrEmpty(Request.QueryString["msg_signature"]) ? Request.QueryString["msg_signature"] : ""),
                 EchoStr = (!string.IsNullOrEmpty(Request.QueryString["echoStr"]) ? Request.QueryString["echoStr"] : ""),
@@ -105,6 +106,106 @@ namespace AspNetMvc_WeChat.Areas.Chapter05.Controllers
                 return string.Empty;
             }
             return stringBuilder.ToString();
+        }
+
+        public ActionResult SendByGroupID()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult SendByGroupID(SendMessageParam messageParam)
+        {
+            string paramJson = string.Empty;
+            switch (messageParam.msgtype)
+            {
+                case MessageType.text:
+                    SendMsgGroup sendTextMsg = new SendTextByGroupID()
+                    {
+                        filter = new GroupFilter()
+                        {
+                            tag_id = messageParam.group_id,
+                            is_to_all = messageParam.is_to_all
+                        },
+                        text = new TextParam()
+                        {
+                            content = messageParam.content
+                        },
+                        msgtype = messageParam.msgtype.ToString()
+                    };
+                    paramJson = JSONHelper.ObjectToJSON(sendTextMsg); break;
+                case MessageType.mpnews:
+                case MessageType.voice:
+                case MessageType.image:
+                case MessageType.mpvideo:
+                case MessageType.video:
+                    SendMsgGroup sendMediaMsg = new SendMediaByGroupID()
+                    {
+                        filter = new GroupFilter()
+                        {
+                            is_to_all = messageParam.is_to_all,
+                            tag_id = messageParam.group_id
+                        },
+                        mediaType = new mediaIDParam()
+                        {
+                            media_id = messageParam.media_id
+                        },
+                        msgtype = messageParam.msgtype.ToString()
+                    };
+                    paramJson = JSONHelper.ObjectToJSON(sendMediaMsg).Replace("mediaType", messageParam.msgtype.ToString()); break;
+            }
+            string resultJson = WeChatMessageService.SendMsgByGroupID(paramJson);
+            WeChatErrorResult errorResult = JSONHelper.JSONToObject<WeChatErrorResult>(resultJson);
+            ViewBag.msgResult = !string.IsNullOrEmpty(errorResult.errmsg) ? "群发失败 " + errorResult.errcode + " " + errorResult.errmsg : "群发成功";
+            return View();
+        }
+
+
+        public ActionResult SendByOpenID()
+        {
+            return View();
+        }
+        [HttpPost]
+        public ActionResult SendByOpenID(SendMessageParam messageParam)
+        {
+            string paramJson = string.Empty;
+            var OpenList = new List<string>();
+            OpenList.AddRange(messageParam.touser.Split(new[] { ';', ' ', ',', '\n' }, StringSplitOptions.RemoveEmptyEntries));
+            switch (messageParam.msgtype)
+            {
+                case MessageType.text:
+                    SendMsgGroup sendText = new SendTextByOpenID()
+                    {
+                        touser = OpenList,
+                        text = new TextParam()
+                        {
+                            content = messageParam.content
+                        },
+                        msgtype = messageParam.msgtype.ToString()
+                    };
+                    paramJson = JSONHelper.ObjectToJSON(sendText); break;
+                case MessageType.image:
+                case MessageType.video:
+                case MessageType.voice:
+                case MessageType.mpnews:
+                case MessageType.mpvideo:
+                    SendMsgGroup msgMedia = new SendMediaByOpenID()
+                    {
+                        touser = messageParam.TouserList,
+                        mediaType = new mediaIDParam()
+                        {
+                            media_id = messageParam.media_id
+                        },
+                        msgtype = messageParam.msgtype.ToString()
+                    };
+                    paramJson = JSONHelper.ObjectToJSON(msgMedia)
+                        .Replace("mediaType", MessageType.mpvideo.ToString());
+                    break;
+            }
+            string resultJson = WeChatMessageService.SendMsgByOpenID(paramJson);
+            WeChatErrorResult errorResult = JSONHelper.JSONToObject<WeChatErrorResult>(resultJson);
+            ViewBag.msgResult = !string.IsNullOrEmpty(errorResult.errmsg) ? "群发失败" + errorResult.errmsg : "群发成功";
+            return View();
         }
     }
 }

@@ -13,6 +13,7 @@
 using AspNetMvc_WeChat_Base.Logging;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -20,6 +21,9 @@ using System.Xml;
 
 namespace AspNetMvc_WeChat_Base.Model
 {
+    /// <summary>
+    /// 接收消息对象操作
+    /// </summary>
     public class WeChatMessage
     {
         /// <summary>
@@ -240,4 +244,145 @@ namespace AspNetMvc_WeChat_Base.Model
         }
 
     }
+
+    public class SendMessageParam
+    {
+        [Display(Name = "是否群发给所有粉丝")]
+        public bool is_to_all { get; set; }
+
+        [Display(Name = "指定群发的用户编号")]
+        public int group_id { get; set; }
+
+        private List<string> touserList = new List<string>();
+        public List<string> TouserList
+        {
+            get
+            {
+                touserList.AddRange(touser.Split(new[] { ',', ';', '\n', ' ' }, StringSplitOptions.RemoveEmptyEntries));
+                return touserList;
+            }
+        }
+        [Display(Name = "指定群发的用户微信号")]
+        public string touser { get; set; }
+        [Display(Name = "指定群发的文本内容")]
+        public string content { get; set; }
+
+        [Display(Name = "指定群发的媒体编号")]
+        public string media_id { get; set; }
+
+        [Display(Name = "选择发送的数据类型")]
+        public MessageType msgtype { get; set; }
+    }
+    public enum MessageType
+    {
+        text,
+        mpnews,
+        voice,
+        image,
+        mpvideo,
+        video,
+    }
+
+    public class SendMsgGroup { }
+
+    /// <summary>
+    /// 群发 语音|视频|图文 消息-group_id方式
+    /// </summary>
+    public class SendMediaByGroupID : SendMsgGroup
+    {
+        /// <summary>
+        /// 指定群发的过滤条件
+        /// </summary>
+        public GroupFilter filter { get; set; }
+
+        /// <summary>
+        /// 媒体消息media_id 
+        /// (需再转成JSON后 将mediaType替换为响应的 mpnews|voice|image|mpvideo|video)
+        /// </summary>
+        public mediaIDParam mediaType { get; set; }
+
+        /// <summary>
+        /// 指定发送消息的类型
+        /// </summary>
+        public string msgtype { get; set; }
+    }
+
+    /// <summary>
+    /// 群发 文本 消息-group_id
+    /// </summary>
+    public class SendTextByGroupID : SendMsgGroup
+    {
+        /// <summary>
+        /// 指定群发的过滤条件
+        /// </summary>
+        public GroupFilter filter { get; set; }
+
+        /// <summary>
+        /// 文本消息 text
+        /// </summary>
+        public TextParam text { get; set; }
+
+        /// <summary>
+        /// 指定发送消息的类型
+        /// </summary>
+        public string msgtype { get; set; }
+    }
+
+    /// <summary>
+    /// 指定群发的过滤条件
+    /// </summary>
+    public class GroupFilter
+    {
+        /// <summary>
+        /// 是否群发给全部粉丝
+        /// </summary>
+        public bool is_to_all { get; set; }
+
+        /// <summary>
+        /// 指定群发的用户组编号
+        /// </summary>
+
+        public int tag_id { get; set; }
+    }
+
+
+    /// <summary>
+    /// 群发 语音|视频|图文 消息-OPENID方式
+    /// </summary>
+    public class SendMediaByOpenID : SendMsgGroup
+    {
+        /// <summary>
+        /// 指定消息接收者,最少连个，最多1000个
+        /// </summary>
+        public List<string> touser { get; set; }
+
+        /// <summary>
+        /// 媒体消息 media_id
+        /// (需再转成JSON后 将mediaType替换为响应的 mpnews|voice|image|mpvideo|video)
+        /// </summary>
+        public mediaIDParam mediaType { get; set; }
+        public string msgtype { get; set; }
+    }
+
+    /// <summary>
+    /// 群发 文本 消息-OPEN方式
+    /// </summary>
+    public class SendTextByOpenID : SendMsgGroup
+    {
+        public List<string> touser { get; set; }
+        public TextParam text { get; set; }
+        public string msgtype { get; set; }
+    }
+
+    /// <summary>
+    /// 指定发送的文本消息
+    /// </summary>
+    public class TextParam
+    {
+        /// <summary>
+        /// 发送的文本消息内容
+        /// </summary>
+        public string content { get; set; }
+    }
 }
+

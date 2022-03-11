@@ -26,17 +26,17 @@ namespace AspNetMvc_WeChat_Base.Model
         /// <summary>
         /// 新增素材的类型
         /// </summary>
-        public string Type { get; set; }
+        public string type { get; set; }
 
         /// <summary>
         /// 新增素材的唯一标识
         /// </summary>
-        public string Media_id { get; set; }
+        public string media_id { get; set; }
 
         /// <summary>
         /// 新增素材的时间戳
         /// </summary>
-        public int Created_at { get; set; }
+        public int created_at { get; set; }
     }
 
     /// <summary>
@@ -47,17 +47,17 @@ namespace AspNetMvc_WeChat_Base.Model
         /// <summary>
         /// 
         /// </summary>
-        public string Type { get; set; }
+        public string type { get; set; }
 
         /// <summary>
         /// 新增封面素材的唯一标识
         /// </summary>
-        public string Thumb_media_id { get; set; }
+        public string thumb_media_id { get; set; }
 
         /// <summary>
         /// 新增素材的时间戳
         /// </summary>
-        public int Created_at { get; set; }
+        public int created_at { get; set; }
     }
 
     /// <summary>

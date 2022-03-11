@@ -41,7 +41,7 @@ namespace AspNetMvc_WeChat.Areas.Chapter08.Controllers
                 string filePath = WeChatMediaService.UPloadPath(mediaUpload.uploadFile, path);
                 string mediaJson = WeChatMediaService.AddTemporaryMedia("image", filePath);
                 WeChatMediaUpResult mediaResult = JSONHelper.JSONToObject<WeChatMediaUpResult>(mediaJson);
-                ViewBag.mediaTemporaryID = "Media_id:" + mediaResult.Media_id;
+                ViewBag.mediaTemporaryID = "Media_id:" + mediaResult.media_id;
             }
             return View();
         }
@@ -83,14 +83,12 @@ namespace AspNetMvc_WeChat.Areas.Chapter08.Controllers
         /// <returns></returns>
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult MediaPermanentNews([Bind(Include = "title," +
-            "thum_media_Id,author,digest,show_cover_pic,content," +
-            "content_source_url")] WeChatMediaArticle article)
+        public ActionResult MediaPermanentNews(WeChatMediaArticle article)
         {
-            string modelArticle = "{\"articeles\":[" + JSONHelper.ObjectToJSON(article) + "]}";
+            string modelArticle = "{\"articles\":[" + JSONHelper.ObjectToJSON(article) + "]}";
             string mediaJson = WeChatMediaService.AddMediaPermanent(modelArticle);
             WeChatMediaUpResult mediaUpResult = JSONHelper.JSONToObject<WeChatMediaUpResult>(mediaJson);
-            ViewBag.mediaPermanentID = "Media_id:" + mediaUpResult.Media_id;
+            ViewBag.mediaPermanentID = "Media_id:" + mediaUpResult.media_id;
             return View();
         }
 
@@ -116,8 +114,8 @@ namespace AspNetMvc_WeChat.Areas.Chapter08.Controllers
                 string path = Server.MapPath("/Media/Permanent");
                 string filePath = WeChatMediaService.UPloadPath(Request.Files[0], path);
                 string mediaJson = WeChatMediaService.AddMediaPermanentCover("thumb", filePath);
-                WeChatMediaUpResult mediaResult = JSONHelper.JSONToObject<WeChatMediaUpResult>(mediaJson);
-                ViewBag.mediaThumbCoverID = "Media_id:" + mediaResult.Media_id;
+                WeChatThumbReuslt mediaResult = JSONHelper.JSONToObject<WeChatThumbReuslt>(mediaJson);
+                ViewBag.mediaThumbCoverID = "Media_id:" + mediaResult.thumb_media_id;
             }
             return View();
 

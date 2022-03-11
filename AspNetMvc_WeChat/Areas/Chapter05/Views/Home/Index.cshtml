@@ -6,7 +6,13 @@
     <h2>Chapter05: 消息接口</h2>
 </div>
 <div class="jumbotron">
-    @Html.ActionLink("【例5-1】向所有用户群发文本(groupid=0)", "SendAll")
+    <ul>
+        <li>@Html.ActionLink("【例5-01】向用户群发消息 - group_id", "SendByGroupID", "Home", new { area = "Chapter05" })</li>
+        <li>@Html.ActionLink("【例5-02】向指定群发消息 - OPENID", "SendByOpenID", "Home", new { area = "Chapter05" })</li>
+    </ul>
+
+</div>
+<div class="jumbotron">
     <hr />
     <dl class="dl-horizontal">
         <dt>返回状态</dt>

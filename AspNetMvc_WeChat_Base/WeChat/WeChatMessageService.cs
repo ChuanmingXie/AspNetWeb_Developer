@@ -10,6 +10,7 @@
 *作用描述:根据数据类型的不同返回不同的接口调试日志信息
 *Copyright @ Chuanming 2022. All rights reserved
 ******************************************************************************/
+using AspNetMvc_WeChat_Base.FuncHelper;
 using AspNetMvc_WeChat_Base.Logging;
 using AspNetMvc_WeChat_Base.Model;
 using System;
@@ -118,18 +119,18 @@ namespace AspNetMvc_WeChat_Base.WeChat
         }
 
         /// <summary>
-        /// 用于根据粉丝的留言测试回复消息
+        /// 用于根据粉丝的留言测试回复固定消息
         /// </summary>
         /// <param name="messageType"></param>
         public static void ReplyMessage(WeChatMessage weChatData)
         {
             switch (weChatData.Content)
             {
-                case "文本":SendTextMessage(weChatData.FromUserName, "您好,新时代中国特色社会主义国家永远是人民群众的国家"); break;
-                case "图片":SendImageMessage(weChatData.FromUserName, "Vl8EK2Lavr0p20sWiCpu1mEiGB00AwZK60Xzv9z3ByNAGv_xwClGmWDES2Q8Q6Sh"); break;
-                case "语音": SendVoiceMessage(weChatData.FromUserName, ""); break;
-                case "视频":SendVideoMessage(weChatData.FromUserName, "", "视频", "回复的视频"); break;
-                case "音乐":SendMusicMessage(weChatData.FromUserName, "九州同", "中国风音乐"
+                case "文本": ReplyTextMessage(weChatData.FromUserName, "您好,新时代中国特色社会主义国家永远是人民群众的国家"); break;
+                case "图片": ReplayImageMessage(weChatData.FromUserName, "Vl8EK2Lavr0p20sWiCpu1mEiGB00AwZK60Xzv9z3ByNAGv_xwClGmWDES2Q8Q6Sh"); break;
+                case "语音": ReplayVoiceMessage(weChatData.FromUserName, "Vl8EK2Lavr0p20sWiCpu1mEiGB00AwZK60Xzv9z3ByNAGv_xwClGmWDES2Q8Q6Sh"); break;
+                case "视频": ReplayVideoMessage(weChatData.FromUserName, "Vl8EK2Lavr0p20sWiCpu1mEiGB00AwZK60Xzv9z3ByNAGv_xwClGmWDES2Q8Q6Sh", "视频", "回复的视频"); break;
+                case "音乐": ReplayMusicMessage(weChatData.FromUserName, "九州同", "中国风音乐"
                     , "http://101.132.152.252/Media/%E4%B9%9D%E5%B7%9E%E5%90%8C.mp3"
                     , "http://101.132.152.252/Media/%E4%B9%9D%E5%B7%9E%E5%90%8C.mp3"
                     , "zetp9PuX5LisLjqXI8ZKHOiQ2Sr7uB6U6MbtWQK2QEZzcflSSDMEjnopEIb19Nwj"); break;
@@ -139,7 +140,7 @@ namespace AspNetMvc_WeChat_Base.WeChat
         /// <summary>
         /// 发送文本消息
         /// </summary>
-        public static void SendTextMessage(string toUserName, string content)
+        public static void ReplyTextMessage(string toUserName, string content)
         {
             string FromUserName = "gh_ec5776f68745";
             string xmlMsg = "<xml>" +
@@ -157,7 +158,7 @@ namespace AspNetMvc_WeChat_Base.WeChat
         /// </summary>
         /// <param name="toUserName"></param>
         /// <param name="media_id"></param>
-        public static void SendImageMessage(string toUserName, string media_id)
+        public static void ReplayImageMessage(string toUserName, string media_id)
         {
             string FromUserName = "gh_ec5776f68745";
             string xmlMsg = "<xml>" +
@@ -175,7 +176,7 @@ namespace AspNetMvc_WeChat_Base.WeChat
         /// </summary>
         /// <param name="toUserName"></param>
         /// <param name="media_id"></param>
-        public static void SendVoiceMessage(string toUserName, string media_id)
+        public static void ReplayVoiceMessage(string toUserName, string media_id)
         {
             string FromUserName = "gh_ec5776f68745";
             string xmlMsg = "<xml>" +
@@ -195,7 +196,7 @@ namespace AspNetMvc_WeChat_Base.WeChat
         /// <param name="media_id"></param>
         /// <param name="title"></param>
         /// <param name="description"></param>
-        public static void SendVideoMessage(string toUserName, string media_id
+        public static void ReplayVideoMessage(string toUserName, string media_id
             , string title, string description)
         {
             string FromUserName = "gh_ec5776f68745";
@@ -222,7 +223,7 @@ namespace AspNetMvc_WeChat_Base.WeChat
         /// <param name="musicUrl"></param>
         /// <param name="hQMusicUrl"></param>
         /// <param name="thumbMedia"></param>
-        public static void SendMusicMessage(string toUserName, string title
+        public static void ReplayMusicMessage(string toUserName, string title
             , string description, string musicUrl, string hQMusicUrl, string thumbMedia)
         {
             string FromUserName = "gh_ec5776f68745";
@@ -258,14 +259,25 @@ namespace AspNetMvc_WeChat_Base.WeChat
         /// <param name="xmlMsg"></param>
         private static void SendMessage(string xmlMsg)
         {
-            LogService.RecordLog("回复消息:\n"+ xmlMsg);
+            LogService.RecordLog("回复消息:\n" + xmlMsg);
             HttpContext httpContext = HttpContext.Current;
             httpContext.Response.Write(xmlMsg);
         }
 
-        public static void SendTextByGroup(int groupid,string content)
+        public static string SendMsgByGroupID(string paramJson)
         {
-            string url = "";
+            string url = "https://api.weixin.qq.com/cgi-bin/message/mass/sendall" +
+                "?access_token="+WeChatTookenService.Access_token;
+            string result = HttpService.Post(url, paramJson);
+            return result;
+        }
+
+        public static string SendMsgByOpenID(string paramJson)
+        {
+            string url = "https://api.weixin.qq.com/cgi-bin/message/mass/send" +
+                "?access_token=" + WeChatTookenService.Access_token;
+            string result = HttpService.Post(url, paramJson);
+            return result;
         }
     }
 }
