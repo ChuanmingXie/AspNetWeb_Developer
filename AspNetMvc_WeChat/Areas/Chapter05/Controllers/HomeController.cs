@@ -108,6 +108,10 @@ namespace AspNetMvc_WeChat.Areas.Chapter05.Controllers
             return stringBuilder.ToString();
         }
 
+        /// <summary>
+        /// gat_id群发消息
+        /// </summary>
+        /// <returns></returns>
         public ActionResult SendByGroupID()
         {
             return View();
@@ -160,7 +164,10 @@ namespace AspNetMvc_WeChat.Areas.Chapter05.Controllers
             return View();
         }
 
-
+        /// <summary>
+        /// open id 群发消息
+        /// </summary>
+        /// <returns></returns>
         public ActionResult SendByOpenID()
         {
             return View();
@@ -205,6 +212,40 @@ namespace AspNetMvc_WeChat.Areas.Chapter05.Controllers
             string resultJson = WeChatMessageService.SendMsgByOpenID(paramJson);
             WeChatErrorResult errorResult = JSONHelper.JSONToObject<WeChatErrorResult>(resultJson);
             ViewBag.msgResult = !string.IsNullOrEmpty(errorResult.errmsg) ? "群发失败" + errorResult.errmsg : "群发成功";
+            return View();
+        }
+
+        /// <summary>
+        /// 设置所属行业
+        /// </summary>
+        /// <returns></returns>
+        public ActionResult SetIndustry()
+        {
+            return View();
+        }
+        [HttpPost]
+        public ActionResult SetIndustry(FormCollection form)
+        {
+            var param = new { industry_id1 = form["industry_id1"], industry_id2 = form["industry_id2"] };
+            string paramJson = JSONHelper.ObjectToJSON(param);
+            string resultJson = WeChatMessageService.SetIndustry(paramJson);
+            var strResult = JSONHelper.JSONToObject<WeChatErrorResult>(resultJson);
+            ViewBag.setResult = "返回代码: " + strResult.errcode + " 返回消息: " + strResult.errmsg;
+            return View();
+        }
+
+        /// <summary>
+        /// 获取所属行业
+        /// </summary>
+        /// <returns></returns>
+        public ActionResult GetIndustry()
+        {
+            string getIndustryJson = WeChatMessageService.GetIndustry();
+            WeChatMsgIndustry msgIndustry  = JSONHelper.JSONToObject<WeChatMsgIndustry>(getIndustryJson);
+            ViewBag.infoIndustry = "主营行业: " + msgIndustry.primary_industry.first_class +
+                "/" + msgIndustry.primary_industry.second_class +
+                "<br />副营行业：" + msgIndustry.secondary_industry.first_class +
+                "/" + msgIndustry.secondary_industry.second_class;
             return View();
         }
     }

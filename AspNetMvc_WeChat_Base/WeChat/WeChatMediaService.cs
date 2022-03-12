@@ -96,7 +96,8 @@ namespace AspNetMvc_WeChat_Base.WeChat
         /// <returns>mediaid</returns>
         public static string AddMediaPermanent(string content)
         {
-            string url = " https://api.weixin.qq.com/cgi-bin/material/add_news" +
+            //string url = " https://api.weixin.qq.com/cgi-bin/material/add_news" +
+            string url = " https://api.weixin.qq.com/cgi-bin/draft/add" +                
                 "?access_token=" + WeChatTookenService.Access_token;
             string result = HttpService.Post(url, content);
             return result;

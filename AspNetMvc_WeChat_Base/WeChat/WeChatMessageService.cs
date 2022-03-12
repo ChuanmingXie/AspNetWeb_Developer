@@ -279,5 +279,21 @@ namespace AspNetMvc_WeChat_Base.WeChat
             string result = HttpService.Post(url, paramJson);
             return result;
         }
+
+        public static string SetIndustry(string pramJson)
+        {
+            string url = " https://api.weixin.qq.com/cgi-bin/template/api_set_industry" +
+                "?access_token="+WeChatTookenService.Access_token;
+            string reuslt = HttpService.Post(url, pramJson);
+            return reuslt;
+        }
+
+        public static string GetIndustry()
+        {
+            string url = "https://api.weixin.qq.com/cgi-bin/template/get_industry" +
+                "?access_token="+WeChatTookenService.Access_token;
+            string result = HttpService.Get(url);
+            return result;
+        }
     }
 }

@@ -1,0 +1,37 @@
+﻿
+@{
+    ViewBag.Title = "【例5-03】设置所属行业 - Chapter05";
+}
+@section scripts{
+    <script type="text/javascript" src="~/Scripts/jQuery-fun/jQuery.cascadingMenu.js"></script>
+    <script type="text/javascript">
+        $(function () {
+            $(".vocation:first").empty().cascadingMenuPlugins(null);
+        })
+    </script>
+}
+<div class="jumbotron">
+    <h2>【例5-03】设置所属行业</h2>
+</div>
+<div class="jumbotron">
+    @using (Html.BeginForm("SetIndustry", "Home", FormMethod.Post))
+    {
+        <div class="form-horizontal">
+            <div class="form-group">
+                @Html.Label("选择行业", new { @class = "control-label col-md-2" })
+                <div class="vocation col-md-10">
+                    @* 通过jQuery插件进行菜单栏的设置 *@
+                    @*<select></select>*@
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-lg-offset-2 col-md-10">
+                    <input type="submit" class="btn btn-primary" name="submitSetIndustry" />
+                </div>
+            </div>
+        </div>
+    }
+</div>
+<div>
+    @Html.ActionLink("返回页面","Index")
+</div>
