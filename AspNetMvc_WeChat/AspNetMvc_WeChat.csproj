@@ -410,8 +410,11 @@
     <Content Include="Areas\Chapter05\Views\Home\SendByGroupID.cshtml" />
     <Content Include="Areas\Chapter05\Views\Home\SendByOpenID.cshtml" />
     <Content Include="Areas\Chapter08\Views\Home\MediaMaterialUpdate.cshtml" />
-    <Content Include="Areas\Chapter05\Views\Home\SetIndustry.cshtml" />
-    <Content Include="Areas\Chapter05\Views\Home\GetIndustry.cshtml" />
+    <Content Include="Areas\Chapter05\Views\Home\IndustrySet.cshtml" />
+    <Content Include="Areas\Chapter05\Views\Home\IndustryGet.cshtml" />
+    <Content Include="Areas\Chapter05\Views\Home\TemplateIDGet.cshtml" />
+    <Content Include="Areas\Chapter05\Views\Home\TemplateListGet.cshtml" />
+    <Content Include="Areas\Chapter05\Views\Home\TemplateMsgSend.cshtml" />
     <None Include="Properties\PublishProfiles\IISProfile.pubxml" />
     <None Include="Scripts\jquery-3.4.1-vsdoc.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />

@@ -1,0 +1,35 @@
+﻿
+@{
+    ViewBag.Title = "【例5-05】获取模板ID - Chapter05";
+}
+<div class="jumbotron">
+    <h2>【例5-05】获取模板ID</h2>
+</div>
+
+<div class="jumbotron">
+    @ViewBag.templateID
+    <br/>
+    @using (Html.BeginForm("TemplateIDGet","Home",FormMethod.Post))
+    {
+        <div class="row">
+            <div class="col-md-5">
+                <div class="input-group">
+                    <div class="input-group-btn">
+                        <h5>消息模板编号:</h5>
+                    </div>
+                    <div class="input-group-btn" style="width:280px">
+                        @Html.TextBox("templateIdShort", null, new {@class="form-control"})
+                    </div>
+                    <div class="input-group-btn">
+                        <input type="submit" name="templateIdShort" id="templateIdShort" value="查询" class="btn btn-primary"/>
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
+</div>
+
+<div>
+    @Html.ActionLink("返回列表", "Index")
+</div>
+

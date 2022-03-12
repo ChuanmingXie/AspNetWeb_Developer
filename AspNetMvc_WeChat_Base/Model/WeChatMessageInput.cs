@@ -384,5 +384,25 @@ namespace AspNetMvc_WeChat_Base.Model
         /// </summary>
         public string content { get; set; }
     }
+
+    /// <summary>
+    /// 向指定用户发送模板消息
+    /// </summary>
+    //public class WeChatTemplateMsg
+    //{
+    //    public string touser { get; set; }
+    //    public string template_id { get; set; }
+    //    public string url { get; set; }
+
+    //    public TemplateData data { get; set; }
+    //}
+
+    /// <summary>
+    /// 模板主体内容数据
+    /// </summary>
+    public class TemplateData
+    {
+
+    }
 }
 

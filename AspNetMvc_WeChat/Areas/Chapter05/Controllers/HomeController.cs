@@ -19,7 +19,7 @@ namespace AspNetMvc_WeChat.Areas.Chapter05.Controllers
             WeChatBeginAPI beginAPI = new WeChatBeginAPI
             {
                 SignatureOrigin = !string.IsNullOrEmpty(Request.QueryString["signature"]) ? Request.QueryString["signature"] : "",
-                Timestamp = !string.IsNullOrEmpty(Request.QueryString["timestamp"])?Request.QueryString["timestamp"] :"",
+                Timestamp = !string.IsNullOrEmpty(Request.QueryString["timestamp"]) ? Request.QueryString["timestamp"] : "",
                 Nonce = !string.IsNullOrEmpty(Request.QueryString["nonce"]) ? Request.QueryString["nonce"] : "",
                 Encrypt_Type = (!string.IsNullOrEmpty(Request.QueryString["encrypt_type"]) ? Request.QueryString["encrypt_type"] : ""),
                 Msg_SignatureOrigin = (!string.IsNullOrEmpty(Request.QueryString["msg_signature"]) ? Request.QueryString["msg_signature"] : ""),
@@ -224,7 +224,7 @@ namespace AspNetMvc_WeChat.Areas.Chapter05.Controllers
             return View();
         }
         [HttpPost]
-        public ActionResult SetIndustry(FormCollection form)
+        public ActionResult IndustrySet(FormCollection form)
         {
             var param = new { industry_id1 = form["industry_id1"], industry_id2 = form["industry_id2"] };
             string paramJson = JSONHelper.ObjectToJSON(param);
@@ -238,14 +238,97 @@ namespace AspNetMvc_WeChat.Areas.Chapter05.Controllers
         /// 获取所属行业
         /// </summary>
         /// <returns></returns>
-        public ActionResult GetIndustry()
+        public ActionResult IndustryGet()
         {
             string getIndustryJson = WeChatMessageService.GetIndustry();
-            WeChatMsgIndustry msgIndustry  = JSONHelper.JSONToObject<WeChatMsgIndustry>(getIndustryJson);
-            ViewBag.infoIndustry = "主营行业: " + msgIndustry.primary_industry.first_class +
+            WeChatMsgIndustry msgIndustry = JSONHelper.JSONToObject<WeChatMsgIndustry>(getIndustryJson);
+            ViewBag.infoIndustry = "主营行业：" + msgIndustry.primary_industry.first_class +
                 "/" + msgIndustry.primary_industry.second_class +
                 "<br />副营行业：" + msgIndustry.secondary_industry.first_class +
                 "/" + msgIndustry.secondary_industry.second_class;
+            return View();
+        }
+
+        public ActionResult TemplateIDGet()
+        {
+            return View();
+        }
+        [HttpPost]
+        public ActionResult TemplateIDGet(string templateIdShort)
+        {
+            var param = new { template_id_short = templateIdShort };
+            string resultJson = WeChatMessageService.GetTemplateID(JSONHelper.ObjectToJSON(param));
+            WeChatMsgTemplateResult templateIdGetResult = JSONHelper.JSONToObject<WeChatMsgTemplateResult>(resultJson);
+            string resultInfo = ReflectionHelper.GetModelByGeneric(templateIdGetResult);
+            LogService.RecordLog(resultInfo);
+            ViewBag.templateID = resultInfo;
+            return View();
+        }
+
+        public ActionResult TemplateListGet()
+        {
+            var resultJson = WeChatMessageService.GetTemplateList();
+            LogService.RecordLog(resultJson);
+            WeChatTemplateList templateList = JSONHelper.JSONToObject<WeChatTemplateList>(resultJson);
+            string templateId=string.Empty;
+            foreach (var item in templateList.template_list)
+            {
+                templateId += item.template_id+"<br />";
+            }
+            ViewBag.templateId = templateId;
+            ViewBag.templateList = resultJson.Replace("\n","<br/>").Replace(",",",<br />");
+            return View();
+        }
+
+        public ActionResult TemplateMsgSend()
+        {
+            var chatTemplateMsg = new
+            {
+                touser = "obotH60QgZm7LBI6wGBpLaOWCnHk",
+                template_id = "hROcaMyz7e6WA9vxBYbxTU3JFp7VkYzWG-P-4fxGmgQ",
+                url = "http://101.132.152.252/Chapter05/Home",
+                data = new
+                {
+                    first = new
+                    {
+                        value = "恭喜你购买成功",
+                        color = "#173177"
+                    },
+                    orderName=new
+                    {
+                        value = "香格里拉酒店",
+                        color = "#ff0000"
+                    },
+                    orderPrice = new
+                    {
+                        value = "239 ￥",
+                        color = "#173177"
+                    },
+                    orderAddress = new
+                    {
+                        value = "塔里木庄园草原牧场",
+                        color = "#173177"
+                    },
+                    orderNumber = new
+                    {
+                        value = "3019392851343",
+                        color = "#173177"
+                    },
+                    orderTime = new
+                    {
+                        value = DateTime.Now.ToString("M"),
+                        color = "#173177"
+                    },
+                    remark = new
+                    {
+                        value = "点击查看更多酒店详情，部分酒店已开通网上预约及退款功能",
+                        color = "#173177"
+                    }
+                }
+            };
+            string paramJson = JSONHelper.ObjectToJSON(chatTemplateMsg);
+            string resultJson = WeChatMessageService.SendTemplateMsg(paramJson);
+            ViewBag.msgResult = resultJson;
             return View();
         }
     }

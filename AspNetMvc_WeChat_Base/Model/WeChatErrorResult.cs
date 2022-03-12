@@ -31,4 +31,21 @@ namespace AspNetMvc_WeChat_Base.Model
        /// </summary>
         public string errmsg;
     }
+
+    public class WeChatErrorWithRid
+    {
+
+        /// <summary>
+        /// 字段名为特定的 JSON 键值的键，不可变更
+        /// 错误代码
+        /// </summary>
+        public string errcode;
+
+        /// <summary>
+        /// 错误信息
+        /// </summary>
+        public string errmsg;
+
+        public string rid;
+    }
 }

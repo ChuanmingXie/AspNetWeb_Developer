@@ -264,6 +264,11 @@ namespace AspNetMvc_WeChat_Base.WeChat
             httpContext.Response.Write(xmlMsg);
         }
 
+        /// <summary>
+        /// 通过tag-id(group_id)群发消息
+        /// </summary>
+        /// <param name="paramJson"></param>
+        /// <returns></returns>
         public static string SendMsgByGroupID(string paramJson)
         {
             string url = "https://api.weixin.qq.com/cgi-bin/message/mass/sendall" +
@@ -272,6 +277,11 @@ namespace AspNetMvc_WeChat_Base.WeChat
             return result;
         }
 
+        /// <summary>
+        /// 通过open_id(touser)群发消息
+        /// </summary>
+        /// <param name="paramJson"></param>
+        /// <returns></returns>
         public static string SendMsgByOpenID(string paramJson)
         {
             string url = "https://api.weixin.qq.com/cgi-bin/message/mass/send" +
@@ -280,6 +290,11 @@ namespace AspNetMvc_WeChat_Base.WeChat
             return result;
         }
 
+        /// <summary>
+        /// 设置所属行业信息
+        /// </summary>
+        /// <param name="pramJson"></param>
+        /// <returns></returns>
         public static string SetIndustry(string pramJson)
         {
             string url = " https://api.weixin.qq.com/cgi-bin/template/api_set_industry" +
@@ -288,11 +303,51 @@ namespace AspNetMvc_WeChat_Base.WeChat
             return reuslt;
         }
 
+        /// <summary>
+        /// 获取所属行业信息
+        /// </summary>
+        /// <returns></returns>
         public static string GetIndustry()
         {
             string url = "https://api.weixin.qq.com/cgi-bin/template/get_industry" +
                 "?access_token="+WeChatTookenService.Access_token;
             string result = HttpService.Get(url);
+            return result;
+        }
+
+        /// <summary>
+        /// 获取消息模板ID
+        /// </summary>
+        /// <returns></returns>
+        public static string GetTemplateID(string paramJson)
+        {
+            string url = "https://api.weixin.qq.com/cgi-bin/template/api_add_template" +
+                "?access_token="+WeChatTookenService.Access_token;
+            string result = HttpService.Post(url,paramJson);
+            return result;
+        }
+
+        /// <summary>
+        /// 获取消息模板列表
+        /// </summary>
+        /// <returns></returns>
+        public static string GetTemplateList()
+        {
+            string url = "https://api.weixin.qq.com/cgi-bin/template/get_all_private_template" +
+                "?access_token="+ WeChatTookenService.Access_token;
+            string result = HttpService.Get(url);
+            return result;
+        }
+
+        /// <summary>
+        /// 发送模板消息
+        /// </summary>
+        /// <returns></returns>
+        public static string SendTemplateMsg(string paramJson)
+        {
+            string url = "https://api.weixin.qq.com/cgi-bin/message/template/send" +
+                "?access_token="+WeChatTookenService.Access_token;
+            string result = HttpService.Post(url, paramJson);
             return result;
         }
     }
