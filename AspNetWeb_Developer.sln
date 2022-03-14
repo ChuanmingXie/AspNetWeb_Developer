@@ -23,6 +23,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AspNetMvc_WeChat_Base", "As
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AspNetWeb_API2", "AspNetWeb_API2\AspNetWeb_API2.csproj", "{5B6B06DD-05BC-487B-BE85-DAA3F69E05DD}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AspNetWeb_API2Form", "AspNetWeb_API2Form\AspNetWeb_API2Form.csproj", "{447C0657-9073-49F2-AE87-6274D1A2E282}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -71,6 +73,10 @@ Global
 		{5B6B06DD-05BC-487B-BE85-DAA3F69E05DD}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5B6B06DD-05BC-487B-BE85-DAA3F69E05DD}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5B6B06DD-05BC-487B-BE85-DAA3F69E05DD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{447C0657-9073-49F2-AE87-6274D1A2E282}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{447C0657-9073-49F2-AE87-6274D1A2E282}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{447C0657-9073-49F2-AE87-6274D1A2E282}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{447C0657-9073-49F2-AE87-6274D1A2E282}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
