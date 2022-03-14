@@ -8,7 +8,7 @@ namespace AspNetWeb_API.Areas.HelpPage
     public static class ApiDescriptionExtensions
     {
         /// <summary>
-        /// Generates an URI-friendly ID for the <see cref="ApiDescription"/>. E.g. "Get-Values-id_name" instead of "GetValues/{id}?name={name}"
+        /// 转换一个友好型的 URI-friendly ID 用于<see cref="ApiDescription"/>.例如 "Get-Values-id_name" instead of "GetValues/{id}?name={name}"
         /// </summary>
         /// <param name="description">The <see cref="ApiDescription"/>.</param>
         /// <returns>The ID as a string.</returns>

@@ -1,5 +1,7 @@
-// Uncomment the following to provide samples for PageResult<T>. Must also add the Microsoft.AspNet.WebApi.OData
-// package to your project.
+/*
+    取消注释以下内容，为PageResult<T>提供示例。
+    还必须添加开发包Microsoft.AspNet.WebApi.OData到您的项目中
+ */
 ////#define Handle_PageResultOfT
 
 using System;
@@ -19,9 +21,9 @@ using System.Web.Http.OData;
 namespace AspNetWeb_API.Areas.HelpPage
 {
     /// <summary>
-    /// Use this class to customize the Help Page.
-    /// For example you can set a custom <see cref="System.Web.Http.Description.IDocumentationProvider"/> to supply the documentation
-    /// or you can provide the samples for the requests/responses.
+    /// 使用此类可自定义帮助页面。
+    /// 例如，您可以设置自定义<see cref="System.Web.Http.Description.IDocumentationProvider"/> 用来提供文档
+    /// 或者您可以提供请求/响应的样本。
     /// </summary>
     public static class HelpPageConfig
     {
@@ -33,50 +35,59 @@ namespace AspNetWeb_API.Areas.HelpPage
             Justification = "Part of a URI.")]
         public static void Register(HttpConfiguration config)
         {
-            //// Uncomment the following to use the documentation from XML documentation file.
+            //取消注释以下内容以使用XML文档文件中的文档。
             //config.SetDocumentationProvider(new XmlDocumentationProvider(HttpContext.Current.Server.MapPath("~/App_Data/XmlDocument.xml")));
 
-            //// Uncomment the following to use "sample string" as the sample for all actions that have string as the body parameter or return type.
-            //// Also, the string arrays will be used for IEnumerable<string>. The sample objects will be serialized into different media type 
-            //// formats by the available formatters.
+            /*
+             * 取消对以下内容的注释，将“sample string”用作所有以string作为主体参数或返回类型的操作的示例。
+             * 此外，字符串数组将用于IEnumerable<string>示例对象将被序列化为不同的媒体类型由可用的格式化程序格式化。
+             */
             //config.SetSampleObjects(new Dictionary<Type, object>
             //{
             //    {typeof(string), "sample string"},
             //    {typeof(IEnumerable<string>), new string[]{"sample 1", "sample 2"}}
             //});
 
-            // Extend the following to provide factories for types not handled automatically (those lacking parameterless
-            // constructors) or for which you prefer to use non-default property values. Line below provides a fallback
-            // since automatic handling will fail and GeneratePageResult handles only a single type.
+            /*
+             * 扩展以下内容，为未自动处理的类型（缺少无参数构造函数的类型）或您更喜欢使用非默认属性值的类型提供工厂。
+             * 下一行提供了一个后备方案，因为自动处理将失败，GeneratePageResult只处理一种类型。
+             */
 #if Handle_PageResultOfT
             config.GetHelpPageSampleGenerator().SampleObjectFactories.Add(GeneratePageResult);
 #endif
 
-            // Extend the following to use a preset object directly as the sample for all actions that support a media
-            // type, regardless of the body parameter or return type. The lines below avoid display of binary content.
-            // The BsonMediaTypeFormatter (if available) is not used to serialize the TextSample object.
+            /*
+             * 扩展以下内容，将预设对象直接用作支持媒体的所有操作的示例类型，而不考虑主体参数或返回类型。
+             * 以下几行避免显示二进制内容。BsonMediaTypeFormatter（如果可用）不用于序列化TextSample对象。
+             */
             config.SetSampleForMediaType(
                 new TextSample("Binary JSON content. See http://bsonspec.org for details."),
                 new MediaTypeHeaderValue("application/bson"));
 
-            //// Uncomment the following to use "[0]=foo&[1]=bar" directly as the sample for all actions that support form URL encoded format
-            //// and have IEnumerable<string> as the body parameter or return type.
+            /*
+             * 取消注释以下内容，将“[0]=foo&[1]=bar”直接用作所有支持表单URL编码格式并将IEnumerable<string>作为主体参数或返回类型的操作的示例。
+             */
             //config.SetSampleForType("[0]=foo&[1]=bar", new MediaTypeHeaderValue("application/x-www-form-urlencoded"), typeof(IEnumerable<string>));
 
-            //// Uncomment the following to use "1234" directly as the request sample for media type "text/plain" on the controller named "Values"
-            //// and action named "Put".
+            //// 取消注释以下内容，将“1234”直接用作名为“Values”的控制器上媒体类型“text/plain”和名为“Put”的操作的请求示例。
             //config.SetSampleRequest("1234", new MediaTypeHeaderValue("text/plain"), "Values", "Put");
 
-            //// Uncomment the following to use the image on "../images/aspNetHome.png" directly as the response sample for media type "image/png"
-            //// on the controller named "Values" and action named "Get" with parameter "id".
+            /*
+             * 取消注释以下内容，将“./images/aspNetHome.png”上的图像直接用作媒体类型“image/png”的响应示例
+             * 在名为“Values”的控制器和名为“Get”且参数为“id”的操作上。
+             */
             //config.SetSampleResponse(new ImageSample("../images/aspNetHome.png"), new MediaTypeHeaderValue("image/png"), "Values", "Get", "id");
 
-            //// Uncomment the following to correct the sample request when the action expects an HttpRequestMessage with ObjectContent<string>.
-            //// The sample will be generated as if the controller named "Values" and action named "Get" were having string as the body parameter.
+            /*
+             * 当操作需要ObjectContent<string>的HttpRequestMessage时，请取消注释以下内容以更正示例请求。
+             * 该示例将被生成，就像名为“Values”的控制器和名为“Get”的操作将字符串作为主体参数一样。
+             */
             //config.SetActualRequestType(typeof(string), "Values", "Get");
 
-            //// Uncomment the following to correct the sample response when the action returns an HttpResponseMessage with ObjectContent<string>.
-            //// The sample will be generated as if the controller named "Values" and action named "Post" were returning a string.
+            /*
+             * 当操作返回带有0ObjectContent<string>的HttpResponseMessage时，请取消注释以下内容以更正示例响应。
+             * 将生成示例，就像名为“Values”的控制器和名为“Post”的操作返回字符串一样。
+             */
             //config.SetActualResponseType(typeof(string), "Values", "Post");
         }
 

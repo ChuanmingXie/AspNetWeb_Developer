@@ -24,7 +24,7 @@
     @foreach (var api in Model)
     {
         <tr>
-            <td class="api-name"><a href="@Url.Action("Api", "Help", new { apiId = api.GetFriendlyId() })">@api.HttpMethod.Method @api.RelativePath</a></td>
+            <td class="api-name"><a href="@Url.Action("Api", "帮助", new { apiId = api.GetFriendlyId() })">@api.HttpMethod.Method @api.RelativePath</a></td>
             <td class="api-documentation">
             @if (api.Documentation != null)
             {
@@ -32,7 +32,7 @@
             }
             else
             {
-                <p>No documentation available.</p>
+                <p>无可用文档.</p>
             }
             </td>
         </tr>
